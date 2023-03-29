@@ -5,24 +5,27 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+        <div class="py-8 px-4">
+            <!-- email block starts -->
+            <div class="flex flex-col lg:mr-16 pt-5">
+                <label for="email" class="text-gray-800 dark:text-gray-100 text-sm font-bold leading-tight tracking-normal mb-2">Email</label>
+                <input id="email" autocomplete="on" name="email"
+                    :value="old('email')" required autofocus autocomplete="username" 
+                    class="w-full text-gray-600 dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border shadow" placeholder="Enter Email" />
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <div class="flex flex-col lg:mr-16 pt-5">
+                <label for="password" class="text-gray-800 dark:text-gray-100 text-sm font-bold leading-tight tracking-normal mb-2">Password</label>
 
-            <x-text-input id="password" class="block mt-1 w-full"
+            <input id="password" 
                             type="password"
                             name="password"
-                            required autocomplete="current-password" />
-
+                            required autocomplete="current-password" class="w-full text-gray-600 dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border shadow" placeholder="Enter Password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
+        </div>
+        
 
         <!-- Remember Me -->
         <div class="block mt-4">
