@@ -25,7 +25,7 @@
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
+            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full h-10 p-2" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
@@ -49,13 +49,13 @@
         <!-- Roll/ID field -->
         <div>
             <x-input-label for="roll" :value="__('ID')" />
-            <x-text-input id="roll"  name="roll" type="text" class="mt-1 block w-full disabled opacity-50" :value="old('roll', $user->roll)" required autofocus autocomplete="roll"/>
+            <x-text-input id="roll"  name="roll" type="text" class="h-10 p-2 mt-1 block w-full disabled opacity-50" :value="old('roll', $user->roll)" required autofocus autocomplete="roll"/>
         </div>
 
         <!-- Mobile field -->
         <div>
             <x-input-label for="mobile" :value="__('Mobile')" />
-            <x-text-input id="mobile" name="mobile" type="text" class="mt-1 block w-full" :value="old('mobile', $user->mobile)" required autofocus autocomplete="mobile" />
+            <x-text-input id="mobile" name="mobile" type="text" class="h-10 p-2 mt-1 block w-full" :value="old('mobile', $user->mobile)" required autofocus autocomplete="mobile" />
             <x-input-error class="mt-2" :messages="$errors->get('mobile')" />
         </div>
         <div class="flex items-center gap-4">
