@@ -40,7 +40,7 @@
   <div class="navbar-end">
   @if (Route::has('login'))
   @auth
-    <a class="btn btn-primary" href="{{ url('/dashboard') }}">Profile</a>
+    <a class="btn btn-primary" href="{{ route('profile') }}">Profile</a>
     @else
     <a class="btn btn-success" href="{{ route('login') }}">Login</a>
     @if (Route::has('register'))
