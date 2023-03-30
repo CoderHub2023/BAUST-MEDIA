@@ -4,7 +4,7 @@
         <a class="btn btn-ghost normal-case text-xl text-white" href="{{ route('home') }}">BSM</a>
     </div>
     <div class="flex-none">
-        <div class="dropdown dropdown-end">
+        <!-- <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost btn-circle">
                 <div class="indicator">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -12,8 +12,8 @@
                     </svg>
                     <span class="badge badge-sm indicator-item">8</span>
                 </div>
-            </label>
-            <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
+            </label> -->
+            <!-- <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
                 <div class="card-body">
                     <span class="font-bold text-lg">8 Items</span>
                     <span class="text-info">Subtotal: $999</span>
@@ -21,7 +21,7 @@
                         <button class="btn btn-primary btn-block">View cart</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
@@ -37,7 +37,15 @@
                     </a>
                 </li>
                 <li><a href="{{ route('profile.edit') }}">Update Profile</a></li>
-                <li><a :href="route('logout')">Logout</a></li>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <li :href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                        <a>Logout</a>
+                    </li>
+                </form>
             </ul>
         </div>
     </div>
@@ -49,7 +57,7 @@
     <div class="bg-gray-100">
         <!-- Cover image -->
         <div class="relative">
-            <img class="w-full h-80 object-cover" src="https://via.placeholder.com/1920x600" alt="Cover image">
+            <img class="w-full h-80 object-cover" src="{{ asset('media/profile/shaikat-cover.jpeg') }}" alt="Cover image">
             <!-- Profile photo -->
             <div class="absolute left-8 top-56">
                 <div class="mb-4 inline-block rounded-full overflow-hidden border-4 border-white shadow-lg">
@@ -63,16 +71,16 @@
     <div class="bg-gray-100 dark:bg-gray-900 flex">
         <!-- Left column -->
         <div class="w-1/2 p-8">
-            <h1 class="text-4xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">Your Name</h1>
-            <h2 class="text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">Occupation</h2>
-            <p class="text-lg dark:text-white text-gray-500 mb-4">Location</p>
+            <h1 class="text-4xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">ASM SHAIKAT</h1>
+            <h2 class="text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">Full Stack Web Application Developer & Competitive Programmer</h2>
+            <p class="text-lg dark:text-white text-gray-500 mb-4">Rangpur,Bangladesh</p>
         </div>
         <!-- Right column -->
         <div class="w-1/2 p-8">
             <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Work at:</h2>
-            <p class="text-lg dark:text-white text-gray-400 mb-4">Company name</p>
+            <p class="text-lg dark:text-white text-gray-400 mb-4">CSE Society,BAUST</p>
             <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studying at:</h2>
-            <p class="text-lg dark:text-white text-gray-400 mb-4">University name</p>
+            <p class="text-lg dark:text-white text-gray-400 mb-4">Bangladesh Army University of Science and Technology (BAUST), Saidpur</p>
         </div>
     </div>
 
@@ -121,7 +129,7 @@
                     </div>
                 </div>
                 <div class="bg-gray-200 rounded-full h-6">
-                    <div class="bg-teal-600 rounded-full h-6 w-1/4 text-center text-white">
+                    <div class="bg-teal-600 rounded-full h-6 w-3/4 text-center text-white">
                         <p>PHP</p>
                     </div>
                 </div>
@@ -145,9 +153,9 @@
                         <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Institution Name</h3>
-                        <p class="text-gray-800 dark:text-white">Degree Name</p>
-                        <p class="text-gray-500 dark:text-white">Year Completed</p>
+                        <h3 class="text-lg font-bold text-black dark:text-white">Dimla RaniBrinda Rani Govt. High School</h3>
+                        <p class="text-gray-800 dark:text-white">Group Science</p>
+                        <p class="text-gray-500 dark:text-white">2017</p>
                     </div>
                 </div>
                 <div class="flex items-center mb-4">
@@ -155,29 +163,29 @@
                         <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Institution Name</h3>
+                        <h3 class="text-lg font-bold text-black dark:text-white">Collectorate Public College,Nilphamary</h3>
+                        <p class="text-gray-800 dark:text-white">Group Science</p>
+                        <p class="text-gray-500 dark:text-white">2019</p>
+                    </div>
+                </div>
+                <!-- <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 flex-shrink-0 mr-4">
+                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-black dark:text-white"></h3>
                         <p class="text-gray-800 dark:text-white">Degree Name</p>
                         <p class="text-gray-500 dark:text-white">Year Completed</p>
                     </div>
-                </div>
+                </div> -->
                 <div class="flex items-center mb-4">
                     <div class="w-12 h-12 flex-shrink-0 mr-4">
                         <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Institution Name</h3>
-                        <p class="text-gray-800 dark:text-white">Degree Name</p>
-                        <p class="text-gray-500 dark:text-white">Year Completed</p>
-                    </div>
-                </div>
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Institution Name</h3>
-                        <p class="text-gray-800 dark:text-white">Degree Name</p>
-                        <p class="text-gray-500 dark:text-white">Year Completed</p>
+                        <h3 class="text-lg font-bold text-black dark:text-white">Bangladesh Army University of Science and Technology (BAUST), Saidpur</h3>
+                        <p class="text-gray-800 dark:text-white">BSC in CSE</p>
+                        <p class="text-gray-500 dark:text-white">Ongoing</p>
                     </div>
                 </div>
             </div>
