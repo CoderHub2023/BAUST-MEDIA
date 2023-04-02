@@ -192,8 +192,7 @@
             <a href="#" class="text-blue-500 hover:underline block mt-6">See More</a>
         </div>
     </div>
-<!-- Education section -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5 ">
+
         <div class="shadow-xl rounded-md bg-gray-100 dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
             <h2 class="text-3xl font-bold mb-4 text-black dark:text-white">Education</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
