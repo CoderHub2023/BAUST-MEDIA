@@ -3,3 +3,4 @@ composer install
 php artisan serve
     then generate app key
 npm install
+npm run dev
