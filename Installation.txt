@@ -2,5 +2,6 @@ update env file then run the commands
 composer install
 php artisan serve
     then generate app key
+php artisan migrate
 npm install
 npm run dev
