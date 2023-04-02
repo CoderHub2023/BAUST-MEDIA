@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
 
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');
+    Route::get('/admin/user-request',[AdminController::class,'user_request'])->name('admin.user_request');
 });
 
 require __DIR__.'/auth.php';
