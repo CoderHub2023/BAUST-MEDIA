@@ -1,61 +1,40 @@
 @extends('template')
-<table class="min-w-full divide-y divide-gray-200 bg-transparent">
-  <thead>
-    <tr>
-      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-        Name
-      </th>
-      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-        ID
-      </th>
-      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-        User Type
-      </th>
-      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-        Mobile
-      </th>
-      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-        Profile
-      </th>
-      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-        Email
-      </th>
-    </tr>
-  </thead>
-  <tbody class="bg-white divide-y divide-gray-200">
+<div class="w-full overflow-x-auto">
+  <table class="mt-4 w-full bg-slate-600 border-collapse">
+    <thead>
+      <tr class="text-left text-white border-b border-gray-700">
+        <th class="py-3 px-4 font-semibold"></th>
+        <th class="py-3 px-4 font-semibold">Email</th>
+        <th class="py-3 px-4 font-semibold">User Type</th>
+        <th class="py-3 px-4 font-semibold">Mobile</th>
+        <th class="py-3 px-4 font-semibold">Profile View</th>
+      </tr>
+    </thead>
+    <tbody class="bg-slate-600 text-white divide-y divide-gray-200">
     @foreach($all_data as $all_data)
-    <tr>
-      <td class="px-6 py-4 whitespace-nowrap">
-        <div class="flex items-center">
-          <div class="flex-shrink-0 h-10 w-10">
-            <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/40" alt="">
-          </div>
-          <div class="ml-4">
-            <div class="text-sm font-medium text-gray-900">
-              Jane Doe
-            </div>
-          </div>
-        </div>
-      </td>
-      <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">{{ $all_data->roll }}</div>
-      </td>
-      <td class="px-6 py-4 whitespace-nowrap">
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-        {{ $all_data->usertype }}
-        </span>
-      </td>
-      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    <form action="{{ route('admin.post_user_request') }}" method="post">
+    @csrf
+      <tr>
+        <td class="py-3 px-4">
+        {{ $all_data->roll }}
+        </td>
+        <td class="py-3 px-4">
+        {{ $all_data->email }}
+        </td>
+        <td class="py-3 px-4">
+        <input type="submit" value="{{ $all_data->usertype }}">
+        </td>
+        <td class="py-3 px-4">
         {{ $all_data->mobile }}
-      </td>
-      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-        <a href="#" class="text-indigo-600 hover:text-indigo-900">View</a>
-      </td>
-      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-      {{ $all_data->email }}
-      </td>
-    </tr>
+        </td>
+        <td class="py-3 px-4">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            View
+          </button>
+        </td>
+      </tr>
+      </form>
     @endforeach
-    <!-- More rows... -->
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
