@@ -23,6 +23,8 @@ class User extends Authenticatable
         'roll',
         'usertype',
         'email',
+        'headlines',
+        'address',
         'password',
     ];
 
