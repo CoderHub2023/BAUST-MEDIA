@@ -51,7 +51,6 @@
     </div>
 </div>
 @section('content')
-<div>
 
     <!-- cover image and profile photo -->
     <div class="bg-gray-100">
@@ -71,9 +70,9 @@
     <div class="bg-gray-100 dark:bg-gray-900 flex">
         <!-- Left column -->
         <div class="w-1/2 p-8">
-            <h1 class="text-4xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">ASM SHAIKAT</h1>
-            <h2 class="text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">Full Stack Web Application Developer & Competitive Programmer</h2>
-            <p class="text-lg dark:text-white text-gray-500 mb-4">Rangpur,Bangladesh</p>
+            <h1 class="text-4xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">{{$user->name}}</h1>
+            <h2 class="text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$user->headlines}}</h2>
+            <p class="text-lg dark:text-white text-gray-500 mb-4">{{$user->address}}</p>
         </div>
         <!-- Right column -->
         <div class="w-1/2 p-8">
@@ -192,60 +191,6 @@
             <a href="#" class="text-blue-500 hover:underline block mt-6">See More</a>
         </div>
     </div>
-
-        <div class="shadow-xl rounded-md bg-gray-100 dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
-            <h2 class="text-3xl font-bold mb-4 text-black dark:text-white">Education</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Dimla RaniBrinda Rani Govt. High School</h3>
-                        <p class="text-gray-800 dark:text-white">Group Science</p>
-                        <p class="text-gray-500 dark:text-white">2017</p>
-                    </div>
-                </div>
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Collectorate Public College,Nilphamary</h3>
-                        <p class="text-gray-800 dark:text-white">Group Science</p>
-                        <p class="text-gray-500 dark:text-white">2019</p>
-                    </div>
-                </div>
-                <!-- <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white"></h3>
-                        <p class="text-gray-800 dark:text-white">Degree Name</p>
-                        <p class="text-gray-500 dark:text-white">Year Completed</p>
-                    </div>
-                </div> -->
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Bangladesh Army University of Science and Technology (BAUST), Saidpur</h3>
-                        <p class="text-gray-800 dark:text-white">BSC in CSE</p>
-                        <p class="text-gray-500 dark:text-white">Ongoing</p>
-                    </div>
-                </div>
-            </div>
-            <a href="#" class="text-blue-500 hover:underline block mt-6">See More</a>
-        </div>
-    </div>
-
-
-
-
-
-
 
 </div>
 @endsection
