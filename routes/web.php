@@ -24,7 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/update', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile/update', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+    Route::get('/profile/update-details', [ProfileController::class, 'update_details'])->name('profile.update-details');
+    Route::post('/profile/update-details/post', [ProfileController::class, 'post_update_details'])->name('profile.post-update-details');
+    
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');
     Route::get('/admin/user-request',[AdminController::class,'user_request'])->name('admin.user_request');

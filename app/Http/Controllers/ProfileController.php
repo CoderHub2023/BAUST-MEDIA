@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
+use App\Models\UserEducation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +36,24 @@ class ProfileController extends Controller
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
+    }
+
+    public function update_details(Request $request){
+        $user = $request->user();
+        return view('profile.update-details',compact('user'));
+    }
+
+    public function post_update_details(Request $request){
+        $user = $request->user();
+        $education = new UserEducation();
+        $userId = $request->user()->id;
+        $education->id = $userId;
+        $education->institution = $request->has('institution') ? $request->get('institution') : " ";
+        $education->subject = $request->has('subject') ? $request->get('subject') : " ";
+        $education->start = $request->has('start') ? $request->get('start') : " ";
+        $education->end = $request->has('end') ? $request->get('end') : " ";
+        $education->save();
+        return redirect('/profile');
     }
 
     /**
