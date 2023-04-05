@@ -10,6 +10,7 @@ class UserWork extends Model
 {
     protected $fillable=[
         'work_at',
+        'position',
         'start',
         'end',
     ];

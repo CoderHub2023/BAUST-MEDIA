@@ -10,6 +10,7 @@ class UserEducation extends Model
 {
     protected $fillable = [
         'institution',
+        'subject',
         'start',
         'end',
     ];
