@@ -51,19 +51,30 @@
     </div>
 </div>
 @section('content')
-
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
+    <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
     <!-- cover image and profile photo -->
     <div class="bg-gray-100">
         <!-- Cover image -->
-        <div class="relative">
-            <img class="w-full h-80 object-cover" src="{{ asset('media/profile/shaikat-cover.jpeg') }}" alt="Cover image">
+        <dv class="relative">
+            <!-- <img class="w-full h-80 object-cover" src="{{ asset('media/profile/shaikat-cover.jpeg') }}" alt="Cover image"> -->
+            <div class="relative">
+                <img class="w-full h-80 object-cover" src="{{ asset('media/profile/shaikat-cover.jpeg') }}" alt="Cover image">
+                <button class="absolute top-0 right-0 m-4 bg-gray-800 p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4m-7-7l-3 3v4h4l3-3-4-4z" />
+                    </svg>
+                </button>
+                </div>
+
             <!-- Profile photo -->
             <div class="absolute left-8 top-56">
-                <div class="mb-4 inline-block rounded-full overflow-hidden border-4 border-white shadow-lg">
-                    <img class="w-32 h-32 object-cover" src="https://avatars.githubusercontent.com/u/71976987?v=4" alt="Profile photo">
-                </div>
+            <a href="#" class="mb-4 inline-block rounded-full overflow-hidden border-4 border-white shadow-lg" onclick="changeProfilePhoto()">
+                <img class="w-32 h-32 object-cover" src="https://avatars.githubusercontent.com/u/71976987?v=4" alt="Profile photo">
+            </a>
             </div>
         </div>
+
     </div>
 
     <!-- name and occupation -->
@@ -82,7 +93,7 @@
             <p class="text-lg dark:text-white text-gray-400 mb-4">Bangladesh Army University of Science and Technology (BAUST), Saidpur</p>
         </div>
     </div>
-
+</div></div>
     <!-- About section -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
         <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
