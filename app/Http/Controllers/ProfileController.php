@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Mockery\Undefined;
+use Termwind\Components\Dd;
 
 class ProfileController extends Controller
 {
@@ -23,9 +25,11 @@ class ProfileController extends Controller
      */
     public function profile(Request $request)
     {
-        return view('profile.profile', [
-            'user' => $request->user(),
-        ]);
+        $user_education = new UserEducation();
+        $user = new User();
+        $user_education = $user_education->all();        
+        $user = $user->all();
+        return view('profile.profile',compact('user','user_education'));
     }
 
     /**
@@ -47,7 +51,7 @@ class ProfileController extends Controller
         $user = $request->user();
         $education = new UserEducation();
         $userId = $request->user()->id;
-        $education->id = $userId;
+        $education->users_id = $userId;
         $education->institution = $request->has('institution') ? $request->get('institution') : " ";
         $education->subject = $request->has('subject') ? $request->get('subject') : " ";
         $education->start = $request->has('start') ? $request->get('start') : " ";

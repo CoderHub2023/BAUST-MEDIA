@@ -82,9 +82,9 @@
     <div class="bg-gray-100 dark:bg-gray-900 flex">
         <!-- Left column -->
         <div class="w-1/2 p-8">
-            <h1 class="text-4xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">{{$user->name}}</h1>
-            <h2 class="text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$user->headlines}}</h2>
-            <p class="text-lg dark:text-white text-gray-500 mb-4">{{$user->address}}</p>
+            <h1 class="text-4xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">{{$user[0]->name}}</h1>
+            <h2 class="text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$user[0]->headlines}}</h2>
+            <p class="text-lg dark:text-white text-gray-500 mb-4">{{$user[0]->address}}</p>
         </div>
         <!-- Right column -->
         <div class="w-1/2 p-8">
@@ -165,13 +165,22 @@
                     <div class="w-12 h-12 flex-shrink-0 mr-4">
                         <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
                     </div>
+                    @if($user_education == '/');
                     <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Dimla RaniBrinda Rani Govt. High School</h3>
-                        <p class="text-gray-800 dark:text-white">Group Science</p>
-                        <p class="text-gray-500 dark:text-white">2017</p>
+                        <h3 class="text-lg font-bold text-black dark:text-white">{{ $user_education[0]->institution }}</h3>
+                        <p class="text-gray-800 dark:text-white">{{ $user_education[0]->subject }}</p>
+                        <p class="text-gray-500 dark:text-white">{{ $user_education[0]->start }}</p>
                     </div>
+                    @else
+                    <div>
+                        <h3 class="text-lg font-bold text-black dark:text-white">{{ $user_education[0]->institution }}</h3>
+                        <p class="text-gray-800 dark:text-white">{{ $user_education[0]->subject }}</p>
+                        <p class="text-gray-500 dark:text-white">{{ $user_education[0]->start }}</p>
+                    </div>
+                  
+                    @endif
                 </div>
-                <div class="flex items-center mb-4">
+                <!-- <div class="flex items-center mb-4">
                     <div class="w-12 h-12 flex-shrink-0 mr-4">
                         <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
                     </div>
@@ -180,7 +189,7 @@
                         <p class="text-gray-800 dark:text-white">Group Science</p>
                         <p class="text-gray-500 dark:text-white">2019</p>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="flex items-center mb-4">
                     <div class="w-12 h-12 flex-shrink-0 mr-4">
                         <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
@@ -191,7 +200,7 @@
                         <p class="text-gray-500 dark:text-white">Year Completed</p>
                     </div>
                 </div> -->
-                <div class="flex items-center mb-4">
+                <!-- <div class="flex items-center mb-4">
                     <div class="w-12 h-12 flex-shrink-0 mr-4">
                         <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
                     </div>
@@ -200,7 +209,7 @@
                         <p class="text-gray-800 dark:text-white">BSC in CSE</p>
                         <p class="text-gray-500 dark:text-white">Ongoing</p>
                     </div>
-                </div>
+                </div> -->
             </div>
             <a href="#" class="text-blue-500 hover:underline block mt-6">See More</a>
         </div>

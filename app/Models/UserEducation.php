@@ -11,12 +11,10 @@ class UserEducation extends Model
     protected $table = 'users_education';
     protected $fillable = [
         'institution',
+        'users_id',
         'subject',
         'start',
         'end',
     ];
-    public function user(): BelongsTo{
-        return $this->belongsTo(User::class);
-    }
     use HasFactory;
 }
