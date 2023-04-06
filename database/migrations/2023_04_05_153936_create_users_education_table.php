@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('subject');
             $table->date('start')->nullable();
             $table->date('end')->nullable();
+            $table->timestamps();
         });
     }
 
