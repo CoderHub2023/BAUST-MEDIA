@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
+use App\Models\UserEducation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Mockery\Undefined;
+use Termwind\Components\Dd;
 
 class ProfileController extends Controller
 {
@@ -21,7 +25,11 @@ class ProfileController extends Controller
      */
     public function profile(Request $request)
     {
-        return view('profile.profile');
+        $user_education = new UserEducation();
+        $user = new User();
+        $user_education = $user_education->all();        
+        $user = $user->all();
+        return view('profile.profile',compact('user','user_education'));
     }
 
     /**
@@ -34,6 +42,24 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function update_details(Request $request){
+        $user = $request->user();
+        return view('profile.update-details',compact('user'));
+    }
+
+    public function post_update_details(Request $request){
+        $user = $request->user();
+        $education = new UserEducation();
+        $userId = $request->user()->id;
+        $education->users_id = $userId;
+        $education->institution = $request->has('institution') ? $request->get('institution') : " ";
+        $education->subject = $request->has('subject') ? $request->get('subject') : " ";
+        $education->start = $request->has('start') ? $request->get('start') : " ";
+        $education->end = $request->has('end') ? $request->get('end') : " ";
+        $education->save();
+        return redirect('/profile');
+    }
+
     /**
      * Update the user's profile information.
      */
@@ -44,7 +70,10 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
-
+        // Update headlines field
+        $request->user()->headlines = $request->input('headlines');
+        // Update address field
+        $request->user()->address = $request->input('address');
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');

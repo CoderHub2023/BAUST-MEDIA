@@ -14,14 +14,14 @@
     <link href="{{ asset('css/toggle.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <script src="{{ asset('js/toggle.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/admin-navbar.js') }}" type="text/javascript"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    
 
 </head>
 
 <body class="antialiased">
 
-    @yield('navbar')
     @yield('content')
     @yield('footer')
 

@@ -1,28 +1,10 @@
 @extends('template')
+
+<!-- Navbar Start -->
 <div class="navbar bg-gradient-to-r from-purple-700 to-slate-600 ">
     <div class="flex-1">
         <a class="btn btn-ghost normal-case text-xl text-white" href="{{ route('home') }}">BSM</a>
     </div>
-    <div class="flex-none">
-        <!-- <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost btn-circle">
-                <div class="indicator">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    <span class="badge badge-sm indicator-item">8</span>
-                </div>
-            </label> -->
-            <!-- <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
-                <div class="card-body">
-                    <span class="font-bold text-lg">8 Items</span>
-                    <span class="text-info">Subtotal: $999</span>
-                    <div class="card-actions">
-                        <button class="btn btn-primary btn-block">View cart</button>
-                    </div>
-                </div>
-            </div> -->
-        </div>
         <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                 <div class="w-10 rounded-full">
@@ -50,6 +32,9 @@
         </div>
     </div>
 </div>
+<!-- Navbar end -->
+
+<!-- Contest Start -->
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
     <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
@@ -82,9 +67,9 @@
     <div class="bg-gray-100 dark:bg-gray-900 flex">
         <!-- Left column -->
         <div class="w-1/2 p-8">
-            <h1 class="text-4xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">{{$user[0]->name}}</h1>
-            <h2 class="text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$user[0]->headlines}}</h2>
-            <p class="text-lg dark:text-white text-gray-500 mb-4">{{$user[0]->address}}</p>
+            <h1 class="text-4xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">{{$user->name}}</h1>
+            <h2 class="text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$user->headlines}}</h2>
+            <p class="text-lg dark:text-white text-gray-500 mb-4">{{$user->address}}</p>
         </div>
         <!-- Right column -->
         <div class="w-1/2 p-8">
@@ -157,6 +142,8 @@
     </div>
 
     <!-- Education section -->
+<form action="{{ route('profile.post-update-details') }}" method="post">
+    @csrf
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5 ">
         <div class="shadow-xl rounded-md bg-gray-100 dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
             <h2 class="text-3xl font-bold mb-4 text-black dark:text-white">Education</h2>
@@ -165,55 +152,24 @@
                     <div class="w-12 h-12 flex-shrink-0 mr-4">
                         <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
                     </div>
-                    @if($user_education == '/');
                     <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">{{ $user_education[0]->institution }}</h3>
-                        <p class="text-gray-800 dark:text-white">{{ $user_education[0]->subject }}</p>
-                        <p class="text-gray-500 dark:text-white">{{ $user_education[0]->start }}</p>
+                        <h3 class="text-lg font-bold text-black dark:text-white"><input type="text" name="institution" placeholder="Institution Name" class="input mb-2 input-bordered input-primary w-full max-w-xs" /></h3>
+                        <p class="text-gray-800 dark:text-white"><input type="text" name="subject" placeholder="Group/Subject" class="input input-bordered input-sm w-full max-w-xs" /></p>
+                        <p class="text-gray-500 dark:text-white"><input type="text" name="start" placeholder="Starting Year" class="input mt-2 input-bordered input-sm w-full max-w-xs" /></p>
+                        <p class="text-gray-500 dark:text-white"><input type="text" name="end" placeholder="Ending Year" class="input mt-2 input-bordered input-sm w-full max-w-xs" /></p>
+    
                     </div>
-                    @else
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">{{ $user_education[0]->institution }}</h3>
-                        <p class="text-gray-800 dark:text-white">{{ $user_education[0]->subject }}</p>
-                        <p class="text-gray-500 dark:text-white">{{ $user_education[0]->start }}</p>
-                    </div>
-                  
-                    @endif
                 </div>
-                <!-- <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Collectorate Public College,Nilphamary</h3>
-                        <p class="text-gray-800 dark:text-white">Group Science</p>
-                        <p class="text-gray-500 dark:text-white">2019</p>
-                    </div>
-                </div> -->
-                <!-- <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white"></h3>
-                        <p class="text-gray-800 dark:text-white">Degree Name</p>
-                        <p class="text-gray-500 dark:text-white">Year Completed</p>
-                    </div>
-                </div> -->
-                <!-- <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Bangladesh Army University of Science and Technology (BAUST), Saidpur</h3>
-                        <p class="text-gray-800 dark:text-white">BSC in CSE</p>
-                        <p class="text-gray-500 dark:text-white">Ongoing</p>
-                    </div>
-                </div> -->
+               
+               
+                
             </div>
-            <a href="#" class="text-blue-500 hover:underline block mt-6">See More</a>
+            <button type="submit" class="btn btn-success">Save</button>
         </div>
+        <a href="#" class="text-blue-500 hover:underline block mt-6">See More</a>
     </div>
+</form>
 
 </div>
 @endsection
+<!-- Content End -->
