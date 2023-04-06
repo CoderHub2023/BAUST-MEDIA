@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
 use App\Models\UserEducation;
+use App\Models\UserWork;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,6 +58,30 @@ class ProfileController extends Controller
         $education->start = $request->has('start') ? $request->get('start') : " ";
         $education->end = $request->has('end') ? $request->get('end') : " ";
         $education->save();
+        return redirect('/profile');
+    }
+
+    public function work_update_details(Request $request){
+        $userId = $request->user()->id;
+        $work = new UserWork();
+        $work->users_id = $userId;
+        $work->work_at = $request->has('work') ? $request->get('work') : " ";
+        $work->position = $request->has('position') ? $request->get('position') : " ";
+        $work->start = $request->has('start') ? $request->get('start') : " ";
+        $work->end = $request->has('end') ? $request->get('end') : " ";
+        $work->save();
+        return redirect('/profile');
+    }
+
+    public function education_update_details(Request $request){
+        $userId = $request->user()->id;
+        $work = new UserEducation();
+        $work->users_id = $userId;
+        $work->institution = $request->has('institution') ? $request->get('institution') : " ";
+        $work->subject = $request->has('subject') ? $request->get('subject') : " ";
+        $work->start = $request->has('start') ? $request->get('start') : " ";
+        $work->end = $request->has('end') ? $request->get('end') : " ";
+        $work->save();
         return redirect('/profile');
     }
 
