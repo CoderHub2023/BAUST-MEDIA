@@ -79,15 +79,15 @@
     </div>
 
     <!-- name and occupation -->
-    <div class="bg-gray-100 dark:bg-gray-900 flex">
+    <div class="bg-gray-100 dark:bg-gray-900 lg:flex">
         <!-- Left column -->
-        <div class="w-1/2 p-8">
-            <h1 class="text-4xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">{{$user[0]->name}}</h1>
-            <h2 class="text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$user[0]->headlines}}</h2>
-            <p class="text-lg dark:text-white text-gray-500 mb-4">{{$user[0]->address}}</p>
+        <div class="w-2/2 lg:w-1/2 p-8 mt-2">
+            <h1 class="text-2xl lg:text-2xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">{{$user[0]->name}}</h1>
+            <h2 class="text-xs lg:text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$user[0]->headlines}}</h2>
+            <p class="text-xs dark:text-white text-gray-500 mb-4">{{$user[0]->address}}</p>
         </div>
         <!-- Right column -->
-        <div class="w-1/2 p-8">
+        <div class="w-2/2 lg:w-1/2 p-8">
             <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Work at:</h2>
             <p class="text-lg dark:text-white text-gray-400 mb-4">CSE Society,BAUST</p>
             <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studying at:</h2>
