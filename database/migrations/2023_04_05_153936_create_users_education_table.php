@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('users_education', function (Blueprint $table) {
             $table->id();
-            $table->string('institution');
-            $table->string('subject');
+            $table->string('institution')->nullable();
+            $table->string('subject')->nullable();
             $table->date('start')->nullable();
             $table->date('end')->nullable();
             $table->timestamps();

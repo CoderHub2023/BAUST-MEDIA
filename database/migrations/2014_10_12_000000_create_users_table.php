@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('headlines')->nullable();
             $table->string('address')->nullable();
             $table->integer('usertype')->default(0);
-            $table->string('mobile');
+            $table->string('mobile')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

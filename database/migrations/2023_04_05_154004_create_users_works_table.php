@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('users_works', function (Blueprint $table) {
             $table->id();
-            $table->string('work_at');
-            $table->string('position');
+            $table->string('work_at')->nullable();
+            $table->string('position')->nullable();
             $table->date('start')->nullable();
             $table->date('end')->nullable();
             $table->timestamps();

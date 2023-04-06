@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('users_details', function (Blueprint $table) {
             $table->id();
-            $table->string('cover_images');
-            $table->string('profile_images');
-            $table->string('skills');
-            $table->longText('about');
+            $table->string('cover_images')->nullable();
+            $table->string('profile_images')->nullable();
+            $table->string('skills')->nullable();
+            $table->longText('about')->nullable();
             $table->timestamps();
         });
     }
