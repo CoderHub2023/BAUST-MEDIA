@@ -160,38 +160,8 @@
     
                     </div>
                 </div>
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white"><input type="text" name="institution" placeholder="Institution Name" class="input mb-2 input-bordered input-primary w-full max-w-xs" /></h3>
-                        <p class="text-gray-800 dark:text-white"><input type="text" name="subject" placeholder="Group/Subject" class="input mt-2 input-bordered input-sm w-full max-w-xs" /></p>
-                        <p class="text-gray-500 dark:text-white"><input type="text" name="start" placeholder="Starting Year" class="input mt-2 input-bordered input-sm w-full max-w-xs" /></p>
-                        <p class="text-gray-500 dark:text-white"><input type="text" name="end" placeholder="Ending Year" class="input mt-2 input-bordered input-sm w-full max-w-xs" /></p>
-                    </div>
-                </div>
-                <!-- <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white"></h3>
-                        <p class="text-gray-800 dark:text-white">Degree Name</p>
-                        <p class="text-gray-500 dark:text-white">Year Completed</p>
-                    </div>
-                </div> -->
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white"><input type="text" name="institution" placeholder="Institution Name" class="input mb-2 input-bordered input-primary w-full max-w-xs" /></h3>
-                        <p class="text-gray-800 dark:text-white"><input type="text" name="subject" placeholder="Group/Subject" class="input input-bordered input-sm w-full max-w-xs" /></p>
-                        <p class="text-gray-500 dark:text-white"><input type="text" name="start" placeholder="Starting Year" class="input mt-2 input-bordered input-sm w-full max-w-xs" /></p>
-                        <p class="text-gray-500 dark:text-white"><input type="text" name="end" placeholder="Ending Year" class="input mt-2 input-bordered input-sm w-full max-w-xs" /></p>
-                    </div>
-                </div>
+               
+               
                 
             </div>
             <button type="submit" class="btn btn-success">Save</button>
