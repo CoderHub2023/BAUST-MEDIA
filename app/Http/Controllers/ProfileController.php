@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
+use App\Models\UserDetails;
 use App\Models\UserEducation;
 use App\Models\UserWork;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Mockery\Undefined;
@@ -25,11 +27,14 @@ class ProfileController extends Controller
      * Display the user's profile.
      */
     public function profile(Request $request)
-    {
+    {   
         $user_education = new UserEducation();
         $user = new User();
-        $user_education = $user_education->all();        
+        $userId = $request->user()->id;
         $user = $user->all();
+        $user_education = DB::table('users_education')->where('users_id',$userId)->get();
+        $array_len = count($user_education);
+        $user_education = json_decode($user_education);   
         return view('profile.profile',compact('user','user_education'));
     }
 
@@ -45,7 +50,11 @@ class ProfileController extends Controller
 
     public function update_details(Request $request){
         $user = $request->user();
-        return view('profile.update-details',compact('user'));
+        $userId = $user->id;
+        $getAboutData = DB::table('users_details')->where('users_id', $userId)->get('about');
+
+        return view('profile.update-details',compact('user','getAboutData'));
+
     }
 
     public function post_update_details(Request $request){
@@ -82,6 +91,36 @@ class ProfileController extends Controller
         $work->start = $request->has('start') ? $request->get('start') : " ";
         $work->end = $request->has('end') ? $request->get('end') : " ";
         $work->save();
+        return redirect('/profile');
+    }
+
+    public function image_upload(Request $request){
+        $userId = $request->user()->id;
+        $UserDetails = new UserDetails();
+        $request->validate([
+            'cover_images' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        
+        $photoName = time().'.'.$request->photo->extension();  
+   
+        $request->cover_images->move(public_path('profile-photo'), $photoName);
+
+        return back()
+            ->with('success','You have successfully uploaded your photo.');
+    }
+
+    public function about_details(Request $request){
+        $user = $request->user();
+        $userId = $user->id;
+        $UserDetails = new UserDetails();
+        $UserDetails->users_id = $userId;
+        $UserDetails->about = $request->has('about') ? $request->get('about') : " ";
+        $UserDetails->save();
+        return redirect('/profile');
+    }
+
+    public function about_details_update(UserDetails $UserDetails,Request $request){
+        dd($UserDetails->users_id);
         return redirect('/profile');
     }
 
