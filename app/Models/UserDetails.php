@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserDetails extends Model
 {
+    protected $table = 'users_details'; 
     protected $fillable = [
         'cover_images',
         'profile_images',

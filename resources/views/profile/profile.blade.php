@@ -160,56 +160,29 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5 ">
         <div class="shadow-xl rounded-md bg-gray-100 dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
             <h2 class="text-3xl font-bold mb-4 text-black dark:text-white">Education</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-2 gap-6">
+                @foreach($user_education as $user_education)
                 <div class="flex items-center mb-4">
                     <div class="w-12 h-12 flex-shrink-0 mr-4">
                         <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
                     </div>
                     @if($user_education == '/');
                     <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">{{ $user_education[0]->institution }}</h3>
-                        <p class="text-gray-800 dark:text-white">{{ $user_education[0]->subject }}</p>
-                        <p class="text-gray-500 dark:text-white">{{ $user_education[0]->start }}</p>
+                        <h3 class="text-lg font-bold text-black dark:text-white">Institute Name</h3>
+                        <p class="text-gray-800 dark:text-white">Department/Subject</p>
+                        <p class="text-gray-500 dark:text-white">Active year</p>
                     </div>
                     @else
                     <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">{{ $user_education[0]->institution }}</h3>
-                        <p class="text-gray-800 dark:text-white">{{ $user_education[0]->subject }}</p>
-                        <p class="text-gray-500 dark:text-white">{{ $user_education[0]->start }}</p>
+                        <h3 class="text-lg font-bold text-black dark:text-white">Institute Name</h3>
+                        <p class="text-gray-800 dark:text-white">Department/Subject</p>
+                        <p class="text-gray-500 dark:text-white">From : </p>
+                        <p class="text-gray-500 dark:text-white">To : </p>
                     </div>
-                  
                     @endif
                 </div>
-                <!-- <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Collectorate Public College,Nilphamary</h3>
-                        <p class="text-gray-800 dark:text-white">Group Science</p>
-                        <p class="text-gray-500 dark:text-white">2019</p>
-                    </div>
-                </div> -->
-                <!-- <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white"></h3>
-                        <p class="text-gray-800 dark:text-white">Degree Name</p>
-                        <p class="text-gray-500 dark:text-white">Year Completed</p>
-                    </div>
-                </div> -->
-                <!-- <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Bangladesh Army University of Science and Technology (BAUST), Saidpur</h3>
-                        <p class="text-gray-800 dark:text-white">BSC in CSE</p>
-                        <p class="text-gray-500 dark:text-white">Ongoing</p>
-                    </div>
-                </div> -->
+                @endforeach
+                
             </div>
             <a href="#" class="text-blue-500 hover:underline block mt-6">See More</a>
         </div>

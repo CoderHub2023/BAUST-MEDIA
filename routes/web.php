@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/update-details/post', [ProfileController::class, 'post_update_details'])->name('profile.post-update-details');
     Route::post('/profile/work-update-details', [ProfileController::class, 'work_update_details'])->name('profile.work_update_details');
     Route::post('/profile/education-update-details', [ProfileController::class, 'education_update_details'])->name('profile.education_update_details');
+    Route::post('/profile/image-upload', [ProfileController::class, 'image_upload'])->name('profile.image-upload');
+    Route::post('/profile/about-details', [ProfileController::class, 'about_details'])->name('profile.about-details');
     
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');
