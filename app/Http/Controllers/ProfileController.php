@@ -95,18 +95,25 @@ class ProfileController extends Controller
     }
 
     public function image_upload(Request $request){
-        $userId = $request->user()->id;
-        $UserDetails = new UserDetails();
-        $request->validate([
-            'cover_images' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-        
-        $photoName = time().'.'.$request->photo->extension();  
-   
-        $request->cover_images->move(public_path('profile-photo'), $photoName);
-
-        return back()
-            ->with('success','You have successfully uploaded your photo.');
+        $user= new User();
+        if($request->hasFile('cover_picture')){
+            $files = $request->file('cover_picture');
+            $imageLocation= array();
+            $i=0;
+            foreach ($files as $file){
+                $extension = $file->getClientOriginalExtension();
+                $fileName= 'coverimg_'. time() . ++$i . '.' . $extension;
+                $location= '/uploads/cover/';
+                $file->move(public_path() . $location, $fileName);
+                $imageLocation[]= $location. $fileName;
+            }
+            DB::table('users')->where('id', $request->user()->id)->update([
+                'cover_picture'=>$imageLocation
+            ]);
+            
+        } else{
+            dd("Error uploading");
+        }
     }
 
     public function about_details(Request $request){
@@ -162,5 +169,9 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function My_Network(Request $request){
+        return view('Network');
     }
 }

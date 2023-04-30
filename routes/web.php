@@ -31,6 +31,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/image-upload', [ProfileController::class, 'image_upload'])->name('profile.image-upload');
     Route::post('/profile/about-details', [ProfileController::class, 'about_details'])->name('profile.about-details');
     
+    // My Network
+    Route::get('/my-network',[ProfileController::class,'My_Network'])->name('My-Network');
+
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');
     Route::get('/admin/user-request',[AdminController::class,'user_request'])->name('admin.user_request');
