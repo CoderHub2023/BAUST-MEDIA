@@ -52,7 +52,6 @@ class ProfileController extends Controller
         $user = $request->user();
         $userId = $user->id;
         $getAboutData = DB::table('users_details')->where('users_id', $userId)->get('about');
-
         return view('profile.update-details',compact('user','getAboutData'));
 
     }
@@ -102,17 +101,41 @@ class ProfileController extends Controller
             $i=0;
             foreach ($files as $file){
                 $extension = $file->getClientOriginalExtension();
-                $fileName= 'coverimg_'. time() . ++$i . '.' . $extension;
+                $fileName= 'cover-img_'. time() . ++$i . '.' . $extension;
                 $location= '/uploads/cover/';
                 $file->move(public_path() . $location, $fileName);
                 $imageLocation[]= $location. $fileName;
             }
-            DB::table('users')->where('id', $request->user()->id)->update([
+            $cover_success = DB::table('users')->where('id', $request->user()->id)->update([
                 'cover_picture'=>$imageLocation
             ]);
+            if($cover_success)
+            return back()->with('success',"Cover Picture Upload Successfully");
+            else
+            return back()->with('failure',"Cover Picture Upload Failure");
+        }
+        if($request->hasFile('profile_picture')){
+            $files = $request->file('profile_picture');
+            $imageLocation= array();
+            $i=0;
+            foreach ($files as $file){
+                $extension = $file->getClientOriginalExtension();
+                $fileName= 'profile-img_'. time() . ++$i . '.' . $extension;
+                $location= '/uploads/profile/';
+                $file->move(public_path() . $location, $fileName);
+                $imageLocation[]= $location. $fileName;
+            }
+            $profile_success = DB::table('users')->where('id', $request->user()->id)->update([
+                'profile_picture'=>$imageLocation
+            ]);
+            if($profile_success)
+            return back()->with('success',"Profile Picture Upload Successfully");
+            else
+            return back()->with('failure',"Profile Picture Upload Failure");
             
-        } else{
-            dd("Error uploading");
+        }
+         else{
+            return back()->with('failure',"Error ! Select a Picture to Upload");
         }
     }
 
@@ -171,7 +194,9 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    public function My_Network(Request $request){
-        return view('Network');
+    public function my_network(Request $request){
+        $UserData = $request->user();
+        $GetAllUsersData = DB::table('users')->select('name', 'headlines','profile_picture')->where('id','!=',$request->user()->id)->get();
+        return view('Network',compact('GetAllUsersData'));
     }
 }

@@ -1,5 +1,5 @@
 @extends('template')
-
+@section('title','Edit Details')
 <!-- Navbar Start -->
 <div class="navbar bg-gradient-to-r from-purple-700 to-slate-600 ">
     <div class="flex-1">
@@ -43,21 +43,40 @@
             @csrf
             <!-- <input type="file" name="cover_images" id="CoverInput" style="display:none" accept="image/*">
             <input type="file" name="profile_images" id="ProfileInput" style="display:none" accept="image/*"> -->
-            <input type="file" name="cover_picture[]" class="block w-full text-sm text-slate-500
-                file:mr-4 file:py-2 file:px-4
-                file:rounded-full file:border-0
-                file:text-sm file:font-semibold
-                file:bg-violet-50 file:text-violet-700
-                hover:file:bg-violet-100
-                " />
+            
             <!-- Cover image section -->
+            <p class="text-lg text-white m-4">Cover Image</p>
             <div class="flex">
                 <div class="shrink-0">
-                    <img class="h-16 w-16 object-cover rounded-full" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1361&q=80" alt="Current profile photo" />
+                    <img class="h-16 w-16 object-cover mr-10" src="{{ $user->cover_picture }}" alt="Current profile photo" />
+                </div>
+                <label class="block">
+                    <span class="sr-only">Choose cover photo</span>
+                    <input type="file" name="cover_picture[]" class="block w-full text-sm text-slate-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-full file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-violet-50 file:text-violet-700
+                    hover:file:bg-violet-100
+                    " />
+                </label>
+            </div>
+
+            <!-- Profile image section -->
+            <p class="text-lg text-white m-4">Profile Image</p>
+            <div class="flex">
+            <div class="shrink-0">
+                    <img class="h-16 w-16 object-cover mr-10" src="{{ $user->profile_picture }}" alt="Current profile photo" />
                 </div>
                 <label class="block">
                     <span class="sr-only">Choose profile photo</span>
-                
+                    <input type="file" name="profile_picture[]" class="block w-full text-sm text-slate-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-full file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-violet-50 file:text-violet-700
+                    hover:file:bg-violet-100
+                    " />
                 </label>
             </div>
 

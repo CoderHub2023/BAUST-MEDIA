@@ -17,70 +17,29 @@
       <table class="w-full whitespace-nowrap">
         <tbody>
         <!-- Row start -->
+        @foreach($GetAllUsersData as $GetAllUserData)
           <tr tabindex="0" class="focus:outline-none text-sm leading-none text-gray-600 dark:text-gray-200 h-16">
             <td class="w-full sm:w-1/2">
               <div class="flex items-center">
                 <div class="w-10 h-10 bg-gray-700 rounded-sm flex items-center justify-center">
-                  <p class="text-xs font-bold leading-3 text-white">FIG</p>
+                  <img class="h-16 w-16 object-cover rounded-full mr-10" src="{{ $GetAllUserData->profile_picture }}" alt="Current profile photo" />
                 </div>
                 <div class="pl-2">
-                  <p class="text-sm font-medium leading-none text-gray-800 dark:text-white ">Fonts.fig</p>
-                  <p class="text-xs leading-3 text-gray-600 dark:text-gray-200 mt-2">Shared by Ashley Wilson</p>
+                  <p class="text-sm font-medium leading-none text-gray-800 dark:text-white ">{{ $GetAllUserData->name }}</p>
+                  <p class="text-xs leading-3 text-gray-600 dark:text-gray-200 mt-2">{{ $GetAllUserData->headlines }}</p>
                 </div>
               </div>
             </td>
             <td class="pl-4 sm:pl-16">
-              <p class="sm:hidden">#designer</p>
-              <p class="hidden sm:block">#designer</p>
-            </td>
-            <td class="pl-4 sm:pl-16">
-              <p class="sm:hidden">3.7gb</p>
-              <p class="hidden sm:block pl-16">3.7gb</p>
-            </td>
-            <td class="pl-4 sm:pl-16">
-              <p class="sm:hidden">4 members</p>
-              <p class="hidden sm:block pl-16">4 members</p>
-            </td>
-            <td class="pl-4 sm:pl-16">
-              <p class="sm:hidden">Shared on 21 Februray 2020</p>
-              <p class="hidden sm:block pl-16">Shared on 21 Februray 2020</p>
+              <button type="submit" class="btn btn-success btn-sm">Send Request</button>
+              <button type="submit" class="btn btn-disabled btn-sm">Request Send</button>
             </td>
           </tr>
+          @endforeach
           <!-- Row End -->
 
 
 
-          <!-- Row Start -->
-          <tr tabindex="0" class="focus:outline-none text-sm leading-none text-gray-600 dark:text-gray-200 h-16">
-            <td class="w-full sm:w-1/2">
-              <div class="flex items-center">
-                <div class="w-10 h-10 bg-gray-700 rounded-sm flex items-center justify-center">
-                  <p class="text-xs font-bold leading-3 text-white">FIG</p>
-                </div>
-                <div class="pl-2">
-                  <p class="text-sm font-medium leading-none text-gray-800 dark:text-white ">Fonts.fig</p>
-                  <p class="text-xs leading-3 text-gray-600 dark:text-gray-200 mt-2">Shared by Ashley Wilson</p>
-                </div>
-              </div>
-            </td>
-            <td class="pl-4 sm:pl-16">
-              <p class="sm:hidden">#designer</p>
-              <p class="hidden sm:block">#designer</p>
-            </td>
-            <td class="pl-4 sm:pl-16">
-              <p class="sm:hidden">3.7gb</p>
-              <p class="hidden sm:block pl-16">3.7gb</p>
-            </td>
-            <td class="pl-4 sm:pl-16">
-              <p class="sm:hidden">4 members</p>
-              <p class="hidden sm:block pl-16">4 members</p>
-            </td>
-            <td class="pl-4 sm:pl-16">
-              <p class="sm:hidden">Shared on 21 Februray 2020</p>
-              <p class="hidden sm:block pl-16">Shared on 21 Februray 2020</p>
-            </td>
-          </tr>
-          <!-- Row End -->
 
 
         </tbody>
