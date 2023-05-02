@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     
     // My Network
     Route::get('/my-network',[ProfileController::class,'my_network'])->name('My-Network');
+    Route::post('/add-network/{id}',[ProfileController::class,'add_network'])->name('Add-Network');
 
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');

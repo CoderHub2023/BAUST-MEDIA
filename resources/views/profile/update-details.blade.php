@@ -8,7 +8,7 @@
     <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
-                <img src="https://avatars.githubusercontent.com/u/71976987?v=4" />
+                <img src="{{ $user->profile_picture }}" />
             </div>
         </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -52,7 +52,7 @@
                 </div>
                 <label class="block">
                     <span class="sr-only">Choose cover photo</span>
-                    <input type="file" name="cover_picture[]" class="block w-full text-sm text-slate-500
+                    <input type="file" name="cover_picture" class="block w-full text-sm text-slate-500
                     file:mr-4 file:py-2 file:px-4
                     file:rounded-full file:border-0
                     file:text-sm file:font-semibold
@@ -70,7 +70,7 @@
                 </div>
                 <label class="block">
                     <span class="sr-only">Choose profile photo</span>
-                    <input type="file" name="profile_picture[]" class="block w-full text-sm text-slate-500
+                    <input type="file" name="profile_picture" class="block w-full text-sm text-slate-500
                     file:mr-4 file:py-2 file:px-4
                     file:rounded-full file:border-0
                     file:text-sm file:font-semibold

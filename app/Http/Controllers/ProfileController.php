@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Network;
 use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\UserEducation;
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Mockery\Undefined;
 use Termwind\Components\Dd;
+
+use function Pest\Laravel\get;
 
 class ProfileController extends Controller
 {
@@ -31,10 +34,11 @@ class ProfileController extends Controller
         $user_education = new UserEducation();
         $user = new User();
         $userId = $request->user()->id;
-        $user = $user->all();
+        $user = DB::table('users')->where('id',$userId)->get();
         $user_education = DB::table('users_education')->where('users_id',$userId)->get();
         $array_len = count($user_education);
-        $user_education = json_decode($user_education);   
+        $user_education = json_decode($user_education); 
+        $user = json_decode($user); 
         return view('profile.profile',compact('user','user_education'));
     }
 
@@ -99,13 +103,11 @@ class ProfileController extends Controller
             $files = $request->file('cover_picture');
             $imageLocation= array();
             $i=0;
-            foreach ($files as $file){
-                $extension = $file->getClientOriginalExtension();
+                $extension = $files->getClientOriginalExtension();
                 $fileName= 'cover-img_'. time() . ++$i . '.' . $extension;
                 $location= '/uploads/cover/';
-                $file->move(public_path() . $location, $fileName);
-                $imageLocation[]= $location. $fileName;
-            }
+                $files->move(public_path() . $location, $fileName);
+                $imageLocation= $location. $fileName;
             $cover_success = DB::table('users')->where('id', $request->user()->id)->update([
                 'cover_picture'=>$imageLocation
             ]);
@@ -118,13 +120,11 @@ class ProfileController extends Controller
             $files = $request->file('profile_picture');
             $imageLocation= array();
             $i=0;
-            foreach ($files as $file){
-                $extension = $file->getClientOriginalExtension();
+                $extension = $files->getClientOriginalExtension();
                 $fileName= 'profile-img_'. time() . ++$i . '.' . $extension;
                 $location= '/uploads/profile/';
-                $file->move(public_path() . $location, $fileName);
-                $imageLocation[]= $location. $fileName;
-            }
+                $files->move(public_path() . $location, $fileName);
+                $imageLocation = $location. $fileName;
             $profile_success = DB::table('users')->where('id', $request->user()->id)->update([
                 'profile_picture'=>$imageLocation
             ]);
@@ -196,7 +196,20 @@ class ProfileController extends Controller
 
     public function my_network(Request $request){
         $UserData = $request->user();
-        $GetAllUsersData = DB::table('users')->select('name', 'headlines','profile_picture')->where('id','!=',$request->user()->id)->get();
+        $GetAllUsersData = DB::table('users')->select('id','name', 'headlines','profile_picture')->where('id','!=',$request->user()->id)->get();
         return view('Network',compact('GetAllUsersData'));
+    }
+
+
+    /**
+     *  For add friend or add new network
+     */
+    public function add_network(Request $request,$id){
+        $AuthUser =  $request->user()->id;
+        $UserNetwork = new Network();
+        $UserNetwork->users_id = $AuthUser;
+        $UserNetwork->network_id = $request->get('network-id');
+        $UserNetwork->save();
+        return redirect()->back();
     }
 }
