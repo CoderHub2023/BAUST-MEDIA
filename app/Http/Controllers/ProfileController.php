@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Network;
 use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\UserEducation;
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Mockery\Undefined;
 use Termwind\Components\Dd;
+
+use function Pest\Laravel\get;
 
 class ProfileController extends Controller
 {
@@ -31,10 +34,11 @@ class ProfileController extends Controller
         $user_education = new UserEducation();
         $user = new User();
         $userId = $request->user()->id;
-        $user = $user->all();
+        $user = DB::table('users')->where('id',$userId)->get();
         $user_education = DB::table('users_education')->where('users_id',$userId)->get();
         $array_len = count($user_education);
-        $user_education = json_decode($user_education);   
+        $user_education = json_decode($user_education); 
+        $user = json_decode($user); 
         return view('profile.profile',compact('user','user_education'));
     }
 
@@ -52,7 +56,6 @@ class ProfileController extends Controller
         $user = $request->user();
         $userId = $user->id;
         $getAboutData = DB::table('users_details')->where('users_id', $userId)->get('about');
-
         return view('profile.update-details',compact('user','getAboutData'));
 
     }
@@ -95,18 +98,45 @@ class ProfileController extends Controller
     }
 
     public function image_upload(Request $request){
-        $userId = $request->user()->id;
-        $UserDetails = new UserDetails();
-        $request->validate([
-            'cover_images' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-        
-        $photoName = time().'.'.$request->photo->extension();  
-   
-        $request->cover_images->move(public_path('profile-photo'), $photoName);
-
-        return back()
-            ->with('success','You have successfully uploaded your photo.');
+        $user= new User();
+        if($request->hasFile('cover_picture')){
+            $files = $request->file('cover_picture');
+            $imageLocation= array();
+            $i=0;
+                $extension = $files->getClientOriginalExtension();
+                $fileName= 'cover-img_'. time() . ++$i . '.' . $extension;
+                $location= '/uploads/cover/';
+                $files->move(public_path() . $location, $fileName);
+                $imageLocation= $location. $fileName;
+            $cover_success = DB::table('users')->where('id', $request->user()->id)->update([
+                'cover_picture'=>$imageLocation
+            ]);
+            if($cover_success)
+            return back()->with('success',"Cover Picture Upload Successfully");
+            else
+            return back()->with('failure',"Cover Picture Upload Failure");
+        }
+        if($request->hasFile('profile_picture')){
+            $files = $request->file('profile_picture');
+            $imageLocation= array();
+            $i=0;
+                $extension = $files->getClientOriginalExtension();
+                $fileName= 'profile-img_'. time() . ++$i . '.' . $extension;
+                $location= '/uploads/profile/';
+                $files->move(public_path() . $location, $fileName);
+                $imageLocation = $location. $fileName;
+            $profile_success = DB::table('users')->where('id', $request->user()->id)->update([
+                'profile_picture'=>$imageLocation
+            ]);
+            if($profile_success)
+            return back()->with('success',"Profile Picture Upload Successfully");
+            else
+            return back()->with('failure',"Profile Picture Upload Failure");
+            
+        }
+         else{
+            return back()->with('failure',"Error ! Select a Picture to Upload");
+        }
     }
 
     public function about_details(Request $request){
@@ -162,5 +192,24 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function my_network(Request $request){
+        $UserData = $request->user();
+        $GetAllUsersData = DB::table('users')->select('id','name', 'headlines','profile_picture')->where('id','!=',$request->user()->id)->get();
+        return view('Network',compact('GetAllUsersData'));
+    }
+
+
+    /**
+     *  For add friend or add new network
+     */
+    public function add_network(Request $request,$id){
+        $AuthUser =  $request->user()->id;
+        $UserNetwork = new Network();
+        $UserNetwork->users_id = $AuthUser;
+        $UserNetwork->network_id = $request->get('network-id');
+        $UserNetwork->save();
+        return redirect()->back();
     }
 }

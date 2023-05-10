@@ -71,7 +71,7 @@
       <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">
         <span class="fa fa-home mr-1"></span> Home
       </a>
-      <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">
+      <a href="{{ route('My-Network') }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">
         <span class="fa fa-network-wired mr-1"></span>My Network
       </a>
       <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">
