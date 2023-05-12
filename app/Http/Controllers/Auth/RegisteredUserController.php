@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
@@ -35,6 +36,7 @@ class RegisteredUserController extends Controller
             'mobile' => ['required', 'string', 'max:11','unique:'.User::class],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'idcardphoto' => ['required', 'string'],
         ]);
 
         $user = User::create([
@@ -43,6 +45,24 @@ class RegisteredUserController extends Controller
             'roll' => $request->roll,
             'password' => Hash::make($request->password),
         ]);
+
+        if($request->hasFile('idcardphoto')){
+            $files = $request->file('idcardphoto');
+            $imageLocation= array();
+            $i=0;
+                $extension = $files->getClientOriginalExtension();
+                $fileName= 'idcardphoto_'. time() . ++$i . '.' . $extension;
+                $location= '/uploads/idcardphoto/';
+                $files->move(public_path() . $location, $fileName);
+                $imageLocation= $location. $fileName;
+            $idcardphoto = DB::table('users')->where('id', $request->user()->id)->update([
+                'idcardphoto'=>$imageLocation
+            ]);
+            if($idcardphoto)
+            return back()->with('success',"Cover Picture Upload Successfully");
+            else
+            dd("Photo Not Uploaded");
+        }
         event(new Registered($user));
 
         Auth::login($user);

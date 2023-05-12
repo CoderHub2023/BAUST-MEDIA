@@ -212,4 +212,12 @@ class ProfileController extends Controller
         $UserNetwork->save();
         return redirect()->back();
     }
+
+    /**
+     *  For viewing add skills page
+     */
+    public function add_skills(){
+        
+        return view('profile.add-skills');
+    }
 }
