@@ -1,7 +1,7 @@
 @extends('template')
 @section('title','Sign Up')
 @section('content')
-<form method="POST" action="{{ route('login') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
     @csrf
     <div class="flex justify-center items-center bg-gray-100 dark:bg-gray-900 h-screen">
         <div class="max-w-screen-sm w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
