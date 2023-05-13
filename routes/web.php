@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/education-update-details', [ProfileController::class, 'education_update_details'])->name('profile.education_update_details');
     Route::post('/profile/image-upload', [ProfileController::class, 'image_upload'])->name('profile.image-upload');
     Route::post('/profile/about-details', [ProfileController::class, 'about_details'])->name('profile.about-details');
+    Route::get('/profile/add-skills', [ProfileController::class, 'add_skills'])->name('profile.add-skills');
     
     // My Network
     Route::get('/my-network',[ProfileController::class,'my_network'])->name('My-Network');

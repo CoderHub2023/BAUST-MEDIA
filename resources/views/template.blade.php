@@ -16,6 +16,7 @@
     <script src="{{ asset('js/toggle.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/admin-navbar.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/profile-image.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/add-skills.js') }}" type="text/javascript"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
