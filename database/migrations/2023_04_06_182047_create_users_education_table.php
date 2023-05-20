@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('institution')->nullable();
             $table->string('subject')->nullable();
-            $table->date('start')->nullable();
-            $table->date('end')->nullable();
+            $table->string('start')->nullable();
+            $table->string('end')->nullable();
             $table->timestamps();
         });
     }
