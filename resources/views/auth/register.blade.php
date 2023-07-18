@@ -7,7 +7,7 @@
         <div class="max-w-screen-sm w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
             <div class="px-6 py-8 md:px-8">
                 <div class="flex justify-center mb-4">
-                    <img class="h-16" src="https://brandmark.io/logo-rank/random/twitter.png" alt="Logo">
+                    <img class="h-16" src="/uploads/baust-logo-2015.png" alt="Logo">
                 </div>
                 <div class="mb-4">
                     <label for="roll" class="block font-medium text-gray-700 dark:text-gray-200">ID</label>
@@ -30,8 +30,8 @@
                     <x-input-error :messages="$errors->get('mobile')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <label for="idcardphoto" class="block font-medium text-gray-700 dark:text-gray-200">ID Card photo</label>
-                    <input id="idcardphoto" name="idcardphoto"  class="form-input mt-1 h-8 block w-full rounded-md bg-gray-100 dark:bg-gray-700 border-transparent focus:border-gray-500  focus:ring-0" type="file">
+                    <label for="idcardphoto" class="block font-medium text-gray-700 dark:text-gray-200">Versity ID Card</label>
+                    <input id="idcardphoto" name="idcardphoto"  class="form-input mt-1 h-8 block w-full rounded-md bg-gray-100 dark:bg-gray-700 border-transparent focus:border-gray-500  focus:ring-0" type="file" required>
                     <x-input-error :messages="$errors->get('idcardphoto')" class="mt-2" />                
                 </div>
                 <div class="mb-4">
