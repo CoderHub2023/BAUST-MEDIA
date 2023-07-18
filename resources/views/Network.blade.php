@@ -35,7 +35,7 @@
                   @csrf    
                   <input type="text" class="hidden" name="network-id" value="{{ $GetAllUserData->id }}" id="">
                   <button type="submit" class="btn btn-success btn-sm">Send Request</button>
-                  <button type="submit" class="btn btn-disabled btn-sm">Request Send</button>
+                  <!-- <button type="submit" class="btn btn-disabled btn-sm">Request Send</button> -->
                   </form>
                 </td>
               </tr>

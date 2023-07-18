@@ -45,7 +45,7 @@
             <input type="file" name="profile_images" id="ProfileInput" style="display:none" accept="image/*"> -->
             
             <!-- Cover image section -->
-            <p class="text-lg text-white m-4">Cover Image</p>
+            <p class="text-lg text-black m-4">Cover Image</p>
             <div class="flex">
                 <div class="shrink-0">
                     <img class="h-16 w-16 object-cover mr-10" src="{{ $user->cover_picture }}" alt="Current profile photo" />
@@ -63,7 +63,7 @@
             </div>
 
             <!-- Profile image section -->
-            <p class="text-lg text-white m-4">Profile Image</p>
+            <p class="text-lg text-black m-4">Profile Image</p>
             <div class="flex">
             <div class="shrink-0">
                     <img class="h-16 w-16 object-cover mr-10" src="{{ $user->profile_picture }}" alt="Current profile photo" />

@@ -1,10 +1,9 @@
 <x-guest-layout>
-    <!-- Session Status -->
+<p class="text-center text-xl font-serif font-bold">Log in</p>
+<!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
         <div class="py-8 px-4">
             <!-- email block starts -->
             <div class="flex flex-col lg:mr-16 pt-5">

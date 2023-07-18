@@ -1,15 +1,18 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
-
-        <div class="py-8 px-4">
-            <!-- Roll -->
-                <div class="flex flex-col lg:mr-16 pt-5">
-                        <label for="roll" class="text-gray-800 dark:text-gray-100 text-sm font-bold leading-tight tracking-normal mb-2">ID</label>
-                        <input id="roll" autocomplete="off" name="roll"
-                            :value="old('roll')" required autofocus autocomplete="roll" 
-                            class="w-full text-gray-600 dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border shadow" placeholder="Enter ID" />
-                        <x-input-error :messages="$errors->get('roll')" class="mt-2" />
+@extends('template')
+@section('title','Sign Up')
+@section('content')
+<form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+    @csrf
+    <div class="flex justify-center items-center bg-gray-100 dark:bg-gray-900 h-screen">
+        <div class="max-w-screen-sm w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+            <div class="px-6 py-8 md:px-8">
+                <div class="flex justify-center mb-4">
+                    <img class="h-16" src="https://brandmark.io/logo-rank/random/twitter.png" alt="Logo">
+                </div>
+                <div class="mb-4">
+                    <label for="roll" class="block font-medium text-gray-700 dark:text-gray-200">ID</label>
+                    <input id="roll" name="roll" autocomplete="on" :value="old('roll')" required class="p-4 form-input mt-1 h-8 block w-full rounded-md bg-gray-100 dark:bg-gray-700 border-transparent focus:border-gray-500  focus:ring-0" type="text">
+                    <x-input-error :messages="$errors->get('roll')" class="mt-2" />
                 </div>
                     <!-- Email -->
                 <div class="flex flex-col lg:mr-16 pt-5">
