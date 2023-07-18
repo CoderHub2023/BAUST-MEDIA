@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('roll');
             $table->string('name')->nullable();
+            $table->string('idcardphoto');
             $table->string('profile_picture')->default('/uploads/profile.jpg');
             $table->string('cover_picture')->default('/uploads/cover.jpg');
             $table->string('headlines')->nullable();

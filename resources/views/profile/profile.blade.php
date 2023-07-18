@@ -1,4 +1,5 @@
 @extends('template')
+@section('title','Profile')
 <div class="navbar bg-gradient-to-r from-purple-700 to-slate-600 ">
     <div class="flex-1">
         <a class="btn btn-ghost normal-case text-xl text-white" href="{{ route('home') }}">BSM</a>
