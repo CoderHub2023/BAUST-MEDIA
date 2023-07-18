@@ -1,5 +1,3 @@
-<div class="h-full w-full">
-            <!-- Code block starts --> 
             <nav aria-label="nav bar" tabindex="0" class="focus:outline-none w-full bg-gray-800 hidden xl:block shadow">
                 <div class="container px-6 h-16 flex justify-between items-center lg:items-stretch mx-auto">
                     <div class="flex items-center"> 
@@ -127,7 +125,7 @@
                                     <li class="cursor-pointer text-gray-600 text-xs leading-3 tracking-normal pt-2 hover:bg-indigo-700 hover:text-white px-3 font-normal">Components</li>
                                 </ul>
                             </li>
-                            <li class="flex md:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
+                            <li class="md:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
                                 <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" />
                                         <polyline points="8 16 10 10 16 8 14 14 8 16" />
@@ -281,7 +279,3 @@
                     </div>
                 </div>
             </nav>
-            <!-- Sidebar ends -->
-
-            <!-- Code block ends -->
-</div>  

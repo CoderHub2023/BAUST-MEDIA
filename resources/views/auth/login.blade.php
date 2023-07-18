@@ -1,5 +1,5 @@
 <x-guest-layout>
-<p class="text-center text-xl font-serif font-bold">Log in</p>
+<p class="text-center text-xl font-serif font-bold dark: text-white">Log in</p>
 <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <form method="POST" action="{{ route('login') }}">

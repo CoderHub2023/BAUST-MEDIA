@@ -38,6 +38,16 @@ Route::middleware('auth')->group(function () {
 
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');
+    
+    // User request acceptance route
+    // For getting id and chaning it's usertype 
+    Route::get('/admin/getuserid/{id}',[AdminController::class,'accept_request']);
+    // Rejecting purpose routes
+    // For getting id and chaning it's usertype 
+    Route::get('/admin/getrejuserid/{id}',[AdminController::class,'reject_request']);
+
+    
+    
     Route::get('/admin/user-request',[AdminController::class,'user_request'])->name('admin.user_request');
     Route::post('/admin/user-request',[AdminController::class,'post_user_request'])->name('admin.post_user_request');
 });

@@ -7,16 +7,7 @@
         <div class="max-w-screen-sm w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
             <div class="px-6 py-8 md:px-8">
                 <div class="flex justify-center mb-4">
-<<<<<<< HEAD
-                    <img class="h-16" src="https://brandmark.io/logo-rank/random/twitter.png" alt="Logo">
-                </div>
-                <div class="mb-4">
-                    <label for="roll" class="block font-medium text-gray-700 dark:text-gray-200">ID</label>
-                    <input id="roll" name="roll" autocomplete="on" :value="old('roll')" required class="p-4 form-input mt-1 h-8 block w-full rounded-md bg-gray-100 dark:bg-gray-700 border-transparent focus:border-gray-500  focus:ring-0" type="text">
-                    <x-input-error :messages="$errors->get('roll')" class="mt-2" />
-=======
                     <img class="h-16" src="/uploads/baust-logo-2015.png" alt="Logo">
->>>>>>> 04c922771351ac445e858e92fd42d9d71e722ca0
                 </div>
                 <div class="mb-4">
                     <label for="roll" class="block font-medium text-gray-700 dark:text-gray-200">ID</label>
