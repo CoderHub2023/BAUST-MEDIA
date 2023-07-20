@@ -46,7 +46,9 @@ Route::middleware('auth')->group(function () {
     // For getting id and chaning it's usertype 
     Route::get('/admin/getrejuserid/{id}',[AdminController::class,'reject_request']);
 
+    Route::get('/admin/accept-user',[AdminController::class,'accept_user'])->name('accepted_user');
     
+    Route::get('/admin/reject-user',[AdminController::class,'reject_user'])->name('rejected_user');
     
     Route::get('/admin/user-request',[AdminController::class,'user_request'])->name('admin.user_request');
     Route::post('/admin/user-request',[AdminController::class,'post_user_request'])->name('admin.post_user_request');

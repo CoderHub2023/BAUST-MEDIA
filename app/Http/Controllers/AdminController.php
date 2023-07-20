@@ -29,6 +29,24 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    public function accept_user(Request $request){
+        // $ExtactUserdata = new User();
+        $userId = $request->user()->id;
+        $ExtactUserdata = DB::table('users')->where('id','!=',$userId)->where('usertype',1)->get();
+        if($request->user()->usertype == '2'){
+            return view('admin.accept-user',compact('ExtactUserdata'));
+        }
+        
+    }
+
+    public function reject_user(Request $request){
+        $userId = $request->user()->id;
+        $ExtactUserdata = DB::table('users')->where('id','!=',$userId)->where('usertype',3)->get();
+        if($request->user()->usertype == '2'){
+            return view('admin.reject-user',compact('ExtactUserdata'));
+        }
+    }
+
 
     
 
