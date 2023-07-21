@@ -23,7 +23,10 @@ class ProfileController extends Controller
 {
     public function home(Request $request)
     {
-        return view('welcome');
+        $user = new User();
+        $userId = $request->user()->id;
+        $user = DB::table('users')->where('id',$userId)->get();
+        return view('welcome',compact('user'));
     }
 
      /**
@@ -53,10 +56,15 @@ class ProfileController extends Controller
     }
 
     public function update_details(Request $request){
-        $user = $request->user();
-        $userId = $user->id;
+        // To showing navbar profile info
+        $user = new User();
+        $userId = $request->user()->id;
+        $user = DB::table('users')->where('id',$userId)->get();
+        // For other content
+        $UserData = $request->user();
+        $userId = $UserData->id;
         $getAboutData = DB::table('users_details')->where('users_id', $userId)->get('about');
-        return view('profile.update-details',compact('user','getAboutData'));
+        return view('profile.update-details',compact('user','UserData','getAboutData'));
 
     }
 
@@ -195,9 +203,10 @@ class ProfileController extends Controller
     }
 
     public function my_network(Request $request){
-        $UserData = $request->user();
-        $GetAllUsersData = DB::table('users')->select('id','name', 'headlines','profile_picture')->where('id','!=',$request->user()->id)->get();
-        return view('Network',compact('GetAllUsersData'));
+        $user = new User();
+        $userId = $request->user()->id;
+        $user = DB::table('users')->where('id',$userId)->get();
+        return view('Network',compact('user'));
     }
 
 

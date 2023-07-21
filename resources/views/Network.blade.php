@@ -17,24 +17,24 @@
       <table class="w-full whitespace-nowrap">
         <tbody>
         <!-- Row start -->
-            @foreach($GetAllUsersData as $GetAllUserData)
+            @foreach($user as $user)
               <tr tabindex="0" class="focus:outline-none text-sm leading-none text-gray-600 dark:text-gray-200 h-16">
                 <td class="w-full sm:w-1/2">
                   <div class="flex items-center">
                     <div class="w-40 h-20 flex items-center justify-center">
-                      <img class="h-20 w-20  object-cover  mr-10" src="{{ $GetAllUserData->profile_picture }}" alt="Current profile photo" />
+                      <img class="h-20 w-20  object-cover  mr-10" src="{{ $user->profile_picture }}" alt="Current profile photo" />
                     </div>
                     <div class="pl-2">
-                      <p class="text-sm font-medium leading-none text-gray-800 dark:text-white ">{{ $GetAllUserData->name }}</p>
-                      <p class="text-xs leading-3 text-gray-600 dark:text-gray-200 mt-2">{{ $GetAllUserData->headlines }}</p>
+                      <p class="text-sm font-medium leading-none text-gray-800 dark:text-white ">{{ $user->name }}</p>
+                      <p class="text-xs leading-3 text-gray-600 dark:text-gray-200 mt-2">{{ $user->headlines }}</p>
                     </div>
                   </div>
                 </td>
                 <td class="pl-4 sm:pl-16">
-                  <form action="{{ url('/add-network/'.$GetAllUserData->id) }}" method="post" enctype="multipart/form-data">
+                  <form action="{{ url('/add-network/'.$user->id) }}" method="post" enctype="multipart/form-data">
                   @csrf    
-                  <input type="text" class="hidden" name="network-id" value="{{ $GetAllUserData->id }}" id="">
-                  <button type="submit" class="btn btn-success btn-sm">Send Request</button>
+                  <input type="text" class="hidden" name="network-id" value="{{ $user->id }}" id="">
+                  <button type="submit" class="btn btn-disabled btn-sm">Send Request</button>
                   <!-- <button type="submit" class="btn btn-disabled btn-sm">Request Send</button> -->
                   </form>
                 </td>

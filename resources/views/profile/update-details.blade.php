@@ -1,38 +1,6 @@
 @extends('template')
 @section('title','Edit Details')
-<!-- Navbar Start -->
-<div class="navbar bg-gradient-to-r from-purple-700 to-slate-600 ">
-    <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl text-white" href="{{ route('home') }}">BSM</a>
-    </div>
-    <div class="dropdown dropdown-end">
-        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-            <div class="w-10 rounded-full">
-                <img src="{{ $user->profile_picture }}" />
-            </div>
-        </label>
-        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-                <a class="justify-between" href="{{ route('profile') }}">
-                    Profile
-                    <span class="badge">New</span>
-                </a>
-            </li>
-            <li><a href="{{ route('profile.edit') }}">Update Profile</a></li>
-
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-
-                <li :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                    <a>Logout</a>
-                </li>
-            </form>
-        </ul>
-    </div>
-</div>
-</div>
-<!-- Navbar end -->
+@include('layouts.public-nav')
 
 <!-- Contest Start -->
 @section('content')
@@ -48,7 +16,7 @@
             <p class="text-lg text-black m-4">Cover Image</p>
             <div class="flex">
                 <div class="shrink-0">
-                    <img class="h-16 w-16 object-cover mr-10" src="{{ $user->cover_picture }}" alt="Current profile photo" />
+                    <img class="h-16 w-16 object-cover mr-10" src="{{ $UserData->cover_picture }}" alt="Current profile photo" />
                 </div>
                 <label class="block">
                     <span class="sr-only">Choose cover photo</span>
@@ -66,7 +34,7 @@
             <p class="text-lg text-black m-4">Profile Image</p>
             <div class="flex">
             <div class="shrink-0">
-                    <img class="h-16 w-16 object-cover mr-10" src="{{ $user->profile_picture }}" alt="Current profile photo" />
+                    <img class="h-16 w-16 object-cover mr-10" src="{{ $UserData->profile_picture }}" alt="Current profile photo" />
                 </div>
                 <label class="block">
                     <span class="sr-only">Choose profile photo</span>
@@ -87,9 +55,9 @@
         <div class="bg-gray-100 dark:bg-gray-900 lg:flex mt-4">
             <!-- Left column -->
             <div class="w-2/2 lg:w-1/2 p-8">
-                <h1 class="text-2xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">{{$user->name}}</h1>
-                <h2 class="text-xs font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$user->headlines}}</h2>
-                <p class="text-xs dark:text-white text-gray-500 mb-4">{{$user->address}}</p>
+                <h1 class="text-2xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">{{$UserData->name}}</h1>
+                <h2 class="text-xs font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$UserData->headlines}}</h2>
+                <p class="text-xs dark:text-white text-gray-500 mb-4">{{ $UserData->address }}</p>
             </div>
             <!-- Right column -->
             <div class="w-2/2 lg:w-1/2 p-8">
