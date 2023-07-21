@@ -4,21 +4,12 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', [ProfileController::class, 'home'])->name('home');
+
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/', [ProfileController::class, 'home'])->name('home');
     // public profile routes
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
     Route::get('/profile/update', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,6 +29,18 @@ Route::middleware('auth')->group(function () {
 
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');
+    
+    // User request acceptance route
+    // For getting id and chaning it's usertype 
+    Route::get('/admin/getuserid/{id}',[AdminController::class,'accept_request']);
+    // Rejecting purpose routes
+    // For getting id and chaning it's usertype 
+    Route::get('/admin/getrejuserid/{id}',[AdminController::class,'reject_request']);
+
+    Route::get('/admin/accept-user',[AdminController::class,'accept_user'])->name('accepted_user');
+    
+    Route::get('/admin/reject-user',[AdminController::class,'reject_user'])->name('rejected_user');
+    
     Route::get('/admin/user-request',[AdminController::class,'user_request'])->name('admin.user_request');
     Route::post('/admin/user-request',[AdminController::class,'post_user_request'])->name('admin.post_user_request');
 });

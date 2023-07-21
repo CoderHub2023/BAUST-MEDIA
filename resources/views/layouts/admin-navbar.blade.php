@@ -1,14 +1,12 @@
-<div class="h-full w-full">
-            <!-- Code block starts --> 
             <nav aria-label="nav bar" tabindex="0" class="focus:outline-none w-full bg-gray-800 hidden xl:block shadow">
                 <div class="container px-6 h-16 flex justify-between items-center lg:items-stretch mx-auto">
                     <div class="flex items-center"> 
                         <div tabindex="0" class="focus:outline-none mr-10 flex items-center">
                             <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/black-left-aligned-with-icons-svg1.svg" alt="north" />
-                            <h3 class="text-base text-white font-bold tracking-normal leading-tight ml-3 hidden lg:block">The North</h3>
+                            <h3 class="text-base text-white font-bold tracking-normal leading-tight ml-3 hidden lg:block">BSM</h3>
                         </div>
                         <div class="hidden xl:flex items-center h-full">
-                            <a href="javascript:void(0)" class=" h-full flex items-center text-sm hover:text-indigo-700 focus:text-indigo-700 text-white focus:outline-none tracking-normal transition duration-150 ease-in-out">
+                            <a href="{{ route('admin.welcome') }}" class=" h-full flex items-center text-sm hover:text-indigo-700 focus:text-indigo-700 text-white focus:outline-none tracking-normal transition duration-150 ease-in-out">
                                 <span class="mr-2">
                                     <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" />
@@ -18,18 +16,18 @@
                                         <rect x="14" y="14" width="6" height="6" rx="1" />
                                     </svg>
                                 </span>
-                                Dashboard
+                                Home
                             </a>
-                            <a href="javascript:void(0)" class="focus:text-indigo-700 focus:outline-none h-full flex items-center text-sm hover:text-indigo-700 text-white mx-10 tracking-normal transition duration-150 ease-in-out">
+                            <a href="{{ route('accepted_user') }}" class="focus:text-indigo-700 focus:outline-none h-full flex items-center text-sm hover:text-indigo-700 text-white mx-10 tracking-normal transition duration-150 ease-in-out">
                                 <span class="mr-2">
                                     <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" />
                                         <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1" />
                                     </svg>
                                 </span>
-                                Products
+                                Accepted
                             </a>
-                            <a href="javascript:void(0)" class="focus:text-indigo-700 focus:outline-none h-full flex items-center text-sm hover:text-indigo-700 text-white mr-10 tracking-normal transition duration-150 ease-in-out">
+                            <a href="{{ route('rejected_user') }}" class="focus:text-indigo-700 focus:outline-none h-full flex items-center text-sm hover:text-indigo-700 text-white mr-10 tracking-normal transition duration-150 ease-in-out">
                                 <span class="mr-2">
                                     <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" />
@@ -37,7 +35,7 @@
                                         <circle cx="12" cy="12" r="9" />
                                     </svg>
                                 </span>
-                                Performance
+                                Rejected
                             </a>
                             <a href="{{ route('admin.user_request') }}" class="focus:text-indigo-700 focus:outline-none h-full flex items-center text-sm hover:text-indigo-700 text-white tracking-normal transition duration-150 ease-in-out">
                                 <span class="mr-2">
@@ -73,7 +71,7 @@
                                                 <circle cx="12" cy="7" r="4" />
                                                 <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                                             </svg>
-                                            <span tabindex="0" class="focus:outline-none focus:text-indigo-700 ml-2">My Profile</span>
+                                            <a href="{{ route('profile') }}"><span tabindex="0" class="focus:outline-none focus:text-indigo-700 ml-2">My Profile</span></a>
                                         </div>
                                     </li>
                                     <li class="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center">
@@ -94,8 +92,8 @@
                                         <span tabindex="0" class="focus:outline-none focus:text-indigo-700 ml-2">Account Settings</span>
                                     </li>
                                 </ul>
-                                <img class="rounded h-10 w-10 object-cover" src="https://tuk-cdn.s3.amazonaws.com/assets/components/horizontal_navigation/hn_1.png" alt="logo" />
-                                <p class=" text-sm ml-2">Jane Doe</p>
+                                <img class="rounded h-10 w-10 object-cover" src="https://w7.pngwing.com/pngs/306/70/png-transparent-computer-icons-management-admin-silhouette-black-and-white-neck-thumbnail.png" alt="logo" />
+                                <p class=" text-sm ml-2">Profile</p>
                             </button>
                         </div>
                     </div>
@@ -119,7 +117,7 @@
                                         <path stroke="none" d="M0 0h24v24H0z" />
                                         <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1" />
                                     </svg>
-                                    <span class="ml-2 font-bold">Products</span>
+                                    <span class="ml-2 font-bold"><a href="{{ route('accepted_user') }}"></a></span>
                                 </div>
                                 <ul class="ml-6 mt-1 hidden">
                                     <li class="cursor-pointer text-gray-600 text-xs leading-3 tracking-normal py-2 hover:bg-indigo-700 hover:text-white px-3 font-normal">Landing Pages</li>
@@ -127,7 +125,7 @@
                                     <li class="cursor-pointer text-gray-600 text-xs leading-3 tracking-normal pt-2 hover:bg-indigo-700 hover:text-white px-3 font-normal">Components</li>
                                 </ul>
                             </li>
-                            <li class="flex md:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
+                            <li class="md:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
                                 <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" />
                                         <polyline points="8 16 10 10 16 8 14 14 8 16" />
@@ -172,116 +170,4 @@
                     </div>
                 </div>
             </nav>
-            <!-- Navbar -->
-            <nav>
-                <div tabindex="0" class="focus:outline-none py-4 px-6 w-full flex xl:hidden justify-between items-center bg-gray-800 fixed top-0 z-40">
-                    <div tabindex="0" class="focus:outline-none w-24">
-                        <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/black-left-aligned-with-icons-svg16.svg" alt="navbar" />
-                    </div>
-                    <div>
-                        <button id="menu" aria-label="open menu" tabindex="0" class="focus:ring-2 rounded-md focus:ring-white focus:outline-none text-white" onclick="sidebarHandler(true)">
-                            <img class="icon icon-tabler icon-tabler-menu-2" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/black-left-aligned-with-icons-svg14.svg" alt="menu" />
-                        </button>
-                    </div>
-                </div>
-                <!--Mobile responsive sidebar-->
-                <div class="absolute w-full h-full transform -translate-x-full z-40 xl:hidden" id="mobile-nav">
-                    <div class="bg-gray-800 opacity-50 w-full h-full" onclick="sidebarHandler(false)"></div>
-                    <div class="w-64 z-40 fixed overflow-y-auto z-40 top-0 bg-gray-800 shadow h-full flex-col justify-between xl:hidden pb-4 transition duration-150 ease-in-out">
-                        <div class="px-6 h-full">
-                            <div class="flex flex-col justify-between h-full w-full">
-                                <div>
-                                    <div class="mt-6 flex w-full items-center justify-between">
-                                        <div class="flex items-center justify-between w-full">
-                                            <div class="flex items-center">
-                                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/black-left-aligned-with-icons-svg1.svg" alt="north" />
-                                                <p tabindex="0" class="focus:outline-none text-base  text-white ml-3">The North</p>
-                                            </div>
-                                            <button id="cross" aria-label="close menu" class="focus:outline-none focus:ring-2 rounded-md text-white" onclick="sidebarHandler(false)">
-                                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/black-left-aligned-with-icons-svg15.svg" alt="cross" />
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <ul class="f-m-m">
-                                        
-                                            <li class="text-white pt-10">
-                                                <div class="flex items-center">
-                                                    <div class="w-6 h-6 md:w-8 md:h-8 text-indigo-700">
-                                                        <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/black-left-aligned-with-icons-svg2.svg" alt="dashboard" />
-                                                    </div>
-                                                    <p tabindex="0" class="focus:outline-none focus:text-indigo-500 text-indigo-700 xl:text-base text-base ml-3">Dashboard</p>
-                                                </div>
-                                            </li>
-                                      
-                                       
-                                            <li class="text-white pt-8">
-                                                <div class="flex items-center justify-between">
-                                                    <div class="flex items-center">
-                                                        <div class="w-6 h-6 md:w-8 md:h-8 text-white">
-                                                            <img class="icon icon-tabler icon-tabler-puzzle" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/black-left-aligned-with-icons-svg3.svg" alt="products" />
-                                                        </div>
-                                                        <p tabindex="0" class="focus:outline-none focus:text-indigo-500 text-white xl:text-base  text-base ml-3">Products</p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                       
-                                            <li class="text-white pt-8">
-                                                <div class="flex items-center">
-                                                    <div class="w-6 h-6 md:w-8 md:h-8 text-white">
-                                                        <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/black-left-aligned-with-icons-svg4.svg" alt="performance" />
-                                                    </div>
-                                                    <p tabindex="0" class="focus:outline-none focus:text-indigo-500 text-white xl:text-base  text-base ml-3">Performance</p>
-                                                </div>
-                                            </li>
-                                       
-                                        <li class="text-white pt-8">
-                                            <div class="flex items-center justify-between">
-                                                <div class="flex items-center">
-                                                    <div class="w-6 h-6 md:w-8 md:h-8 text-white">
-                                                        <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/black-left-aligned-with-icons-svg5.svg" alt="UserRequest" />
-                                                    </div>
-                                                    <p tabindex="0" class="focus:outline-none focus:text-indigo-500 text-white xl:text-base  text-base ml-3">User Request</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="w-full pt-4">
-                                    <div class="flex justify-center mb-4 w-full">
-                                        <div class="relative w-full">
-                                            <div class="text-gray-500 absolute ml-4 inset-0 m-auto w-4 h-4">
-                                               <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/black-left-aligned-with-icons-svg6.svg" alt="search" />
-                                            </div>
-                                            <input class="focus:ring-2 focus:ring-white bg-gray-100 focus:outline-none rounded w-full text-sm text-gray-500 bg-gray-700 pl-10 py-2" type="text" placeholder="Search" />
-                                        </div>
-                                    </div>
-                                    <div class="border-t border-gray-700">
-                                        <div class="w-full flex items-center justify-between pt-1">
-                                            <div class="flex items-center">
-                                                <img alt="profile-pic" src="https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png" tabindex="0" class="focus:outline-none w-8 h-8 rounded-md" />
-                                                <p tabindex="0" class="focus:outline-none text-white text-base leading-4 ml-2">Jane Doe</p>
-                                            </div>
-                                            <ul class="flex">
-                                                <li class="cursor-pointer text-white pt-5 pb-3">
-                                                    <div tabindex="0" class="focus:outline-none focus:text-indigo-600 w-6 h-6 md:w-8 md:h-8">
-                                                        <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/black-left-aligned-with-icons-svg7.svg" alt="message" />
-                                                    </div>
-                                                </li>
-                                                <li class="cursor-pointer text-white pt-5 pb-3 pl-3">
-                                                    <div tabindex="0" class="focus:outline-none focus:text-indigo-600 w-6 h-6 md:w-8 md:h-8">
-                                                        <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/black-left-aligned-with-icons-svg8.svg" alt="bell" />
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <!-- Sidebar ends -->
-
-            <!-- Code block ends -->
-</div>  
+            
