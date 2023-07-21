@@ -17,5 +17,10 @@ class UserWork extends Model
         'end',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id');
+    }
+
     use HasFactory;
 }

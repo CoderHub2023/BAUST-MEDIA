@@ -229,4 +229,14 @@ class ProfileController extends Controller
         
         return view('profile.add-skills');
     }
+
+    // SHowing latest work place
+    public function latest_work(Request $request){
+        $userId = $request->user()->id;
+        $UserWorkAt = User::with(['users_works' => function ($query) {
+            $query->latest();
+        }])->find($userId);
+        dd($UserWorkAt);
+        return view('profile.profile',compact('UserWorkAt'));
+    }
 }

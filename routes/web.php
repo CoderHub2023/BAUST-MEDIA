@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/test', [ProfileController::class, 'latest_work']);
+
+
     Route::get('/', [ProfileController::class, 'home'])->name('home');
     // public profile routes
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
