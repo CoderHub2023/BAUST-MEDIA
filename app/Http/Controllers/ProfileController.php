@@ -39,10 +39,11 @@ class ProfileController extends Controller
         $userId = $request->user()->id;
         $user = DB::table('users')->where('id',$userId)->get();
         $user_education = DB::table('users_education')->where('users_id',$userId)->get();
+        $user_about = DB::table('users_details')->where('users_id',$userId)->select('about')->get();
         $array_len = count($user_education);
         $user_education = json_decode($user_education); 
         $user = json_decode($user); 
-        return view('profile.profile',compact('user','user_education'));
+        return view('profile.profile',compact('user','user_education','user_about'));   
     }
 
     /**

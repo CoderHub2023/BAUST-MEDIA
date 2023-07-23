@@ -11,21 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_details', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('skills');
-            $table->longText('about')->nullable();
-            $table->timestamps();   
-        });
+        Schema::dropIfExists('users_details');
     }
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
-    {
-        Schema::dropIfExists('users_details');
+    {   
+        // If you need to rollback, you can recreate the table here
+        Schema::create('users_details', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('users_id');
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('skills');
+            $table->longText('about')->nullable();
+            $table->timestamps();
+        });
+    
     }
 };

@@ -48,16 +48,21 @@
             </div>
         </div>
         <button class="btn btn-info"><a href="{{ route('profile.update-details') }}">Edit Details</a></button>
-        <button class="btn btn-danger w-32"><i class="fa fa-download" aria-hidden="true"></i><p class="text-sm">Resume</p></button>
+        <button class="btn btn-danger w-32"><i class="fa fa-download" aria-hidden="true"></i>
+            <p class="text-sm">Resume</p>
+        </button>
     </div>
 
 </div>
 <!-- About section -->
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
     <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
-        <h2 class="text-3xl font-bold mb-4 dark:text-white">About Me</h2>
-        <p class="dark:text-gray-400 text-lg leading-relaxed mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis interdum porttitor felis vel bibendum. In hac habitasse platea dictumst. Maecenas ac tortor in mauris mattis faucibus. Nam eget arcu nulla. Sed malesuada nulla vel ipsum ultrices, non dictum sapien euismod. Aliquam vel neque nec massa eleifend interdum.</p>
-        <p class="dark:text-gray-400 text-lg leading-relaxed mb-6">Nulla fermentum enim sit amet malesuada efficitur. Nullam blandit ultricies leo, vitae tincidunt tortor aliquet eget. Sed vestibulum dolor euismod neque egestas, eu accumsan sapien fermentum. Suspendisse eget felis vel ex mollis mattis. Nam eget leo nec justo malesuada lobortis. Aenean pulvinar faucibus luctus.</p>
+        <h2 class="text-3xl font-bold mb-4 dark:text-white">About</h2>
+        @if(isset($user_about[0]->about))
+        <p>{{ $user_about }}</p>
+        @else
+        <p>Hello there! 👋 Welcome to my profile. I'm thrilled to be part of this amazing community. In this space, I'll be sharing my passions, hobbies, and the things that inspire me. Let's connect, learn from each other, and create wonderful memories together. Feel free to drop a message or connect with me on topics we have in common. Looking forward to meeting like-minded souls.</p>
+        @endif
     </div>
 </div>
 </div>
