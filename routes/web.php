@@ -20,10 +20,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile/update', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/update-details', [ProfileController::class, 'update_details'])->name('profile.update-details');
     Route::post('/profile/update-details/post', [ProfileController::class, 'post_update_details'])->name('profile.post-update-details');
+    
+    Route::get('/profile/add-about/{id}', [ProfileController::class, 'add_about'])->name('profile.add-about');
+    Route::post('/profile/submit-add-about', [ProfileController::class, 'submit_add_about'])->name('profile.submit-add-about');
+    Route::get('/profile/update-about/{id}', [ProfileController::class, 'update_about'])->name('profile.update-about');
+    Route::post('/profile/submit-update-about/{id}', [ProfileController::class, 'submit_update_about'])->name('profile.submit-update-about');
+
+
     Route::post('/profile/work-update-details', [ProfileController::class, 'work_update_details'])->name('profile.work_update_details');
     Route::post('/profile/education-update-details', [ProfileController::class, 'education_update_details'])->name('profile.education_update_details');
     Route::post('/profile/image-upload', [ProfileController::class, 'image_upload'])->name('profile.image-upload');
-    Route::post('/profile/about-details', [ProfileController::class, 'about_details'])->name('profile.about-details');
     Route::get('/profile/add-skills', [ProfileController::class, 'add_skills'])->name('profile.add-skills');
     
     // My Network

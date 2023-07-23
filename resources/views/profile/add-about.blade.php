@@ -55,29 +55,15 @@
 
 </div>
 <!-- About section -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
-    <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
-        <div class="flex items-center justify-between">
-            <div>
-                <h2 class="text-3xl font-bold mb-4 dark:text-white">About</h2>
-            </div>
-            @if($count != 0)
-            <a href="{{ url('/profile/update-about/'.$user[0]->id) }}" class="text-blue-500 hover:text-blue-600">
-                <i class="fas fa-pen"></i>
-            </a>
-            @else
-            <a href="{{ url('/profile/add-about/'.$user[0]->id) }}" class="text-blue-500 hover:text-blue-600">
-                <i class="fas fa-plus"></i>
-            </a>
-            @endif
+<form action="{{ route('profile.submit-add-about') }}" method="post">
+    @csrf
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
+        <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
+            <h2 class="text-3xl font-bold mb-4 dark:text-white">About Me</h2>
+            <p class="dark:text-gray-400 text-lg leading-relaxed mb-6"><textarea name="about"  class="textarea textarea-bordered textarea-lg w-full max-w-xs"></textarea></p>
+            <button type="submit" class="btn btn-success">Save</button>
         </div>
-
-        @if($count != 0)
-        <p>{{ $user_about[0]->about }}</p>
-        @else
-        <p>Hello there! 👋 Welcome to my profile.</p>
-        @endif
     </div>
-</div>
+</form>
 </div>
 @endsection
