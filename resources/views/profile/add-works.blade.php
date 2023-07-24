@@ -41,38 +41,22 @@
             </div>
             <!-- Right column -->
             <div class="w-2/2 lg:w-1/2 p-8">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Work at:</h2>
-                        @if($users_works_count !=0)
-                        <p class="text-lg dark:text-white text-gray-400 mb-4">{{ $users_works[0]->position }} at {{ $users_works[0]->work_at }}</p>
-                        <p class="text-sm dark:text-white text-gray-400 mb-4">Started at: {{ $users_works[0]->start }}</p>
-                        @endif
-                    </div>
-                    <div>
-                        @if($users_works_count !=0)
-                        <div class="inline">
-                            <div class="p-2">
-                                <a href="{{ url('/profile/update-works/'.$user[0]->id) }}" class="text-blue-500 hover:text-blue-600">
-                                    <i class="fas fa-pen"></i>
-                                </a>
+                <form action="{{ route('profile.work_update_details') }}" method="post">
+                    @csrf
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Work at:</h2>
+                            <p class="text-lg dark:text-white text-gray-400 mb-4"><input type="text" name="work" placeholder="Company Name" class="input mb-2 input-bordered input-primary w-full max-w-xs" /></p>
+                            <p class="text-gray-800 dark:text-white"><input type="text" name="position" placeholder="Position" class="input input-bordered input-sm w-full max-w-xs" /></p>
+                            <div class="flex w-60 mt-6">
+                                <input type="date" name="start" placeholder="Start" class="mr-2 input input-bordered input-sm w-1/2 max-w-sm" />
+                                <input type="date" name="end" placeholder="End" class="input input-bordered input-sm w-1/2 max-w-sm" />
                             </div>
-                            <div class="p-2">
-                                <a href="{{ url('/profile/add-works/') }}" class="text-blue-500 hover:text-blue-600">
-                                    <i class="fas fa-plus"></i>
-                                </a>
-                            </div>
+                            <button type="submit" class="btn btn-success mt-4">Save</button>
                         </div>
-                        @else
-                        <a href="{{ url('/profile/add-works/') }}" class="text-blue-500 hover:text-blue-600">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                        @endif
                     </div>
-
-                </div>
-                <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studying at:</h2>
-                <p class="text-lg dark:text-white text-gray-400 mb-4">Bangladesh Army University of Science and Technology (BAUST), Saidpur</p>
+                    <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studying at:</h2>
+                    <p class="text-lg dark:text-white text-gray-400 mb-4">Bangladesh Army University of Science and Technology (BAUST), Saidpur</p>
             </div>
         </div>
         <button class="btn btn-info"><a href="{{ route('profile.update-details') }}">Edit Details</a></button>

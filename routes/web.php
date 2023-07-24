@@ -20,11 +20,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile/update', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/update-details', [ProfileController::class, 'update_details'])->name('profile.update-details');
     Route::post('/profile/update-details/post', [ProfileController::class, 'post_update_details'])->name('profile.post-update-details');
-    
+
+    // About routes
     Route::get('/profile/add-about/{id}', [ProfileController::class, 'add_about'])->name('profile.add-about');
     Route::post('/profile/submit-add-about', [ProfileController::class, 'submit_add_about'])->name('profile.submit-add-about');
     Route::get('/profile/update-about/{id}', [ProfileController::class, 'update_about'])->name('profile.update-about');
     Route::post('/profile/submit-update-about/{id}', [ProfileController::class, 'submit_update_about'])->name('profile.submit-update-about');
+    
+    // Works routes
+    Route::get('/profile/add-works/', [ProfileController::class, 'add_works'])->name('profile.add-about');
+    Route::post('/profile/submit-add-works/', [ProfileController::class, 'submit_add_works'])->name('profile.add-about');
+    Route::get('/profile/update-works/{id}', [ProfileController::class, 'update_works'])->name('profile.update_works');
+    Route::post('/profile/submit-update-works/{id}', [ProfileController::class, 'submit_update_works'])->name('profile.submit_update_works');
 
 
     Route::post('/profile/work-update-details', [ProfileController::class, 'work_update_details'])->name('profile.work_update_details');
