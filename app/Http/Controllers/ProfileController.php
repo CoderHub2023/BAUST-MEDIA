@@ -332,7 +332,7 @@ class ProfileController extends Controller
     public function my_network(Request $request){
         $user = new User();
         $userId = $request->user()->id;
-        $user = DB::table('users')->where('id',$userId)->get();
+        $user = DB::table('users')->where('id','!=', $userId)->get();
         return view('Network',compact('user'));
     }
 

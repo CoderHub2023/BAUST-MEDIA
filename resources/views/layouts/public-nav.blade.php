@@ -44,7 +44,7 @@
                     <span class="badge">New</span>
                 </a>
             </li>
-            <li><a href="{{ route('profile.edit') }}">Update Profile</a></li>
+            <li><a href="{{ route('profile.edit') }}">Settings</a></li>
 
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
