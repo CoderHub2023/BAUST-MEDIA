@@ -27,12 +27,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/update-about/{id}', [ProfileController::class, 'update_about'])->name('profile.update-about');
     Route::post('/profile/submit-update-about/{id}', [ProfileController::class, 'submit_update_about'])->name('profile.submit-update-about');
     
-    // Works routes
-    Route::get('/profile/add-works/', [ProfileController::class, 'add_works'])->name('profile.add-about');
-    Route::post('/profile/submit-add-works/', [ProfileController::class, 'submit_add_works'])->name('profile.add-about');
+    // Start Works routes
+    Route::get('/profile/add-works/', [ProfileController::class, 'add_works'])->name('profile.add-works');
+    Route::post('/profile/submit-add-works/', [ProfileController::class, 'submit_add_works'])->name('profile.submit-add-works');
     Route::get('/profile/update-works/{id}', [ProfileController::class, 'update_works'])->name('profile.update_works');
     Route::post('/profile/submit-update-works/{id}', [ProfileController::class, 'submit_update_works'])->name('profile.submit_update_works');
+    // End Work routes
 
+    // Education routes
+    Route::get('/profile/add-education/', [ProfileController::class, 'add_education'])->name('profile.add-education');
+    Route::post('/profile/submit-add-education/', [ProfileController::class, 'submit_add_education'])->name('profile.submit-add-education');
+    Route::get('/profile/update-education/{id}', [ProfileController::class, 'update_education'])->name('profile.update_education');
 
     Route::post('/profile/work-update-details', [ProfileController::class, 'work_update_details'])->name('profile.work_update_details');
     Route::post('/profile/education-update-details', [ProfileController::class, 'education_update_details'])->name('profile.education_update_details');
