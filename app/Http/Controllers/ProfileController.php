@@ -18,6 +18,7 @@ use Mockery\Undefined;
 use Termwind\Components\Dd;
 
 use function Pest\Laravel\get;
+use function Pest\Laravel\json;
 
 class ProfileController extends Controller
 {
@@ -39,10 +40,159 @@ class ProfileController extends Controller
         $userId = $request->user()->id;
         $user = DB::table('users')->where('id',$userId)->get();
         $user_education = DB::table('users_education')->where('users_id',$userId)->get();
+        $user_about = DB::table('users_details')->where('users_id',$userId)->select('about')->get();
+        $users_works = DB::table('users_works')->where('users_id',$userId)->get();
+        $users_works_count = count($users_works);
+        $count = count($user_about);
+        $countUserEducation = count($user_education);
+        $array_len = count($user_education);
+        $user_education = json_decode($user_education); 
+        $user = json_decode($user);
+        return view('profile.profile',compact('user','user_education','user_about','count','countUserEducation','users_works_count','users_works'));   
+    }
+
+    public function add_works(Request $request){
+        $user_education = new UserEducation();
+        $user = new User();
+        $userId = $request->user()->id;
+        $user = DB::table('users')->where('id',$userId)->get();
+        $user_education = DB::table('users_education')->where('users_id',$userId)->get();
+        $user_about = DB::table('users_details')->where('users_id',$userId)->select('about')->get();
+        $users_works = DB::table('users_works')->where('users_id',$userId)->get();
+        $users_works_count = count($users_works);
+        $count = count($user_about);
+        $users_education_count = count($user_education);
+        $user_education = json_decode($user_education); 
+        $user = json_decode($user); 
+        return view('profile.add-works',compact('user','user_education','user_about','count','users_works_count','users_education_count'));
+    }
+
+    public function add_education(Request $request){
+        $user_education = new UserEducation();
+        $user = new User();
+        $userId = $request->user()->id;
+        $user = DB::table('users')->where('id',$userId)->get();
+        $user_education = DB::table('users_education')->where('users_id',$userId)->get();
+        $user_about = DB::table('users_details')->where('users_id',$userId)->select('about')->get();
+        $users_works = DB::table('users_works')->where('users_id',$userId)->get();
+        $users_works_count = count($users_works);
+        $count = count($user_about);
         $array_len = count($user_education);
         $user_education = json_decode($user_education); 
         $user = json_decode($user); 
-        return view('profile.profile',compact('user','user_education'));
+        return view('profile.add-education',compact('user','user_education','user_about','count','users_works','users_works_count'));
+    }
+
+    public function submit_add_works(Request $request){
+        $userId = $request->user()->id;
+        UserWork::create([
+            'users_id' => $userId,
+            'work_at' => $request->input('work'),
+            'position' => $request->input('position'),
+            'start' => $request->input('start'),
+            'end' => $request->input('end'),
+        ]);
+        return redirect('/profile');
+    }
+
+    public function submit_add_education(Request $request){
+        $userId = $request->user()->id;
+        UserEducation::create([
+            'users_id' => $userId,
+            'institution' => $request->input('institution'),
+            'subject' => $request->input('subject'),
+            'start' => $request->input('start'),
+            'end' => $request->input('end'),
+        ]);
+        return redirect('/profile');
+    }
+
+
+    public function update_works(Request $request,$id){
+        $user_education = new UserEducation();
+        $user = new User();
+        $userId = $request->user()->id;
+        $user = DB::table('users')->where('id',$userId)->get();
+        $user_education = DB::table('users_education')->where('users_id',$userId)->get();
+        $user_about = DB::table('users_details')->where('users_id',$userId)->select('about')->get();
+        $users_works = DB::table('users_works')->where('users_id',$userId)->get();
+        $users_works_count = count($users_works);
+        $count = count($user_about);
+        $users_education_count = count($user_education);
+        $user_education = json_decode($user_education); 
+        $user = json_decode($user); 
+        return view('profile.update-works',compact('user','user_education','user_about','count','users_works_count','users_works','users_education_count'));
+    }
+
+    public function update_education(Request $request,$id){
+        $user_education = new UserEducation();
+        $user = new User();
+        $userId = $request->user()->id;
+        $user = DB::table('users')->where('id',$userId)->get();
+        $user_education = DB::table('users_education')->where('users_id',$userId)->get();
+        $user_about = DB::table('users_details')->where('users_id',$userId)->select('about')->get();
+        $users_works = DB::table('users_works')->where('users_id',$userId)->get();
+        $users_works_count = count($users_works);
+        $count = count($user_about);
+        $array_len = count($user_education);
+        $user_education = json_decode($user_education); 
+        $user = json_decode($user); 
+        return view('profile.update-education',compact('user','user_education','user_about','count','users_works_count','users_works'));
+    }
+
+    public function submit_update_works(Request $request){
+        $user = $request->user();
+        $userId = $user->id;
+
+        // Find the user details for the authenticated user
+        $UserWorks = UserWork::where('users_id', $userId)->first();
+        // If user details exist, update the 'about' field
+        if ($UserWorks) {
+        $UserWorks->update([
+            'work_at' => $request->input('work'),
+            'position' => $request->input('position'),
+            'start' => $request->input('start'),
+            'end' => $request->input('end'),
+        ]);
+    }   else {
+        UserDetails::create([
+            'users_id' => $userId,
+            'work_at' => $request->input('work'),
+            'position' => $request->input('position'),
+            'start' => $request->input('start'),
+            'end' => $request->input('end'),
+        ]);
+    }
+    return redirect('/profile')->with('success', 'About Me updated successfully!');
+    }
+
+    /**
+     * Submit update user's education 
+     * */
+    public function submit_update_education(Request $request)
+    {
+        $user = $request->user();
+        $userId = $user->id;
+        // Find the user details for the authenticated user
+        $UserEducation = UserEducation::where('users_id', $userId)->first();
+        // If user details exist, update the 'about' field
+        if ($UserEducation) {
+            $UserEducation->update([
+                'institution' => $request->input('institution'),
+                'subject' => $request->input('subject'),
+                'start' => $request->input('start'),
+                'end' => $request->input('end'),
+            ]);
+        } else {
+            UserDetails::create([
+                'users_id' => $userId,
+                'institution' => $request->input('institution'),
+                'subject' => $request->input('subject'),
+                'start' => $request->input('start'),
+                'end' => $request->input('end'),
+            ]);
+        }
+        return redirect('/profile')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -67,6 +217,43 @@ class ProfileController extends Controller
         return view('profile.update-details',compact('user','UserData','getAboutData'));
 
     }
+
+    public  function add_about(Request $request,$id){
+        // To showing navbar profile info
+        $user = new User();
+        $userId = $request->user()->id;
+        $user = DB::table('users')->where('id',$userId)->get();
+        // For other content
+        $UserData = $request->user();
+        $userId = $UserData->id;
+        $getAboutData = DB::table('users_details')->where('users_id', $userId)->get('about');
+        return view('profile.add-about',compact('user','UserData','getAboutData'));
+    }
+
+    public function submit_add_about(Request $request){
+        $user = $request->user();
+        $UserAbout= new UserDetails();
+        $userId = $request->user()->id;
+        $UserAbout->users_id = $userId;
+        $UserAbout->about = $request->has('about') ? $request->get('about') : " ";
+        $UserAbout->save();
+        return redirect('/profile');
+    }
+
+
+    public function update_about(Request $request,$id){ 
+        // To showing navbar profile info
+        $user = new User();
+        $userId = $request->user()->id;
+        $user = DB::table('users')->where('id',$userId)->get();
+        // For other content
+        $UserData = $request->user();
+        $userId = $UserData->id;
+        $getAboutData = DB::table('users_details')->where('users_id', $userId)->get('about');
+        return view('profile.update-about',compact('user','UserData','getAboutData'));
+    }
+
+
 
     public function post_update_details(Request $request){
         $user = $request->user();
@@ -147,20 +334,33 @@ class ProfileController extends Controller
         }
     }
 
-    public function about_details(Request $request){
-        $user = $request->user();
-        $userId = $user->id;
-        $UserDetails = new UserDetails();
-        $UserDetails->users_id = $userId;
-        $UserDetails->about = $request->has('about') ? $request->get('about') : " ";
-        $UserDetails->save();
-        return redirect('/profile');
+    public function submit_update_about(Request $request,$id){
+    $user = $request->user();
+    $userId = $user->id;
+
+    // Validate the incoming request if needed
+    $request->validate([
+        'about' => 'required|string',
+    ]);
+
+    // Find the user details for the authenticated user
+    $userDetails = UserDetails::where('users_id', $userId)->first();
+
+    // If user details exist, update the 'about' field
+    if ($userDetails) {
+        $userDetails->update(['about' => $request->input('about')]);
+    } else {
+        // If user details don't exist, create a new record
+        UserDetails::create([
+            'users_id' => $userId,
+            'about' => $request->input('about'),
+        ]);
     }
 
-    public function about_details_update(UserDetails $UserDetails,Request $request){
-        dd($UserDetails->users_id);
-        return redirect('/profile');
-    }
+    return redirect('/profile')->with('success', 'About Me updated successfully!');
+}
+
+   
 
     /**
      * Update the user's profile information.
@@ -205,7 +405,7 @@ class ProfileController extends Controller
     public function my_network(Request $request){
         $user = new User();
         $userId = $request->user()->id;
-        $user = DB::table('users')->where('id',$userId)->get();
+        $user = DB::table('users')->where('id','!=', $userId)->get();
         return view('Network',compact('user'));
     }
 

@@ -15,6 +15,7 @@ class UserDetails extends Model
         'skills',
         'about',
     ];
+
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);
     }

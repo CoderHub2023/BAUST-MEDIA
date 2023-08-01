@@ -39,11 +39,11 @@
                 <h2 class="text-xs lg:text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$user[0]->headlines}}</h2>
                 <p class="text-xs dark:text-white text-gray-500 mb-4">{{$user[0]->address}}</p>
             </div>
+            <!--End Left column -->
 
             <!-- Right column -->
             <div class="w-2/2 lg:w-1/2 p-8">
-                <!-- Work Section -->
-                <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between">
                     <div>
                         <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Work at:</h2>
                         @if($users_works_count !=0)
@@ -72,50 +72,30 @@
                         @endif
                     </div>
                 </div>
-                <!-- End Work Section -->
-
-                <!-- Studying Section -->
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studies at:</h2>
-                        @if($countUserEducation !=0)
-                        <p class="text-lg dark:text-white text-gray-400 mb-4">{{ $user_education[0]->subject }} in {{ $user_education[0]->institution }}</p>
-                        <p class="text-sm dark:text-white text-gray-400 mb-4">Started at: {{ $user_education[0]->start }}</p>
-                        @endif
-                    </div>
-                    <div>
-                        @if($countUserEducation !=0)
-                        <div class="inline">
-                            <div class="p-2">
-                                <a href="{{ url('/profile/update-education/'.$user[0]->id) }}" class="text-blue-500 hover:text-blue-600">
-                                    <i class="fas fa-pen"></i>
-                                </a>
+                <form action="{{ route('profile.submit-add-education') }}" method="post">
+                    @csrf
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studies a:</h2>
+                            <p class="text-lg dark:text-white text-gray-400 mb-4"><input type="text" name="institution" placeholder="Institution Name" class="input mb-2 input-bordered input-primary w-full max-w-xs" /></p>
+                            <p class="text-gray-800 dark:text-white"><input type="text" name="subject" placeholder="Subject" class="input input-bordered input-sm w-full max-w-xs" /></p>
+                            <div class="flex w-60 mt-6">
+                                <input type="date" name="start" placeholder="Start" class="mr-2 input input-bordered input-sm w-1/2 max-w-sm" />
+                                <input type="date" name="end" placeholder="End" class="input input-bordered input-sm w-1/2 max-w-sm" />
                             </div>
-                            <div class="p-2">
-                                <a href="{{ url('/profile/add-education/') }}" class="text-blue-500 hover:text-blue-600">
-                                    <i class="fas fa-plus"></i>
-                                </a>
-                            </div>
+                            <button type="submit" class="btn btn-success mt-4">Save</button>
                         </div>
-                        @else
-                        <a href="{{ url('/profile/add-education/') }}" class="text-blue-500 hover:text-blue-600">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                        @endif
                     </div>
-                </div>
-                <!-- End Studying Section -->
+                    
             </div>
-            <!-- End Right column -->
         </div>
-        <!-- End name and occupation -->
-        <button class="btn btn-success w-32 flex items-center">
-            <i class="fa fa-download mr-2" aria-hidden="true"></i>
+        <button class="btn btn-info"><a href="{{ route('profile.update-details') }}">Edit Details</a></button>
+        <button class="btn btn-danger w-32"><i class="fa fa-download" aria-hidden="true"></i>
             <p class="text-sm">Resume</p>
         </button>
     </div>
-</div>
 
+</div>
 <!-- About section -->
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
     <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">

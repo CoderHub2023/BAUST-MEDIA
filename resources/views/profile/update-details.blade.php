@@ -94,61 +94,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
         <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
             <h2 class="text-3xl font-bold mb-4 dark:text-white">About Me</h2>
-            <p class="dark:text-gray-400 text-lg leading-relaxed mb-6"><textarea name="about" placeholder="{{ $getAboutData }}" class="textarea textarea-bordered textarea-lg w-full max-w-xs"> </textarea></p>
+            <p class="dark:text-gray-400 text-lg leading-relaxed mb-6"><textarea name="about"  class="textarea textarea-bordered textarea-lg w-full max-w-xs"></textarea></p>
             <button type="submit" class="btn btn-success">Save</button>
         </div>
     </div>
 </form>
 
-<!-- Skill Section -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5 ">
-    <div class="shadow-xl rounded-md bg-gray-100 dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
-        <h2 class="text-3xl font-bold mb-4">Skills</h2>
-        <div class="grid grid-cols-4 gap-6">
-            <div class="bg-gray-200 rounded-full h-6">
-                <div class="bg-blue-600 rounded-full h-6 w-1/2 text-center text-white">
-                    <p>C/C++</p>
-                </div>
-            </div>
-            <div class="bg-gray-200 rounded-full h-6">
-                <div class="bg-green-600 rounded-full h-6 w-3/4 text-center text-white">
-                    <p>JavaScript</p>
-                </div>
-            </div>
-            <div class="bg-gray-200 rounded-full h-6">
-                <div class="bg-purple-600 rounded-full h-6 w-1/4 text-center text-white">
-                    <p>React</p>
-                </div>
-            </div>
-            <div class="bg-gray-200 rounded-full h-6">
-                <div class="bg-red-600 rounded-full h-6 w-2/3 text-center text-white">
-                    <p>Laravel</p>
-                </div>
-            </div>
-            <div class="bg-gray-200 rounded-full h-6">
-                <div class="bg-yellow-600 rounded-full h-6 w-1/3 text-center text-white">
-                    <p>MySQL</p>
-                </div>
-            </div>
-            <div class="bg-gray-200 rounded-full h-6">
-                <div class="bg-pink-600 rounded-full h-6 w-1/2 text-center text-white">
-                    <p>NoSQL</p>
-                </div>
-            </div>
-            <div class="bg-gray-200 rounded-full h-6">
-                <div class="bg-teal-600 rounded-full h-6 w-3/4 text-center text-white">
-                    <p>PHP</p>
-                </div>
-            </div>
-            <div class="bg-gray-200 rounded-full h-6">
-                <div class="bg-indigo-600 rounded-full h-6 w-3/5 text-center text-white">
-                    <p>Python</p>
-                </div>
-            </div>
-        </div>
-        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">See More</button>
-    </div>
-</div>
+
 
 <!-- Education section -->
 <form action="{{ route('profile.post-update-details') }}" method="post">
