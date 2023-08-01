@@ -84,7 +84,7 @@
                         @endif
                     </div>
                     <div>
-                        @if($users_works_count !=0)
+                        @if($countUserEducation !=0)
                         <div class="inline">
                             <div class="p-2">
                                 <a href="{{ url('/profile/update-education/'.$user[0]->id) }}" class="text-blue-500 hover:text-blue-600">
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         @else
-                        <a href="{{ url('/profile/add-works/') }}" class="text-blue-500 hover:text-blue-600">
+                        <a href="{{ url('/profile/add-education/') }}" class="text-blue-500 hover:text-blue-600">
                             <i class="fas fa-plus"></i>
                         </a>
                         @endif

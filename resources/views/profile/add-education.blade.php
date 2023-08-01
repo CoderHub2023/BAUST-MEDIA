@@ -40,6 +40,7 @@
                 <p class="text-xs dark:text-white text-gray-500 mb-4">{{$user[0]->address}}</p>
             </div>
             <!--End Left column -->
+
             <!-- Right column -->
             <div class="w-2/2 lg:w-1/2 p-8">
             <div class="flex items-center justify-between">
@@ -75,7 +76,7 @@
                     @csrf
                     <div class="flex items-center justify-between">
                         <div>
-                            <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Work at:</h2>
+                            <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studies a:</h2>
                             <p class="text-lg dark:text-white text-gray-400 mb-4"><input type="text" name="institution" placeholder="Institution Name" class="input mb-2 input-bordered input-primary w-full max-w-xs" /></p>
                             <p class="text-gray-800 dark:text-white"><input type="text" name="subject" placeholder="Subject" class="input input-bordered input-sm w-full max-w-xs" /></p>
                             <div class="flex w-60 mt-6">

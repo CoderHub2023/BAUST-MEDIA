@@ -74,17 +74,18 @@
                 </div>
                 <!-- End Work Section -->
                 <!-- Start Education Section -->
-                <form action="{{ url('/profile/submit-update-works/'.$user[0]->id) }}" method="post">
+                <form action="{{ url('/profile/submit-update-education/'.$user[0]->id) }}" method="post">
                     @csrf
                     <div class="flex items-center justify-between">
                         <div>
                             <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studies at:</h2>
                             <p class="text-lg dark:text-white text-gray-400 mb-4"><input type="text" name="institution" value="{{ $user_education[0]->institution }}" class="input mb-2 input-bordered input-primary w-full max-w-xs" /></p>
+                            <p class="text-lg dark:text-white text-gray-400 mb-4"><input type="text" name="subject" value="{{ $user_education[0]->subject }}" class="input mb-2 input-bordered input-primary w-full max-w-xs" /></p>
                             <input type="date" name="start" value="{{ $user_education[0]->start }}" class="mr-2 input input-bordered input-sm w-1/2 max-w-sm" />
                             <input type="date" name="end" value="{{ $user_education[0]->end }}" class="input input-bordered input-sm w-1/2 max-w-sm" />
                             </div>
-                            <button type="submit" class="btn btn-success mt-4">Save</button>
                         </div>
+                        <button type="submit" class="btn btn-success mt-4">Save</button>
                     </div>
                 </form>
 

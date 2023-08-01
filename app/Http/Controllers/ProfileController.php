@@ -61,10 +61,10 @@ class ProfileController extends Controller
         $users_works = DB::table('users_works')->where('users_id',$userId)->get();
         $users_works_count = count($users_works);
         $count = count($user_about);
-        $array_len = count($user_education);
+        $users_education_count = count($user_education);
         $user_education = json_decode($user_education); 
         $user = json_decode($user); 
-        return view('profile.add-works',compact('user','user_education','user_about','count','users_works_count'));
+        return view('profile.add-works',compact('user','user_education','user_about','count','users_works_count','users_education_count'));
     }
 
     public function add_education(Request $request){
@@ -118,10 +118,10 @@ class ProfileController extends Controller
         $users_works = DB::table('users_works')->where('users_id',$userId)->get();
         $users_works_count = count($users_works);
         $count = count($user_about);
-        $array_len = count($user_education);
+        $users_education_count = count($user_education);
         $user_education = json_decode($user_education); 
         $user = json_decode($user); 
-        return view('profile.update-works',compact('user','user_education','user_about','count','users_works_count','users_works'));
+        return view('profile.update-works',compact('user','user_education','user_about','count','users_works_count','users_works','users_education_count'));
     }
 
     public function update_education(Request $request,$id){
@@ -144,17 +144,17 @@ class ProfileController extends Controller
         $user = $request->user();
         $userId = $user->id;
 
-    // Find the user details for the authenticated user
-    $UserWorks = UserWork::where('users_id', $userId)->first();
-    // If user details exist, update the 'about' field
-    if ($UserWorks) {
+        // Find the user details for the authenticated user
+        $UserWorks = UserWork::where('users_id', $userId)->first();
+        // If user details exist, update the 'about' field
+        if ($UserWorks) {
         $UserWorks->update([
             'work_at' => $request->input('work'),
             'position' => $request->input('position'),
             'start' => $request->input('start'),
             'end' => $request->input('end'),
         ]);
-    } else {
+    }   else {
         UserDetails::create([
             'users_id' => $userId,
             'work_at' => $request->input('work'),
@@ -163,9 +163,36 @@ class ProfileController extends Controller
             'end' => $request->input('end'),
         ]);
     }
-
     return redirect('/profile')->with('success', 'About Me updated successfully!');
+    }
 
+    /**
+     * Submit update user's education 
+     * */
+    public function submit_update_education(Request $request)
+    {
+        $user = $request->user();
+        $userId = $user->id;
+        // Find the user details for the authenticated user
+        $UserEducation = UserEducation::where('users_id', $userId)->first();
+        // If user details exist, update the 'about' field
+        if ($UserEducation) {
+            $UserEducation->update([
+                'institution' => $request->input('institution'),
+                'subject' => $request->input('subject'),
+                'start' => $request->input('start'),
+                'end' => $request->input('end'),
+            ]);
+        } else {
+            UserDetails::create([
+                'users_id' => $userId,
+                'institution' => $request->input('institution'),
+                'subject' => $request->input('subject'),
+                'start' => $request->input('start'),
+                'end' => $request->input('end'),
+            ]);
+        }
+        return redirect('/profile')->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -401,15 +428,5 @@ class ProfileController extends Controller
     public function add_skills(){
         
         return view('profile.add-skills');
-    }
-
-    // SHowing latest work place
-    public function latest_work(Request $request){
-        $userId = $request->user()->id;
-        $UserWorkAt = User::with(['users_works' => function ($query) {
-            $query->latest();
-        }])->find($userId);
-        dd($UserWorkAt);
-        return view('profile.profile',compact('UserWorkAt'));
     }
 }

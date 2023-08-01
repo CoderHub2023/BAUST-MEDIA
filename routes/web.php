@@ -4,13 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-
-
-
-
 Route::middleware('auth')->group(function () {
-    Route::get('/test', [ProfileController::class, 'latest_work']);
-
 
     Route::get('/', [ProfileController::class, 'home'])->name('home');
     // public profile routes
@@ -38,6 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/add-education/', [ProfileController::class, 'add_education'])->name('profile.add-education');
     Route::post('/profile/submit-add-education/', [ProfileController::class, 'submit_add_education'])->name('profile.submit-add-education');
     Route::get('/profile/update-education/{id}', [ProfileController::class, 'update_education'])->name('profile.update_education');
+    Route::post('/profile/submit-update-education/{id}', [ProfileController::class, 'submit_update_education'])->name('profile.submit_update_education');
+    // End Education routes
 
     Route::post('/profile/work-update-details', [ProfileController::class, 'work_update_details'])->name('profile.work_update_details');
     Route::post('/profile/education-update-details', [ProfileController::class, 'education_update_details'])->name('profile.education_update_details');

@@ -55,8 +55,36 @@
                             <button type="submit" class="btn btn-success mt-4">Save</button>
                         </div>
                     </div>
-                    <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studying at:</h2>
-                    <p class="text-lg dark:text-white text-gray-400 mb-4">Bangladesh Army University of Science and Technology (BAUST), Saidpur</p>
+                </form>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studies at:</h2>
+                        @if($users_education_count !=0)
+                        <p class="text-lg dark:text-white text-gray-400 mb-4">{{ $user_education[0]->institution }} at {{ $user_education[0]->institution }}</p>
+                        <p class="text-sm dark:text-white text-gray-400 mb-4">Started at: {{ $user_education[0]->start }}</p>
+                        @endif
+                    </div>
+                    <div>
+                        @if($users_education_count !=0)
+                        <div class="inline">
+                            <div class="p-2">
+                                <a href="{{ url('/profile/update-education/'.$user[0]->id) }}" class="text-blue-500 hover:text-blue-600">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                            </div>
+                            <div class="p-2">
+                                <a href="{{ url('/profile/add-education/') }}" class="text-blue-500 hover:text-blue-600">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        @else
+                        <a href="{{ url('/profile/add-education/') }}" class="text-blue-500 hover:text-blue-600">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
         <button class="btn btn-info"><a href="{{ route('profile.update-details') }}">Edit Details</a></button>
