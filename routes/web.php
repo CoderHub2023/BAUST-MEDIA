@@ -42,8 +42,8 @@ Route::middleware('auth')->group(function () {
     
     // My Network
     Route::get('/my-network',[ProfileController::class,'my_network'])->name('My-Network');
-    Route::post('/add-network/{id}',[ProfileController::class,'add_network'])->name('Add-Network');
-
+    Route::get('/add-network/{id}',[ProfileController::class,'add_network'])->name('Add-Network');
+    Route::get('/my-friends',[ProfileController::class,'my_friends'])->name('My-Friends');
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');
     

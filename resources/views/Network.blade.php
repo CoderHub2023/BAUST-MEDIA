@@ -31,12 +31,8 @@
                   </div>
                 </td>
                 <td class="pl-4 sm:pl-16">
-                  <form action="{{ url('/add-network/'.$user->id) }}" method="post" enctype="multipart/form-data">
-                  @csrf    
-                  <input type="text" class="hidden" name="network-id" value="{{ $user->id }}" id="">
-                  <button type="submit" class="btn btn-disabled btn-sm">Send Request</button>
+                  <button type="submit" class="btn btn-sm"><a href="{{ url('/add-network/'.$user->id) }}">Send Request</a></button>
                   <!-- <button type="submit" class="btn btn-disabled btn-sm">Request Send</button> -->
-                  </form>
                 </td>
               </tr>
               @endforeach
