@@ -34,7 +34,7 @@
       <div class="dropdown dropdown-end ml-72">
         <label tabindex="0" class="btn btn-info btn-circle avatar">
             <div class="w-10 rounded-full">
-                <img src="{{ $user[0]->profile_picture }}" />
+                <img src="{{ $loggedInUserData[0]->profile_picture }}" />
             </div>
         </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">

@@ -27,7 +27,8 @@ class ProfileController extends Controller
         $user = new User();
         $userId = $request->user()->id;
         $user = DB::table('users')->where('id',$userId)->get();
-        return view('welcome',compact('user'));
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
+        return view('welcome',compact('user','loggedInUserData'));
     }
 
      /**
@@ -402,34 +403,7 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    public function my_network(Request $request){
-        $userId = $request->user()->id;
-        $user = new User();
-        $user = DB::table('users')->where('id','!=', $userId)->get();
-        return view('Network',compact('user'));
-    }
-
-    /**
-     *  For add friend or add new network
-     */
-    public function add_network(Request $request,$id){
-        $AuthUser =  $request->user()->id;
-        $NetworkId = $id;
-        Network::create([
-            'users_id' => $AuthUser,
-            'network_id' => $NetworkId
-        ]);
-        // Redirect back or perform any other action
-        return redirect()->back()->with('success', 'Friend added successfully.');
-    }
-      
-    public function my_friends(Request $request){
-        $friends = DB::table('users')
-        ->join('users_network', 'users.id', '=', 'users_network.users_id')
-        ->select('users.name','users.idcardphoto','users.headlines')
-        ->get();
-        dd($friends);
-    }
+    
     /**
      *  For viewing add skills page
      */
