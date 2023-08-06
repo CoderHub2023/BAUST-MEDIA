@@ -16,14 +16,14 @@ class NetworkController extends Controller
     public function my_network(Request $request)
     {
         $loggedInUserId = Auth::user()->id;
-        // Performing left join query
-        $usersNotInNetwork = DB::table('users')
-        ->leftJoin('users_network', 'users.id', '=', 'users_network.network_id')
-        ->whereNull('users_network.network_id') // Filters out rows where the user has a corresponding entry in the users_network table
-        ->where('users.id', '!=', $loggedInUserId)
-        ->select('users.*')
-        ->get();
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $loggedInUserId)->get();
+        $usersNotInNetwork = User::leftJoin('users_network', function ($join) use ($loggedInUserId) {
+            $join->on('users.id', '=', 'users_network.network_id')
+                 ->where('users_network.users_id', '=', $loggedInUserId);
+        })
+        ->whereNull('users_network.users_id') // Filters out users already in the network
+        ->where('users.id', '<>', $loggedInUserId) // Exclude the logged-in user from the list
+        ->get(['users.*']); // Fetch all columns from the users table
         return view('Network', compact('usersNotInNetwork','loggedInUserData'));
     }
 

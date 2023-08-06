@@ -31,7 +31,7 @@
               </div>
             </td>
             <td class="pl-4 sm:pl-16">
-              <button type="submit" class="btn btn-sm"><a href="{{ url('/add-network/'.$usersNotInNetwork->id) }}">Send Request</a></button>
+              <button type="submit" class="btn btn-sm btn-secondary"><a href="{{ url('/add-network/'.$usersNotInNetwork->id) }}">Send Request</a></button>
               <!-- <button type="submit" class="btn btn-disabled btn-sm">Request Send</button> -->
             </td>
           </tr>
