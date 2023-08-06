@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\NetworkController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,9 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/add-skills', [ProfileController::class, 'add_skills'])->name('profile.add-skills');
     
     // My Network
-    Route::get('/my-network',[ProfileController::class,'my_network'])->name('My-Network');
-    Route::post('/add-network/{id}',[ProfileController::class,'add_network'])->name('Add-Network');
-
+    Route::get('/my-network',[NetworkController::class,'my_network'])->name('My-Network');
+    Route::get('/add-network/{id}',[NetworkController::class,'add_network'])->name('Add-Network');
+    Route::get('/my-friends',[NetworkController::class,'my_friends'])->name('My-Friends');
+    
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');
     

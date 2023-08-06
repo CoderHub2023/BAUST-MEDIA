@@ -26,8 +26,8 @@ class ProfileController extends Controller
     {
         $user = new User();
         $userId = $request->user()->id;
-        $user = DB::table('users')->where('id',$userId)->get();
-        return view('welcome',compact('user'));
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
+        return view('welcome',compact('loggedInUserData'));
     }
 
      /**
@@ -38,7 +38,7 @@ class ProfileController extends Controller
         $user_education = new UserEducation();
         $user = new User();
         $userId = $request->user()->id;
-        $user = DB::table('users')->where('id',$userId)->get();
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         $user_education = DB::table('users_education')->where('users_id',$userId)->get();
         $user_about = DB::table('users_details')->where('users_id',$userId)->select('about')->get();
         $users_works = DB::table('users_works')->where('users_id',$userId)->get();
@@ -48,14 +48,14 @@ class ProfileController extends Controller
         $array_len = count($user_education);
         $user_education = json_decode($user_education); 
         $user = json_decode($user);
-        return view('profile.profile',compact('user','user_education','user_about','count','countUserEducation','users_works_count','users_works'));   
+        return view('profile.profile',compact('loggedInUserData','user_education','user_about','count','countUserEducation','users_works_count','users_works'));   
     }
 
     public function add_works(Request $request){
         $user_education = new UserEducation();
         $user = new User();
         $userId = $request->user()->id;
-        $user = DB::table('users')->where('id',$userId)->get();
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         $user_education = DB::table('users_education')->where('users_id',$userId)->get();
         $user_about = DB::table('users_details')->where('users_id',$userId)->select('about')->get();
         $users_works = DB::table('users_works')->where('users_id',$userId)->get();
@@ -64,14 +64,14 @@ class ProfileController extends Controller
         $users_education_count = count($user_education);
         $user_education = json_decode($user_education); 
         $user = json_decode($user); 
-        return view('profile.add-works',compact('user','user_education','user_about','count','users_works_count','users_education_count'));
+        return view('profile.add-works',compact('loggedInUserData','user_education','user_about','count','users_works_count','users_education_count'));
     }
 
     public function add_education(Request $request){
         $user_education = new UserEducation();
         $user = new User();
         $userId = $request->user()->id;
-        $user = DB::table('users')->where('id',$userId)->get();
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         $user_education = DB::table('users_education')->where('users_id',$userId)->get();
         $user_about = DB::table('users_details')->where('users_id',$userId)->select('about')->get();
         $users_works = DB::table('users_works')->where('users_id',$userId)->get();
@@ -80,7 +80,7 @@ class ProfileController extends Controller
         $array_len = count($user_education);
         $user_education = json_decode($user_education); 
         $user = json_decode($user); 
-        return view('profile.add-education',compact('user','user_education','user_about','count','users_works','users_works_count'));
+        return view('profile.add-education',compact('loggedInUserData','user_education','user_about','count','users_works','users_works_count'));
     }
 
     public function submit_add_works(Request $request){
@@ -112,7 +112,7 @@ class ProfileController extends Controller
         $user_education = new UserEducation();
         $user = new User();
         $userId = $request->user()->id;
-        $user = DB::table('users')->where('id',$userId)->get();
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         $user_education = DB::table('users_education')->where('users_id',$userId)->get();
         $user_about = DB::table('users_details')->where('users_id',$userId)->select('about')->get();
         $users_works = DB::table('users_works')->where('users_id',$userId)->get();
@@ -121,14 +121,14 @@ class ProfileController extends Controller
         $users_education_count = count($user_education);
         $user_education = json_decode($user_education); 
         $user = json_decode($user); 
-        return view('profile.update-works',compact('user','user_education','user_about','count','users_works_count','users_works','users_education_count'));
+        return view('profile.update-works',compact('loggedInUserData','user_education','user_about','count','users_works_count','users_works','users_education_count'));
     }
 
     public function update_education(Request $request,$id){
         $user_education = new UserEducation();
         $user = new User();
         $userId = $request->user()->id;
-        $user = DB::table('users')->where('id',$userId)->get();
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         $user_education = DB::table('users_education')->where('users_id',$userId)->get();
         $user_about = DB::table('users_details')->where('users_id',$userId)->select('about')->get();
         $users_works = DB::table('users_works')->where('users_id',$userId)->get();
@@ -137,7 +137,7 @@ class ProfileController extends Controller
         $array_len = count($user_education);
         $user_education = json_decode($user_education); 
         $user = json_decode($user); 
-        return view('profile.update-education',compact('user','user_education','user_about','count','users_works_count','users_works'));
+        return view('profile.update-education',compact('loggedInUserData','user_education','user_about','count','users_works_count','users_works'));
     }
 
     public function submit_update_works(Request $request){
@@ -209,12 +209,12 @@ class ProfileController extends Controller
         // To showing navbar profile info
         $user = new User();
         $userId = $request->user()->id;
-        $user = DB::table('users')->where('id',$userId)->get();
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         // For other content
         $UserData = $request->user();
         $userId = $UserData->id;
         $getAboutData = DB::table('users_details')->where('users_id', $userId)->get('about');
-        return view('profile.update-details',compact('user','UserData','getAboutData'));
+        return view('profile.update-details',compact('loggedInUserData','UserData','getAboutData'));
 
     }
 
@@ -222,12 +222,12 @@ class ProfileController extends Controller
         // To showing navbar profile info
         $user = new User();
         $userId = $request->user()->id;
-        $user = DB::table('users')->where('id',$userId)->get();
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         // For other content
         $UserData = $request->user();
         $userId = $UserData->id;
         $getAboutData = DB::table('users_details')->where('users_id', $userId)->get('about');
-        return view('profile.add-about',compact('user','UserData','getAboutData'));
+        return view('profile.add-about',compact('loggedInUserData','UserData','getAboutData'));
     }
 
     public function submit_add_about(Request $request){
@@ -245,12 +245,12 @@ class ProfileController extends Controller
         // To showing navbar profile info
         $user = new User();
         $userId = $request->user()->id;
-        $user = DB::table('users')->where('id',$userId)->get();
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         // For other content
         $UserData = $request->user();
         $userId = $UserData->id;
         $getAboutData = DB::table('users_details')->where('users_id', $userId)->get('about');
-        return view('profile.update-about',compact('user','UserData','getAboutData'));
+        return view('profile.update-about',compact('loggedInUserData','UserData','getAboutData'));
     }
 
 
@@ -402,26 +402,7 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    public function my_network(Request $request){
-        $user = new User();
-        $userId = $request->user()->id;
-        $user = DB::table('users')->where('id','!=', $userId)->get();
-        return view('Network',compact('user'));
-    }
-
-
-    /**
-     *  For add friend or add new network
-     */
-    public function add_network(Request $request,$id){
-        $AuthUser =  $request->user()->id;
-        $UserNetwork = new Network();
-        $UserNetwork->users_id = $AuthUser;
-        $UserNetwork->network_id = $request->get('network-id');
-        $UserNetwork->save();
-        return redirect()->back();
-    }
-
+    
     /**
      *  For viewing add skills page
      */
