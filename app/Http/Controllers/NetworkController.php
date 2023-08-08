@@ -45,10 +45,10 @@ class NetworkController extends Controller
      *  People who are in your network
      */
     public function my_friends(Request $request){
-        $friends = DB::table('users')
-        ->join('users_network', 'users.id', '=', 'users_network.network_id')
-        ->select('users.*')
-        ->get();
+        $loggedInUserId = Auth::user()->id;
+        $friends = User::join('users_network', 'users.id', '=', 'users_network.users_id')
+        ->where('users_network.network_id', '=', $loggedInUserId) // Match the network_id with logged-in user's id
+        ->get(['users.*']);
         dd($friends);
     }    
 }
