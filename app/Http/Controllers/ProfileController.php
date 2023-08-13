@@ -49,11 +49,12 @@ class ProfileController extends Controller
         $array_len = count($user_education);
         $user_education = json_decode($user_education); 
         $user = json_decode($user);
-        $friends = User::join('users_network', 'users.id', '=', 'users_network.users_id')
+        $friends = User::join('users_network', 'users.id', '=', 'users_network.network_id')
         ->where('users_network.users_id', '=', $loggedInUserId) // Match the network_id with logged-in user's id
         ->get(['users.*']);
         $CountFriends = count($friends);
-        return view('profile.profile',compact('loggedInUserData','user_education','user_about','count','countUserEducation','users_works_count','users_works','CountFriends'));   
+        // dd($friends);
+        return view('profile.profile',compact('loggedInUserData','user_education','user_about','count','countUserEducation','users_works_count','users_works','CountFriends','friends'));   
     }
 
     public function add_works(Request $request){

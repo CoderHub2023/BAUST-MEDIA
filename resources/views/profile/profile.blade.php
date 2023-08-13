@@ -117,6 +117,31 @@
     </div>
 </div>
 
+<!-- Network Section -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
+    <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-4">
+            <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-2 md:mb-0">Networks</h2>
+            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">See All</a>
+        </div>
+        @if($CountFriends==0)
+        <p class="text-red-600">No people in your network</p>
+        <p>Go to <a href="/my-network"><button class="btn btn-success">Network</button></p>
+        @else
+        <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            @foreach($friends as $friend)
+            <!-- Friend cards (replace with real data) -->
+            <div class="bg-gray-200 dark:bg-gray-700 p-4 rounded-md shadow-sm flex flex-col justify-center items-center">
+                <img src="{{ $friend->profile_picture }}" alt="Friend 1" class="w-16 h-16 rounded-full mb-2">
+                <p class="text-sm text-gray-700 dark:text-gray-300">{{ $friend->name }}</p>
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+</div>
+
+
 <!-- About section -->
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
     <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">

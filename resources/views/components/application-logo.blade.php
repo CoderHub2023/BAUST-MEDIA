@@ -1,1 +1,1 @@
-<img src="{{ ('/uploads/BSM.png') }}" alt="" class="w-20 lg:-mt-20 lg:w-24">
+<img src="{{ ('/uploads/buastmedialogo.webp') }}" alt="" class="lg:-mt-20 rounded-md">
