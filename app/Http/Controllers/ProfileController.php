@@ -24,10 +24,16 @@ class ProfileController extends Controller
 {
     public function home(Request $request)
     {
-        $user = new User();
+        $isLoading = true;
         $userId = $request->user()->id;
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
-        return view('welcome',compact('loggedInUserData'));
+
+        // Simulate a delay for loading effect
+        usleep(3000000); // 1 second delay
+
+        $isLoading = false; // Set to false after fetching data
+
+        return view('welcome', compact('loggedInUserData', 'isLoading'));
     }
 
      /**

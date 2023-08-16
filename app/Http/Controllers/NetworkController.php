@@ -15,6 +15,7 @@ class NetworkController extends Controller
      */
     public function my_network(Request $request)
     {
+        $isLoading = true; 
         $loggedInUserId = Auth::user()->id;
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $loggedInUserId)->get();
         $usersNotInNetwork = User::leftJoin('users_network', function ($join) use ($loggedInUserId) {
@@ -24,7 +25,9 @@ class NetworkController extends Controller
         ->whereNull('users_network.users_id') // Filters out users already in the network
         ->where('users.id', '<>', $loggedInUserId) // Exclude the logged-in user from the list
         ->get(['users.*']); // Fetch all columns from the users table
-        return view('Network', compact('usersNotInNetwork','loggedInUserData'));
+        usleep(1000000); // 1 second delay
+        $isLoading = false; // Set to false after fetching data
+        return view('Networks.Network', compact('usersNotInNetwork','loggedInUserData','isLoading'));
     }
 
     /**
@@ -44,11 +47,26 @@ class NetworkController extends Controller
     /**
      *  People who are in your network
      */
-    public function my_friends(Request $request){
+    public function network_range(Request $request){
+
         $loggedInUserId = Auth::user()->id;
-        $friends = User::join('users_network', 'users.id', '=', 'users_network.users_id')
-        ->where('users_network.network_id', '=', $loggedInUserId) // Match the network_id with logged-in user's id
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $loggedInUserId)->get();
+
+        $loggedInUserId = Auth::user()->id;
+        $friends = User::join('users_network', 'users.id', '=', 'users_network.network_id')
+        ->where('users_network.users_id', '=', $loggedInUserId) // Match the network_id with logged-in user's id
         ->get(['users.*']);
-        dd($friends);
-    }    
+        return view('Networks.Network-range',compact('loggedInUserData','friends'));
+    }
+    
+    public function remove_network(Request $request,$id){
+        $authUser = $request->user()->id;
+        $networkId = $id;
+        // Find and delete the network entry where the logged-in user is the owner and the friend is in the network
+        Network::where('users_id', $authUser)
+            ->where('network_id', $networkId)
+            ->delete();
+        // Redirect back or perform any other action
+        return redirect()->back()->with('success', 'Friend removed successfully.');
+    }
 }

@@ -17,6 +17,10 @@
       <table class="w-full whitespace-nowrap">
         <tbody>
           <!-- Row start -->
+          @if ($isLoading)
+        <x-skeleton class="h-4 w-40 mb-2"></x-skeleton>
+        <x-skeleton class="h-4 w-64"></x-skeleton>
+        @else
           @foreach($usersNotInNetwork as $usersNotInNetwork)
           <tr tabindex="0" class="focus:outline-none text-sm leading-none text-gray-600 dark:text-gray-200 h-16">
             <td class="w-full sm:w-1/2">
@@ -36,6 +40,7 @@
             </td>
           </tr>
           @endforeach
+          @endif
           <!-- Row End -->
         </tbody>
       </table>
