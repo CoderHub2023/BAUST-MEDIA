@@ -122,7 +122,7 @@
     <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
         <div class="flex flex-col md:flex-row justify-between items-center mb-4">
             <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-2 md:mb-0">Networks</h2>
-            <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline">See All</a>
+            <a href="{{ url('/network-range') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">See All</a>
         </div>
         @if($CountFriends==0)
         <p class="text-red-600">No people in your network</p>

@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-network',[NetworkController::class,'my_network'])->name('My-Network');
     Route::get('/add-network/{id}',[NetworkController::class,'add_network'])->name('Add-Network');
     Route::get('/my-friends',[NetworkController::class,'my_friends'])->name('My-Friends');
+    Route::get('network-range',[NetworkController::class,'network_range'])->name('network-range');
+    Route::get('/remove-network/{id}',[NetworkController::class,'remove_network'])->name('remove-network'); 
     
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');
