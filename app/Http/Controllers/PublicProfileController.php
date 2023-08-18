@@ -55,9 +55,29 @@ class PublicProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request,string $id)
     {
-        //
+        $loggedInUserId = Auth::user()->id;
+        $user_education = new UserEducation();
+        $user = new User();
+        $userId = $request->user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
+        $PublicProfile = DB::table('users')->select('*')->where('users.id', '=', $id)->get();
+        $user_education = DB::table('users_education')->where('users_id',$id)->get();
+        $user_about = DB::table('users_details')->where('users_id',$id)->select('about')->get();
+        $users_works = DB::table('users_works')->where('users_id',$id)->get();
+        $users_works_count = count($users_works);
+        $count = count($user_about);
+        $countUserEducation = count($user_education);
+        $array_len = count($user_education);
+        $user_education = json_decode($user_education); 
+        $user = json_decode($user);
+        $friends = User::join('users_network', 'users.id', '=', 'users_network.network_id')
+        ->where('users_network.users_id', '=', $loggedInUserId) // Match the network_id with logged-in user's id
+        ->get(['users.*']);
+        $CountFriends = count($friends);
+
+        return view('profile.public-profile',compact('loggedInUserData','PublicProfile','user_education','user_about','count','countUserEducation','users_works_count','users_works','CountFriends','friends'));   
     }
 
     /**

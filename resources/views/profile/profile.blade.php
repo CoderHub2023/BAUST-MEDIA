@@ -130,13 +130,14 @@
         @else
         <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             @foreach($friends as $friend)
-            <!-- Friend cards (replace with real data) -->
-            <div class="bg-gray-200 dark:bg-gray-700 p-4 rounded-md shadow-sm flex flex-col justify-center items-center">
-                <img src="{{ $friend->profile_picture }}" alt="Friend 1" class="w-16 h-16 rounded-full mb-2">
-                <p class="text-sm text-gray-700 dark:text-gray-300">{{ $friend->name }}</p>
-            </div>
+            <a href="{{ url('/view/profile/'.$friend->id) }}">
+                <div class="bg-gray-200 dark:bg-gray-700 p-4 rounded-md shadow-sm flex flex-col justify-center items-center">
+                    <img src="{{ $friend->profile_picture }}" alt="Friend 1" class="w-16 h-16 rounded-full mb-2">
+                    <p class="text-sm text-gray-700 dark:text-gray-300">{{ $friend->name }}</p>
+                </div>
+            </a>
             @endforeach
-            @endif
+        @endif
         </div>
     </div>
 </div>

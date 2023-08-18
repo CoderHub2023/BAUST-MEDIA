@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
 
     // public profile routes
     Route::get('/test',[PublicProfileController::class,'index']);
+    Route::get('/view/profile/{id}',[PublicProfileController::class,'show']);
     // About routes
     Route::get('/profile/add-about/{id}', [ProfileController::class, 'add_about'])->name('profile.add-about');
     Route::post('/profile/submit-add-about', [ProfileController::class, 'submit_add_about'])->name('profile.submit-add-about');
