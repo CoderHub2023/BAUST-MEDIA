@@ -3,12 +3,13 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\NetworkController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
 
     Route::get('/', [ProfileController::class, 'home'])->name('home');
-    // public profile routes
+    // profile routes
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
     Route::get('/profile/update', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
@@ -16,6 +17,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/update-details', [ProfileController::class, 'update_details'])->name('profile.update-details');
     Route::post('/profile/update-details/post', [ProfileController::class, 'post_update_details'])->name('profile.post-update-details');
 
+    // public profile routes
+    Route::get('/test',[PublicProfileController::class,'index']);
+    
     // About routes
     Route::get('/profile/add-about/{id}', [ProfileController::class, 'add_about'])->name('profile.add-about');
     Route::post('/profile/submit-add-about', [ProfileController::class, 'submit_add_about'])->name('profile.submit-add-about');
