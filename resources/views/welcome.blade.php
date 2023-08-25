@@ -3,12 +3,7 @@
 @include('layouts.public-nav')
 @section('content')
 
-<!-- Example view -->
-    <!-- Replace this with your actual content -->
-    @if ($isLoading)
-        <x-skeleton class="h-4 w-40 mb-2"></x-skeleton>
-        <x-skeleton class="h-4 w-64"></x-skeleton>
-    @else
+
 
 <div class="mt-6 bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden w-full lg:w-2/6 mx-auto">
   <!-- Image -->
@@ -48,6 +43,5 @@
   </div>
 </div>
 
-@endif
 
 @endsection

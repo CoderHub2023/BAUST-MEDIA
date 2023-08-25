@@ -22,18 +22,13 @@ use function Pest\Laravel\json;
 
 class ProfileController extends Controller
 {
+
+    
     public function home(Request $request)
     {
-        $isLoading = true;
         $userId = $request->user()->id;
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
-
-        // Simulate a delay for loading effect
-        usleep(3000000); // 1 second delay
-
-        $isLoading = false; // Set to false after fetching data
-
-        return view('welcome', compact('loggedInUserData', 'isLoading'));
+        return view('welcome', compact('loggedInUserData'));
     }
 
      /**
@@ -212,9 +207,11 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $userId = $request->user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         return view('profile.edit', [
             'user' => $request->user(),
-        ]);
+        ],compact('loggedInUserData'));
     }
 
     public function update_details(Request $request){
@@ -421,5 +418,11 @@ class ProfileController extends Controller
     public function add_skills(){
         
         return view('profile.add-skills');
+    }
+
+    public function general(Request $request){
+        $userId = $request->user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
+        return view('profile.general', compact('loggedInUserData'));
     }
 }
