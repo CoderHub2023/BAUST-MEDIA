@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile/update', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/update-details', [ProfileController::class, 'update_details'])->name('profile.update-details');
     Route::post('/profile/update-details/post', [ProfileController::class, 'post_update_details'])->name('profile.post-update-details');
+    Route::get('/profile/general', [ProfileController::class, 'general'])->name('profile.general');
 
     // public profile routes
     Route::get('/test',[PublicProfileController::class,'index']);
