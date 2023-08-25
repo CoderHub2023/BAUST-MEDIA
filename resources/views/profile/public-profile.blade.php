@@ -33,10 +33,10 @@
         <div class="bg-gray-100 dark:bg-gray-900 lg:flex">
             <!-- Left column -->
             <div class="w-2/2 lg:w-1/2 p-8 mt-2">
-                <h1 class="text-2xl lg:text-2xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">{{$PublicProfile[0]->name}}</h1>
-                <h2 class="text-xs lg:text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$PublicProfile[0]->headlines}}</h2>
-                <p class="text-xl dark:text-white text-gray-500 mb-4">{{$PublicProfile[0]->address}}</p>
-                <p class="text-xl dark:text-white text-gray-500 mb-4">Friends: {{$CountFriends}}</p>
+                <h1 class="text-2xl lg:text-2xl font-extrabold  dark:text-white text-blue-800 tracking-tight mb-2 mt-2">{{$PublicProfile[0]->name}}</h1>
+                <h2 class="text-xs lg:text-xl font-bold dark:text-white text-blue-800 tracking-tight mb-4">{{$PublicProfile[0]->headlines}}</h2>
+                <p class="text-xl dark:text-white text-blue-800 mb-4">{{$PublicProfile[0]->address}}</p>
+                <p class="text-xl dark:text-white text-blue-800 font-bold mb-4">Friends: {{$CountFriends}}</p>
             </div>
 
             <!-- Right column -->
@@ -44,10 +44,10 @@
                 <!-- Work Section -->
                 <div class="flex items-center justify-between">
                     <div>
-                        <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Work at:</h2>
+                        <h2 class="text-lg font-bold dark:text-white text-blue-800 tracking-tight mb-4">Work at:</h2>
                         @if($users_works_count !=0)
-                        <p class="text-lg dark:text-white text-gray-400 mb-4">{{ $users_works[0]->position }} at {{ $users_works[0]->work_at }}</p>
-                        <p class="text-sm dark:text-white text-gray-400 mb-4">Started at: {{ $users_works[0]->start }}</p>
+                        <p class="text-lg dark:text-white text-black mb-4">{{ $users_works[0]->position }} at {{ $users_works[0]->work_at }}</p>
+                        <p class="text-sm dark:text-white text-black mb-4">Started at: {{ $users_works[0]->start }}</p>
                         @endif
                     </div>
 
@@ -57,10 +57,10 @@
                 <!-- Studying Section -->
                 <div class="flex items-center justify-between">
                     <div>
-                        <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studies at:</h2>
+                        <h2 class="text-lg font-bold dark:text-white text-blue-800 tracking-tight mb-4">Studies at:</h2>
                         @if($countUserEducation !=0)
-                        <p class="text-lg dark:text-white text-gray-400 mb-4">{{ $user_education[0]->subject }} in {{ $user_education[0]->institution }}</p>
-                        <p class="text-sm dark:text-white text-gray-400 mb-4">Started at: {{ $user_education[0]->start }}</p>
+                        <p class="text-lg dark:text-white text-black mb-4">{{ $user_education[0]->subject }} in {{ $user_education[0]->institution }}</p>
+                        <p class="text-sm dark:text-white text-black mb-4">Started at: {{ $user_education[0]->start }}</p>
                         @endif
                     </div>
                 </div>
@@ -82,14 +82,14 @@
     <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
         <div class="flex items-center justify-between">
             <div>
-                <h2 class="text-3xl font-bold mb-4 dark:text-white">About</h2>
+                <h2 class="text-3xl font-bold mb-4 text-black dark:text-white">About</h2>
             </div>
         </div>
 
         @if($count != 0)
-        <p>{{ $user_about[0]->about }}</p>
+        <p class="text-black">{{ $user_about[0]->about }}</p>
         @else
-        <p>Hello there! 👋 Welcome to my profile.</p>
+        <p class="text-black">Hello there! 👋 Welcome to my profile.</p>
         @endif
     </div>
 </div>
