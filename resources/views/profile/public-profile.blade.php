@@ -84,15 +84,6 @@
             <div>
                 <h2 class="text-3xl font-bold mb-4 dark:text-white">About</h2>
             </div>
-            @if($count != 0)
-            <a href="{{ url('/profile/update-about/'.$loggedInUserData[0]->id) }}" class="text-blue-500 hover:text-blue-600">
-                <i class="fas fa-pen"></i>
-            </a>
-            @else
-            <a href="{{ url('/profile/add-about/'.$loggedInUserData[0]->id) }}" class="text-blue-500 hover:text-blue-600">
-                <i class="fas fa-plus"></i>
-            </a>
-            @endif
         </div>
 
         @if($count != 0)
