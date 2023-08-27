@@ -425,4 +425,10 @@ class ProfileController extends Controller
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         return view('profile.general', compact('loggedInUserData'));
     }
+
+    public function ViewResume(Request $request){
+        $userId = $request->user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
+        return view('profile.viewResume', compact('loggedInUserData'));
+    }
 }

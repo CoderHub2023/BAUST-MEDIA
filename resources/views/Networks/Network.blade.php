@@ -2,8 +2,6 @@
 
 @section('title','Network')
 
-@include('layouts.public-nav')
-
 @section('content')
 
 <div class="xl:w-3/4 2xl:w-4/5 w-full mx-auto">

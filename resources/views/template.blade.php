@@ -18,13 +18,14 @@
     <script src="{{ asset('js/profile-image.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/add-skills.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/public-nav.js') }}" type="text/javascript"></script>
+    <link rel="stylesheet" src="{{ asset('css/public-nav.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
 </head>
 
 <body class="antialiased bg-slate-200 dark:text-white dark:bg-slate-600">
-
+    @include('layouts.public-nav')
     @yield('content')
     @yield('footer')
 

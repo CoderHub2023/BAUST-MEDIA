@@ -17,7 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/update-details', [ProfileController::class, 'update_details'])->name('profile.update-details');
     Route::post('/profile/update-details/post', [ProfileController::class, 'post_update_details'])->name('profile.post-update-details');
     Route::get('/profile/general', [ProfileController::class, 'general'])->name('profile.general');
-
+    Route::get('/profile/ViewResume', [ProfileController::class, 'ViewResume'])->name('profile.ViewResume');
     // public profile routes
     Route::get('/test',[PublicProfileController::class,'index']);
     Route::get('/view/profile/{id}',[PublicProfileController::class,'show']);

@@ -1,7 +1,5 @@
 @extends('template')
 @section('title','Profile')
-@include('layouts.public-nav')
-
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
@@ -111,8 +109,8 @@
         </div>
         <!-- End name and occupation -->
         <button class="btn btn-success w-32 flex items-center">
-            <i class="fa fa-download mr-2" aria-hidden="true"></i>
-            <p class="text-sm">Resume</p>
+            <a href="{{ route('profile.ViewResume') }}"><p class="text-sm">View Resume</p></a>
+            
         </button>
     </div>
 </div>
@@ -137,7 +135,7 @@
                 </div>
             </a>
             @endforeach
-        @endif
+            @endif
         </div>
     </div>
 </div>

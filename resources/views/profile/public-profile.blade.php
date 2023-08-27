@@ -1,6 +1,5 @@
 @extends('template')
 @section('title','Profile')
-@include('layouts.public-nav')
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
     <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
