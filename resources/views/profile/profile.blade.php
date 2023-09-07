@@ -160,9 +160,9 @@
         </div>
 
         @if($count != 0)
-        <p class="text-black">{{ $user_about[0]->about }}</p>
+        <p class="text-black dark:text-white">{{ $user_about[0]->about }}</p>
         @else
-        <p class="text-black">Hello there! 👋 Welcome to my profile.</p>
+        <p class="text-black dark:text-white">Hello there! 👋 Welcome to my profile.</p>
         @endif
     </div>
 </div>
