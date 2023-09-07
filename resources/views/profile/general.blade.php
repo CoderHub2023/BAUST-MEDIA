@@ -1,6 +1,6 @@
 @extends('template')
 @section('title','Settings')
-
+@include('layouts.public-nav')
 @section('content')
 
 

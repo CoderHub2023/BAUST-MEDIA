@@ -1,6 +1,6 @@
 @extends('template')
 @section('title','Settings')
-
+@include('layouts.public-nav')
 @section('content')
 <div class="mx-auto max-w-xl px-4 sm:px-6 md:px-8 bg-white dark:bg-gray-800 shadow sm:rounded-md p-4 mt-4 mb-4">
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">

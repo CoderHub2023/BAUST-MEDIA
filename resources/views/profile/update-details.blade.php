@@ -1,5 +1,6 @@
 @extends('template')
 @section('title','Edit Details')
+@include('layouts.public-nav')
 
 <!-- Contest Start -->
 @section('content')

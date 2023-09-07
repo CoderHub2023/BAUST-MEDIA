@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title','Network')
-
+@include('layouts.public-nav')
 
 @section('content')
 

@@ -25,7 +25,6 @@
 </head>
 
 <body class="antialiased bg-slate-200 dark:text-white dark:bg-slate-600">
-    @include('layouts.public-nav')
     @yield('content')
     @yield('footer')
 
