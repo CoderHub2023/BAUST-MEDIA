@@ -214,7 +214,7 @@ class ProfileController extends Controller
         ],compact('loggedInUserData'));
     }
 
-    public function update_details(Request $request){
+    public function update_profile_photo(Request $request){
         // To showing navbar profile info
         $user = new User();
         $userId = $request->user()->id;
@@ -223,7 +223,20 @@ class ProfileController extends Controller
         $UserData = $request->user();
         $userId = $UserData->id;
         $getAboutData = DB::table('users_details')->where('users_id', $userId)->get('about');
-        return view('profile.update-details',compact('loggedInUserData','UserData','getAboutData'));
+        return view('profile.profile-photo-change',compact('loggedInUserData','UserData','getAboutData'));
+
+    }
+
+    public function update_cover_photo(Request $request){
+        // To showing navbar profile info
+        $user = new User();
+        $userId = $request->user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
+        // For other content
+        $UserData = $request->user();
+        $userId = $UserData->id;
+        $getAboutData = DB::table('users_details')->where('users_id', $userId)->get('about');
+        return view('profile.cover-photo-change',compact('loggedInUserData','UserData','getAboutData'));
 
     }
 

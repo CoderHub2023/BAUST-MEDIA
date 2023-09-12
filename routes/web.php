@@ -14,7 +14,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/update', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile/update', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/profile/update-details', [ProfileController::class, 'update_details'])->name('profile.update-details');
+    Route::get('/profile/update_profile_photo', [ProfileController::class, 'update_profile_photo'])->name('profile.update_profile_photo');
+    Route::get('/profile/update-cover-photo', [ProfileController::class, 'update_cover_photo'])->name('profile.update_cover_photo');
+    
     Route::post('/profile/update-details/post', [ProfileController::class, 'post_update_details'])->name('profile.post-update-details');
     Route::get('/profile/general', [ProfileController::class, 'general'])->name('profile.general');
     Route::get('/profile/ViewResume', [ProfileController::class, 'ViewResume'])->name('profile.ViewResume');

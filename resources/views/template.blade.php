@@ -18,6 +18,7 @@
     <script src="{{ asset('js/profile-image.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/add-skills.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/public-nav.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/toggle-propic.js') }}" type="text/javascript"></script>
     <link rel="stylesheet" src="{{ asset('css/public-nav.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -44,6 +45,7 @@
             const isDarkMode = html.classList.contains('dark');
             localStorage.setItem('darkMode', isDarkMode); // Store mode preference
         });
+
     </script>
 </body>
 

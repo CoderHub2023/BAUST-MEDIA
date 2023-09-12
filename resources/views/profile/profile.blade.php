@@ -9,25 +9,32 @@
             <!-- Cover image -->
             <div class="relative">
                 <!-- <img class="w-full h-80 object-cover" src="{{ asset('media/profile/shaikat-cover.jpeg') }}" alt="Cover image"> -->
-                <div class="relative">
-                    <img class="w-full h-80 object-cover" src="{{ $loggedInUserData[0]->cover_picture }}" alt="Cover image">
-                    <button onclick="document.getElementById('CoverInput').click()" class="absolute top-0 right-0 m-4 bg-gray-800 p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+                <div class="relative">                
+                <a href="{{ route('profile.update_cover_photo') }}">
+                <img class="w-full h-80 object-cover" src="{{ $loggedInUserData[0]->cover_picture }}" alt="Cover image">
+                </a>
+                    <button class="absolute top-0 right-0 m-4 bg-gray-800 p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4m-7-7l-3 3v4h4l3-3-4-4z" />
                         </svg>
                     </button>
-                    <input type="file" id="CoverInput" style="display:none" accept="image/*">
                 </div>
 
                 <!-- Profile photo -->
                 <div class="absolute left-8 top-56">
-                    <a href="#" class="mb-4 inline-block rounded-full overflow-hidden border-4 border-white shadow-lg" onclick="changeProfilePhoto()">
-                        <img onclick="document.getElementById('ProfileInput').click()" class="w-32 h-32 object-cover" src="{{ $loggedInUserData[0]->profile_picture }}" alt="Profile photo">
-                        <input type="file" id="ProfileInput" style="display:none" accept="image/*">
+                    <a href="{{ route('profile.update_profile_photo') }}">
+                        <div class="mb-4 inline-block rounded-full overflow-hidden border-4 border-white shadow-lg" onclick="ClickProfilePhoto()">
+                            <img class="w-32 h-32 object-cover" src="{{ $loggedInUserData[0]->profile_picture }}" alt="Profile photo">
+                        </div>
                     </a>
                 </div>
+
+
+
+
             </div>
         </div>
+
 
         <!-- name and occupation -->
         <div class="bg-gray-100 dark:bg-gray-900 lg:flex">
@@ -109,8 +116,10 @@
         </div>
         <!-- End name and occupation -->
         <button class="btn btn-success w-32 flex items-center">
-            <a href="{{ route('profile.ViewResume') }}"><p class="text-sm">View Resume</p></a>
-            
+            <a href="{{ route('profile.ViewResume') }}">
+                <p class="text-sm">View Resume</p>
+            </a>
+
         </button>
     </div>
 </div>
