@@ -2,7 +2,6 @@
 @section('title','Profile')
 @include('layouts.public-nav')
 
-
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
     <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
@@ -64,26 +63,7 @@
                         <p class="text-sm dark:text-white text-gray-400 mb-4">Started at: {{ $user_education[0]->start }}</p>
                         @endif
                     </div>
-                    <div>
-                        @if($users_education_count !=0)
-                        <div class="inline">
-                            <div class="p-2">
-                                <a href="{{ url('/profile/update-education/'.$loggedInUserData[0]->id) }}" class="text-blue-500 hover:text-blue-600">
-                                    <i class="fas fa-pen"></i>
-                                </a>
-                            </div>
-                            <div class="p-2">
-                                <a href="{{ url('/profile/add-education/') }}" class="text-blue-500 hover:text-blue-600">
-                                    <i class="fas fa-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        @else
-                        <a href="{{ url('/profile/add-education/') }}" class="text-blue-500 hover:text-blue-600">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                        @endif
-                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -14,11 +14,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/update', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile/update', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/profile/update-details', [ProfileController::class, 'update_details'])->name('profile.update-details');
+    Route::get('/profile/update_profile_photo', [ProfileController::class, 'update_profile_photo'])->name('profile.update_profile_photo');
+    Route::get('/profile/update-cover-photo', [ProfileController::class, 'update_cover_photo'])->name('profile.update_cover_photo');
+    
     Route::post('/profile/update-details/post', [ProfileController::class, 'post_update_details'])->name('profile.post-update-details');
-
+    Route::get('/profile/general', [ProfileController::class, 'general'])->name('profile.general');
+    Route::get('/profile/ViewResume', [ProfileController::class, 'ViewResume'])->name('profile.ViewResume');
     // public profile routes
     Route::get('/test',[PublicProfileController::class,'index']);
+    Route::get('/view/profile/{id}',[PublicProfileController::class,'show']);
     // About routes
     Route::get('/profile/add-about/{id}', [ProfileController::class, 'add_about'])->name('profile.add-about');
     Route::post('/profile/submit-add-about', [ProfileController::class, 'submit_add_about'])->name('profile.submit-add-about');
