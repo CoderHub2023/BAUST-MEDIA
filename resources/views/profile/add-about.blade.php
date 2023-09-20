@@ -47,7 +47,6 @@
                 <p class="text-lg dark:text-white text-gray-400 mb-4">Bangladesh Army University of Science and Technology (BAUST), Saidpur</p>
             </div>
         </div>
-        <button class="btn btn-info"><a href="{{ route('profile.update-details') }}">Edit Details</a></button>
         <button class="btn btn-danger w-32"><i class="fa fa-download" aria-hidden="true"></i>
             <p class="text-sm">Resume</p>
         </button>
