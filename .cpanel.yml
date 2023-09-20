@@ -1,7 +1,8 @@
 deployment:
   tasks:
-    - export
+    - export DP=$HOME/public_html/BAUST-MEDIA
     # - /bin/cp -R * $HOME/public_html/
     # - /bin/cp .env.example $HOME/public_html/.env
+    - cd $DP
     - /usr/local/bin/composer install --no-dev
     # - /usr/local/bin/php $HOME/public_html/artisan migrate --force
