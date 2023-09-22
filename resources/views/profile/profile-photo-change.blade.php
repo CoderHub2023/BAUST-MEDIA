@@ -6,13 +6,22 @@
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
     <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
+        
+        @if(session('success'))
+        <p class=" text-green-500">{{ session('success') }}</p>
+        @endif
+
+        @if(session('failure'))
+        <p class="text-red-600">{{ session('failure') }}</p>
+        @endif
+
         <!-- cover image and profile photo -->
-        <form  action="{{ route('profile.image-upload') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('profile.image-upload') }}" method="post" enctype="multipart/form-data">
             @csrf
             <!-- Profile image section -->
             <p class="text-lg dark:text-while  m-4">Profile Image</p>
             <div class="flex">
-            <div class="shrink-0">
+                <div class="shrink-0">
                     <img class="h-16 w-16 object-cover mr-10" src="{{ $UserData->profile_picture }}" alt="Current profile photo" />
                 </div>
                 <label class="block">
@@ -30,13 +39,13 @@
             <button type="submit" class="mt-10 btn btn-success">Save</button>
         </form>
 
-       
 
 
 
 
 
 
-</div>
-@endsection
-<!-- Content End -->
+
+    </div>
+    @endsection
+    <!-- Content End -->

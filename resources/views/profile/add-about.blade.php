@@ -59,8 +59,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
         <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
             <h2 class="text-3xl font-bold mb-4 dark:text-white">About Me</h2>
-            <p class="dark:text-gray-400 text-lg leading-relaxed mb-6"><textarea name="about"  class="textarea textarea-bordered textarea-lg w-full max-w-xs" required></textarea></p>
-            <button type="submit" class="btn btn-success">Save</button>
+            <p class="text-white text-lg leading-relaxed mb-6"><textarea name="about" id="about" class="textarea textarea-bordered textarea-lg w-full max-w-xs" required></textarea></p>
+            <p id="aboutErr" class="text-red-600"></p>
+            <button type="submit" class="btn btn-success" onclick="AboutValidationChecker()">Save</button>
         </div>
     </div>
 </form>

@@ -77,13 +77,15 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studies a:</h2>
-                            <p class="text-lg dark:text-white text-gray-400 mb-4"><input type="text" name="institution" placeholder="Institution Name" class="input mb-2 input-bordered input-primary w-full max-w-xs" /></p>
-                            <p class="text-gray-800 dark:text-white"><input type="text" name="subject" placeholder="Subject" class="input input-bordered input-sm w-full max-w-xs" /></p>
+                            <p class="text-lg text-white  mb-4"><input type="text" name="institution" id="institution" placeholder="Institution Name" class="input mb-2 input-bordered input-primary w-full max-w-xs" required/></p>
+                            <p id="institutionErr" class="text-red-600"></p>
+                            <p class="text-white"><input type="text" name="subject" id="subject" placeholder="Subject" class="input input-bordered input-sm w-full max-w-xs" required/></p>
+                            <p id="subjectErr" class="text-red-600"></p>
                             <div class="flex w-60 mt-6">
                                 <input type="date" name="start" placeholder="Start" class="mr-2 input input-bordered input-sm w-1/2 max-w-sm" />
                                 <input type="date" name="end" placeholder="End" class="input input-bordered input-sm w-1/2 max-w-sm" />
                             </div>
-                            <button type="submit" class="btn btn-success mt-4">Save</button>
+                            <button type="submit" class="btn btn-success mt-4" onclick="EducationValidationChecker()">Save</button>
                         </div>
                     </div>
                     

@@ -79,20 +79,22 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studies at:</h2>
-                            <p class="text-lg dark:text-white text-gray-400 mb-4"><input type="text" name="institution" value="{{ $user_education[0]->institution }}" class="input mb-2 input-bordered input-primary w-full max-w-xs" /></p>
-                            <p class="text-lg dark:text-white text-gray-400 mb-4"><input type="text" name="subject" value="{{ $user_education[0]->subject }}" class="input mb-2 input-bordered input-primary w-full max-w-xs" /></p>
+                            <p class="text-lg text-white mb-4"><input type="text" name="institution" id="institution" value="{{ $user_education[0]->institution }}" class="input mb-2 input-bordered input-primary w-full max-w-xs" required/></p>
+                            <p id="institutionErr" class="text-red-600"></p>
+                            <p class="text-lg text-white mb-4"><input type="text" name="subject" id="subject" value="{{ $user_education[0]->subject }}" class="input mb-2 input-bordered input-primary w-full max-w-xs" required /></p>
+                            <p id="subjectErr" class="text-red-600"></p>
                             <input type="date" name="start" value="{{ $user_education[0]->start }}" class="mr-2 input input-bordered input-sm w-1/2 max-w-sm" />
                             <input type="date" name="end" value="{{ $user_education[0]->end }}" class="input input-bordered input-sm w-1/2 max-w-sm" />
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success mt-4">Save</button>
+                        <button type="submit" class="btn btn-success mt-4" onclick="EducationValidationChecker()">Save</button>
                     </div>
                 </form>
 
             </div>
             <!-- End Right column -->
         </div>
-        <button class="btn btn-info"><a href="{{ route('profile.update-details') }}">Edit Details</a></button>
+
         <button class="btn btn-danger w-32"><i class="fa fa-download" aria-hidden="true"></i>
             <p class="text-sm">Resume</p>
         </button>

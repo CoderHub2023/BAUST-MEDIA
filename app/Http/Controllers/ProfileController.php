@@ -221,7 +221,7 @@ class ProfileController extends Controller
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         // For other content
         $UserData = $request->user();
-        $userId = $UserData->id;
+        $userId = $UserData->id;    
         $getAboutData = DB::table('users_details')->where('users_id', $userId)->get('about');
         return view('profile.profile-photo-change',compact('loggedInUserData','UserData','getAboutData'));
 
@@ -317,6 +317,9 @@ class ProfileController extends Controller
     public function image_upload(Request $request){
         $user= new User();
         if($request->hasFile('cover_picture')){
+            $request->validate([
+                'cover_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the max size as needed
+            ]);
             $files = $request->file('cover_picture');
             $imageLocation= array();
             $i=0;
@@ -334,6 +337,9 @@ class ProfileController extends Controller
             return back()->with('failure',"Cover Picture Upload Failure");
         }
         if($request->hasFile('profile_picture')){
+            $request->validate([
+                'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the max size as needed
+            ]);
             $files = $request->file('profile_picture');
             $imageLocation= array();
             $i=0;

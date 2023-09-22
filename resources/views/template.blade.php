@@ -19,6 +19,7 @@
     <script src="{{ asset('js/add-skills.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/public-nav.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/toggle-propic.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/form-validation.js') }}" type="text/javascript"></script>
     <link rel="stylesheet" src="{{ asset('css/public-nav.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
