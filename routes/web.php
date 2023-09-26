@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\NetworkController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicProfileController;
@@ -71,6 +72,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/admin/user-request',[AdminController::class,'user_request'])->name('admin.user_request');
     Route::post('/admin/user-request',[AdminController::class,'post_user_request'])->name('admin.post_user_request');
+    Route::get('/loader',[AdminController::class,'loader']);
 });
 
 require __DIR__.'/auth.php';

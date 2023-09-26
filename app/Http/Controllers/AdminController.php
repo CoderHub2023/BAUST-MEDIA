@@ -65,4 +65,8 @@ class AdminController extends Controller
         // return redirect()->back();
     }
 
+    public function loader(){
+        return view('skeleton-loader');
+    }
+
 }
