@@ -2,28 +2,16 @@
 
 namespace App\View\Components;
 
-use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
-class SkeletonLoader extends Component
+class GuestLayout extends Component
 {
     /**
-     * Create a new component instance.
+     * Get the view / contents that represents the component.
      */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Get the view / contents that represent the component.
-     */
-    // app/View/Components/SkeletonLoader.php
-
-    public function render()
+    public function render(): View
     {
         return view('components.skeleton-loader');
     }
-
 }
