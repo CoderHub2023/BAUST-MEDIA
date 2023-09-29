@@ -4,44 +4,273 @@
 @section('content')
 
 
-
-<div class="mt-6 bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden w-full lg:w-2/6 mx-auto">
-  <!-- Image -->
-  <img src="{{ ('/uploads/post/vc-sir.jpg') }}" alt="Post image" class="w-full h-auto object-cover">
-
-  <!-- Content -->
-  <div class="p-4 lg:p-6">
-    <div class="flex items-center mb-4">
-      <h2 class="text-lg font-medium text-cyan-400"><b>Department of CSE, BAUST</b></h2>
-    </div>
-    <p class="text-gray-700 dark:text-gray-400 leading-relaxed mb-4">বিশ্ববিদ্যালয়ের নতুন ভাইস চ্যান্সেলর মহোদয় কে স্বাগতম:
-      Bangladesh Army University of Science and Technology(BAUST) এর নতুন যোগদানকৃত ভিসি মহোদয় Brig Gen Md Sanuwar Uddin, ndc, psc, PhD, PEng কে কম্পিউটার সায়েন্স এন্ড ইঞ্জিনিয়ারিং (CSE) বিভাগের পক্ষ থেকে ফুলেল শুভেচ্ছা ও শুভকামনা।</p>
-    <div class="flex justify-between items-center">
-      <p class="text-gray-500 text-xs">Posted on April 18, 2023</p>
-      <div class="flex items-center justify-center">
-        <svg class="h-12 w-12 text-yellow-400 dark:text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 15.972l-6.162 3.766 1.568-6.849L.528 7.262l6.907-.593L10 .798l2.565 6.87 6.907.593-4.878 4.627 1.568 6.85z" />
+<div class="w-full flex">
+  <div class="w-1/6 h-screen bg-gray-800 p-4 text-white hidden md:block">
+    <h2 class="text-2xl font-semibold mb-4">Navigation</h2>
+    <ul class="space-y-2 overflow-y-auto" style="max-height: 80vh;">
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
         </svg>
+        <a href="#" class="block hover:text-blue-500">Item 1</a>
+      </li>
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+      <!-- Add more items as needed -->
+    </ul>
+  </div>
+
+
+
+  <!-- Main Content -->
+  <div class="w-3/6 container mx-auto mt-8 overflow-y-auto" style="max-height: 80vh;">
+    <!-- Post Creation -->
+    <div class="bg-white dark:bg-slate-800 p-4 shadow-md rounded-lg">
+      <h2 class="text-xl font-semibold mb-4">Create a Post</h2>
+      <textarea placeholder="Write a stack" class="w-full p-2 border rounded-lg"></textarea>
+      <div class="flex justify-between items-center mt-4">
+        <button class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Post</button>
+        <input type="file" id="image" class="hidden">
+        <label for="image" class="cursor-pointer text-blue-600 hover:underline">Add Image</label>
       </div>
     </div>
+
+    <!-- Post viewing -->
+    <div class="max-w-3/6  mx-auto mt-8 bg-white rounded-lg shadow-md">
+        <!-- Post Header -->
+        <div class="flex items-center justify-between p-4 border-b border-gray-300">
+            <div class="flex items-center space-x-4">
+                <img src="avatar.jpg" alt="User Avatar" class="w-10 h-10 rounded-full">
+                <div>
+                    <p class="text-lg font-semibold">John Doe</p>
+                    <p class="text-gray-600">2 hours ago</p>
+                </div>
+            </div>
+            <div class="text-gray-400 hover:text-blue-500 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </div>
+        </div>
+        <!-- Photo and Caption -->
+        <div class="p-4">
+            <img src="photo.jpg" alt="Posted Photo" class="w-full  rounded-lg">
+            <p class="mt-2 text-gray-800">
+                Beautiful sunset view! 🌅
+            </p>
+        </div>
+        <!-- Like and Comment Buttons -->
+        <div class="flex justify-between p-4 border-t border-gray-300">
+            <div class="flex space-x-4">
+                <div class="flex items-center space-x-2 cursor-pointer hover:text-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    <span>Like</span>
+                </div>
+                <div class="flex items-center space-x-2 cursor-pointer hover:text-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4a4 4 0 100 8 4 4 0 000-8z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 00-7-7m0 0a7 7 0 00-7 7m7-7v7m0-7a7 7 0 007 7"></path>
+                    </svg>
+                    <span>Comment</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 cursor-pointer hover:text-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+                <span>Share</span>
+            </div>
+        </div>
+        <!-- Like and Comment Counts -->
+        <div class="p-4 text-gray-500">
+            <p>12 likes</p>
+            <p>5 comments</p>
+        </div>
+    </div>
+
+  </div>
+
+  <div class="w-1/6 h-screen bg-gray-800 p-4 text-white hidden md:block">
+    <h2 class="text-2xl font-semibold mb-4">Navigation</h2>
+    <ul class="space-y-2 overflow-y-auto" style="max-height: 60vh;"> <!-- Adjust max-height as needed -->
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 1</a>
+      </li>
+      <li class="flex items-center space-x-2 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+        </svg>
+        <a href="#" class="block hover:text-blue-500">Item 2</a>
+      </li>
+      <!-- Add more items as needed -->
+    </ul>
+
+    <!-- Active People -->
+    <div class="mt-4">
+      <h3 class="text-lg font-semibold mb-2">Active People</h3>
+      <ul class="space-y-2">
+        <li class="flex items-center space-x-2 p-2">
+          <!-- Green dot to indicate active -->
+          <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+          <!-- Active person's avatar using Tailwind Avatar component -->
+          <div class="avatar">
+            <div class="w-5 h-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src="{{ $loggedInUserData[0]->profile_picture }}" />
+            </div>
+          </div>
+          <span class="block text-sm">Active Person 1</span>
+        </li>
+        <li class="flex items-center space-x-2 p-2">
+          <!-- No green dot (not active) -->
+          <span class="w-3 h-3 bg-gray-400 rounded-full"></span>
+          <!-- Active person's avatar using Tailwind Avatar component -->
+          <div class="avatar">
+            <div class="w-5 h-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src="{{ $loggedInUserData[0]->profile_picture }}" />
+            </div>
+          </div>
+          <span class="block text-sm">Active Person 2</span>
+        </li>
+        <!-- Add more active people as needed -->
+      </ul>
+    </div>
   </div>
 </div>
-
-
-<div class="mt-4 bg-white dark:bg-gray-800 mx-auto w-full lg:w-2/6 rounded-lg shadow-lg  overflow-hidden">
-  
-  <div class="p-4 sm:p-6 md:p-8">
-  <h2 class="text-lg font-medium text-cyan-400"><b>Department of CSE, BAUST</b></h2>
-    <p class="text-gray-700 dark:text-gray-300 mb-4">Check out my latest article on how to use Tailwind CSS for responsive web design.</p>
-    <a href="#" class="text-yellow-500 dark:text-yellow-600 hover:text-yellow-600 dark:hover:text-yellow-500 font-semibold text-sm">Read more</a>
-  </div>
-
-  <div class="bg-yellow-500 dark:bg-yellow-600 h-20 flex items-center justify-center">
-    <svg class="h-12 w-12 text-white dark:text-gray-900" viewBox="0 0 20 20" fill="currentColor">
-      <path d="M10 15.972l-6.162 3.766 1.568-6.849L.528 7.262l6.907-.593L10 .798l2.565 6.87 6.907.593-4.878 4.627 1.568 6.85z" />
-    </svg>
-  </div>
-</div>
-
-
 @endsection
