@@ -153,7 +153,7 @@
 
 
   <!-- Post Creation -->
-  <div class="w-3/6 container mx-auto mt-8 overflow-y-auto" style="max-height: 80vh;">
+  <div class="w-full md:w-3/6 lg:w-3/6 container mx-auto mt-8 overflow-y-auto" style="max-height: 80vh;">
     <form action="{{ url('/stack/post') }}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="bg-white dark:bg-slate-800 p-4 shadow-md rounded-lg">
@@ -166,8 +166,11 @@
         </div>
     </form>
   </div>
+  <!-- End Post Creation -->
 
   <!-- Post viewing -->
+
+  @foreach ($stacks as $stack)
   <div class="max-w-3/6  mx-auto mt-8 bg-white rounded-lg shadow-md">
     <!-- Post Header -->
     <div class="flex items-center justify-between p-4 border-b border-gray-300">
@@ -186,9 +189,38 @@
     </div>
     <!-- Photo and Caption -->
     <div class="p-4">
-      <img src="photo.jpg" alt="Posted Photo" class="w-full  rounded-lg">
-      <p class="mt-2 text-gray-800">
-        Beautiful sunset view! 🌅
+    <div class="carousel w-full">
+  <div id="slide1" class="carousel-item relative w-full">
+    <img src="/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" class="w-full" />
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide4" class="btn btn-circle">❮</a> 
+      <a href="#slide2" class="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide2" class="carousel-item relative w-full">
+    <img src="/images/stock/photo-1609621838510-5ad474b7d25d.jpg" class="w-full" />
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide1" class="btn btn-circle">❮</a> 
+      <a href="#slide3" class="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide3" class="carousel-item relative w-full">
+    <img src="/images/stock/photo-1414694762283-acccc27bca85.jpg" class="w-full" />
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide2" class="btn btn-circle">❮</a> 
+      <a href="#slide4" class="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide4" class="carousel-item relative w-full">
+    <img src="/images/stock/photo-1665553365602-b2fb8e5d1707.jpg" class="w-full" />
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide3" class="btn btn-circle">❮</a> 
+      <a href="#slide1" class="btn btn-circle">❯</a>
+    </div>
+  </div>
+</div>
+    <p class="mt-2 text-gray-800">
+    {{ $stack->stack }}
       </p>
     </div>
     <!-- Like and Comment Buttons -->
@@ -221,8 +253,10 @@
       <p>5 comments</p>
     </div>
   </div>
-
 </div>
+  @endforeach
+  <!--End  Post viewing -->
+
 
 <div class="w-1/6 h-screen bg-gray-800 p-4 text-white hidden md:block">
   <h2 class="text-2xl font-semibold mb-4">Navigation</h2>

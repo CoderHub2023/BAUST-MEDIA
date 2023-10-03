@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\DB;
 class NewsFeedController extends Controller
 {
     //
-    public function index(){
-
+    public function index(Request $request){
+        $userId = $request->user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
+        $stacks = Stack::all()->shuffle();
+        return view('welcome',['stacks' => $stacks,'loggedInUserData' => $loggedInUserData]);
     }
 
 public function store(Request $request)

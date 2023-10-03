@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/', [ProfileController::class, 'home'])->name('home');
+    // Route::get('/', [ProfileController::class, 'home'])->name('home');
     // profile routes
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
     Route::get('/profile/update', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -76,6 +76,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/loader',[AdminController::class,'loader']);
 
     Route::post('/stack/post',[NewsFeedController::class,'store'])->name('stack_post');
+    Route::get('/',[NewsFeedController::class,'index'])->name('home');
 });
 
 require __DIR__.'/auth.php';
