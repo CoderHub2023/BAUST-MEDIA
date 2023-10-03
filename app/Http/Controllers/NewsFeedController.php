@@ -13,33 +13,42 @@ class NewsFeedController extends Controller
 
     }
 
-    public function store(Request $request){
-        $stack = new Stack();
-        $userId = $request->user()->id;
-        $stack->users_id = $userId;
-        $stack->stack = $request->has('stack') ? $request->get('stack') : "";
-        if($request->hasFile('images')){
-            $request->validate([
-                'images' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the max size as needed
-            ]);
-            $files = $request->file('images');
-            $imageLocation= array();
-            $i=0;
-                $extension = $files->getClientOriginalExtension();
-                $fileName= 'stack-img_'. time() . ++$i . '.' . $extension;
-                $location= '/uploads/stack/';
-                $files->move(public_path() . $location, $fileName);
-                $imageLocation= $location. $fileName;
-            $stack_success = DB::table('stack')->where('id', $request->user()->id)->update([
-                'images'=>$imageLocation
-            ]);
-            // if($stack_success)
-            dd($stack_success);
-            // return back()->with('success',"Stack Posted Successfully");
-            // else
-            // return back()->with('failure',"Stack Failure");
+public function store(Request $request)
+{
+    // Validate the request
+    $request->validate([
+        'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate each image individually
+    ]);
+
+    // Create a new stack
+    $stack = new Stack();
+    $stack->users_id = $request->user()->id;
+    $stack->stack = $request->has('stack') ? $request->input('stack') : "";
+    
+    // Check if any images were uploaded
+    if ($request->hasFile('images')) {
+        $imageLocations = [];
+
+        // Upload and associate images with the stack
+        foreach ($request->file('images') as $uploadedFile) {
+            $extension = $uploadedFile->getClientOriginalExtension();
+            $fileName = 'stack-img_' . time() . '.' . $extension;
+            $location = '/uploads/stack/';
+            $uploadedFile->move(public_path() . $location, $fileName);
+            $imageLocation = $location . $fileName;
+            $imageLocations[] = $imageLocation;
         }
-        return redirect()->back();
+
+        // Store image locations as a comma-separated string
+        $stack->images = implode(',', $imageLocations);
     }
+
+    $stack->save();
+
+    return back()->with('success', "Stack Posted Successfully");
+}
+
+
+
 
 }

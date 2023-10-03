@@ -152,18 +152,17 @@
 
 
 
-  <!-- Main Content -->
+  <!-- Post Creation -->
   <div class="w-3/6 container mx-auto mt-8 overflow-y-auto" style="max-height: 80vh;">
-    <!-- Post Creation -->
-    <form action="{{ url('/stack/post') }}" method="post">
+    <form action="{{ url('/stack/post') }}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="bg-white dark:bg-slate-800 p-4 shadow-md rounded-lg">
         <h2 class="text-xl font-semibold mb-4">Create a Post</h2>
         <textarea placeholder="Write a stack" name="stack" class="w-full p-2 border rounded-lg"></textarea>
         <div class="flex justify-between items-center mt-4">
           <button class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Post</button>
-          <input type="file" id="image" name="images" class="hidden">
-          <label for="image" class="cursor-pointer text-blue-600 hover:underline">Add Image</label>
+          <input type="file" id="images" name="images[]" class="hidden" multiple>
+          <label for="images" class="cursor-pointer text-blue-600 hover:underline">Add Image</label>
         </div>
     </form>
   </div>
