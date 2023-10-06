@@ -11,7 +11,7 @@
                             class="w-full text-gray-600 dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border shadow" placeholder="Enter ID" />
                         <x-input-error :messages="$errors->get('roll')" class="mt-2" />
                 </div>
-                    <!-- Email -->
+                <!-- Email -->
                 <div class="flex flex-col lg:mr-16 pt-5">
                         <label for="email" class="text-gray-800 dark:text-gray-100 text-sm font-bold leading-tight tracking-normal mb-2">Email</label>
                         <input id="email" autocomplete="on" name="email"
