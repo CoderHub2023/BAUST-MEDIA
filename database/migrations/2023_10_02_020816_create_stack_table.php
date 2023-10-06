@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_works', function (Blueprint $table) {
+        Schema::create('stack', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('work_at')->nullable();
-            $table->string('position')->nullable();
-            $table->date('start')->nullable();
-            $table->date('end')->nullable();
+            $table->longText("stack")->nullable();
+            $table->string("images")->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users_works');
+        Schema::dropIfExists('stack');
     }
 };

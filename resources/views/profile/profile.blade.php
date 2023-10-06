@@ -1,219 +1,179 @@
 @extends('template')
-<div class="navbar bg-gradient-to-r from-purple-700 to-slate-600 ">
-    <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl text-white" href="{{ route('home') }}">BSM</a>
-    </div>
-    <div class="flex-none">
-        <!-- <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost btn-circle">
-                <div class="indicator">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    <span class="badge badge-sm indicator-item">8</span>
-                </div>
-            </label> -->
-            <!-- <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
-                <div class="card-body">
-                    <span class="font-bold text-lg">8 Items</span>
-                    <span class="text-info">Subtotal: $999</span>
-                    <div class="card-actions">
-                        <button class="btn btn-primary btn-block">View cart</button>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-        <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                <div class="w-10 rounded-full">
-                    <img src="https://avatars.githubusercontent.com/u/71976987?v=4" />
-                </div>
-            </label>
-            <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                <li>
-                    <a class="justify-between" href="{{ route('profile') }}">
-                        Profile
-                        <span class="badge">New</span>
-                    </a>
-                </li>
-                <li><a href="{{ route('profile.edit') }}">Update Profile</a></li>
-
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <li :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                        <a>Logout</a>
-                    </li>
-                </form>
-            </ul>
-        </div>
-    </div>
-</div>
+@section('title','Profile')
+@include('layouts.public-nav')
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
     <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
-    <!-- cover image and profile photo -->
-    <div class="bg-gray-100">
-        <!-- Cover image -->
-        <div class="relative">
-            <!-- <img class="w-full h-80 object-cover" src="{{ asset('media/profile/shaikat-cover.jpeg') }}" alt="Cover image"> -->
+        <!-- cover image and profile photo -->
+        <div class="bg-gray-100">
+            <!-- Cover image -->
             <div class="relative">
-                <img class="w-full h-80 object-cover" src="{{ asset('media/profile/shaikat-cover.jpeg') }}" alt="Cover image">
-                <button onclick="document.getElementById('CoverInput').click()" class="absolute top-0 right-0 m-4 bg-gray-800 p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4m-7-7l-3 3v4h4l3-3-4-4z" />
-                    </svg>
-                </button>
-                <input type="file" id="CoverInput" style="display:none" accept="image/*">
-            </div>
-
-            <!-- Profile photo -->
-            <div class="absolute left-8 top-56">
-                <a href="#" class="mb-4 inline-block rounded-full overflow-hidden border-4 border-white shadow-lg" onclick="changeProfilePhoto()">
-                    <img onclick="document.getElementById('ProfileInput').click()" class="w-32 h-32 object-cover" src="https://avatars.githubusercontent.com/u/71976987?v=4" alt="Profile photo">
-                    <input type="file" id="ProfileInput" style="display:none" accept="image/*">
+                <!-- <img class="w-full h-80 object-cover" src="{{ asset('media/profile/shaikat-cover.jpeg') }}" alt="Cover image"> -->
+                <div class="relative">                
+                <a href="{{ route('profile.update_cover_photo') }}">
+                <img class="w-full h-80 object-cover" src="{{ $loggedInUserData[0]->cover_picture }}" alt="Cover image">
                 </a>
+                    <button class="absolute top-0 right-0 m-4 bg-gray-800 p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4m-7-7l-3 3v4h4l3-3-4-4z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Profile photo -->
+                <div class="absolute left-8 top-56">
+                    <a href="{{ route('profile.update_profile_photo') }}">
+                        <div class="mb-4 inline-block rounded-full overflow-hidden border-4 border-white shadow-lg" onclick="ClickProfilePhoto()">
+                            <img class="w-32 h-32 object-cover" src="{{ $loggedInUserData[0]->profile_picture }}" alt="Profile photo">
+                        </div>
+                    </a>
+                </div>
+
+
+
+
             </div>
         </div>
-    </div>
 
-    <!-- name and occupation -->
-    <div class="bg-gray-100 dark:bg-gray-900 flex">
-        <!-- Left column -->
-        <div class="w-1/2 p-8">
-            <h1 class="text-4xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">{{$user[0]->name}}</h1>
-            <h2 class="text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$user[0]->headlines}}</h2>
-            <p class="text-lg dark:text-white text-gray-500 mb-4">{{$user[0]->address}}</p>
+
+        <!-- name and occupation -->
+        <div class="bg-gray-100 dark:bg-gray-900 lg:flex">
+            <!-- Left column -->
+            <div class="w-2/2 lg:w-1/2 p-8 mt-2">
+                <h1 class="text-2xl lg:text-2xl font-extrabold  dark:text-green-600 text-blue-800 tracking-tight mb-2 mt-2">{{$loggedInUserData[0]->name}}</h1>
+                <h2 class="text-xs lg:text-xl font-bold dark:text-white text-blue-800 tracking-tight mb-4">{{$loggedInUserData[0]->headlines}}</h2>
+                <p class="text-xl dark:text-white text-blue-800 mb-4">{{$loggedInUserData[0]->address}}</p>
+                <p class="text-xl dark:text-white text-blue-800 mb-4">Friends: {{$CountFriends}}</p>
+            </div>
+
+            <!-- Right column -->
+            <div class="w-2/2 lg:w-1/2 p-8">
+                <!-- Work Section -->
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-lg font-bold dark:text-white text-blue-800 tracking-tight mb-4">Work at:</h2>
+                        @if($users_works_count !=0)
+                        <p class="text-lg dark:text-white text-black mb-4">{{ $users_works[0]->position }} at {{ $users_works[0]->work_at }}</p>
+                        <p class="text-sm dark:text-white text-black mb-4">Started at: {{ $users_works[0]->start }}</p>
+                        @endif
+                    </div>
+                    <div>
+                        @if($users_works_count !=0)
+                        <div class="inline">
+                            <div class="p-2">
+                                <a href="{{ url('/profile/update-works/'.$loggedInUserData[0]->id) }}" class="text-blue-500 hover:text-blue-600">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                            </div>
+                            <div class="p-2">
+                                <a href="{{ url('/profile/add-works/') }}" class="text-blue-500 hover:text-blue-600">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        @else
+                        <a href="{{ url('/profile/add-works/') }}" class="text-blue-500 hover:text-blue-600">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                        @endif
+                    </div>
+                </div>
+                <!-- End Work Section -->
+
+                <!-- Studying Section -->
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-lg font-bold text-blue-800 dark:text-white tracking-tight mb-4">Studies at:</h2>
+                        @if($countUserEducation !=0)
+                        <p class="text-lg dark:text-white text-black mb-4">{{ $user_education[0]->subject }} in {{ $user_education[0]->institution }}</p>
+                        <p class="text-sm dark:text-white text-black mb-4">Started at: {{ $user_education[0]->start }}</p>
+                        @endif
+                    </div>
+                    <div>
+                        @if($countUserEducation !=0)
+                        <div class="inline">
+                            <div class="p-2">
+                                <a href="{{ url('/profile/update-education/'.$loggedInUserData[0]->id) }}" class="text-blue-500 hover:text-blue-600">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                            </div>
+                            <div class="p-2">
+                                <a href="{{ url('/profile/add-education/') }}" class="text-blue-500 hover:text-blue-600">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        @else
+                        <a href="{{ url('/profile/add-education/') }}" class="text-blue-500 hover:text-blue-600">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                        @endif
+                    </div>
+                </div>
+                <!-- End Studying Section -->
+            </div>
+            <!-- End Right column -->
         </div>
-        <!-- Right column -->
-        <div class="w-1/2 p-8">
-            <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Work at:</h2>
-            <p class="text-lg dark:text-white text-gray-400 mb-4">CSE Society,BAUST</p>
-            <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studying at:</h2>
-            <p class="text-lg dark:text-white text-gray-400 mb-4">Bangladesh Army University of Science and Technology (BAUST), Saidpur</p>
-        </div>
-    </div>
-    <button class="btn btn-info"><a href="{{ route('profile.update-details') }}">Edit Details</a></button>
+        <!-- End name and occupation -->
+        <button class="btn btn-success w-32 flex items-center">
+            <a href="{{ route('profile.ViewResume') }}">
+                <p class="text-sm">View Resume</p>
+            </a>
+
+        </button>
     </div>
 </div>
-    <!-- About section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
-        <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
-            <h2 class="text-3xl font-bold mb-4 dark:text-white">About Me</h2>
-            <p class="dark:text-gray-400 text-lg leading-relaxed mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis interdum porttitor felis vel bibendum. In hac habitasse platea dictumst. Maecenas ac tortor in mauris mattis faucibus. Nam eget arcu nulla. Sed malesuada nulla vel ipsum ultrices, non dictum sapien euismod. Aliquam vel neque nec massa eleifend interdum.</p>
-            <p class="dark:text-gray-400 text-lg leading-relaxed mb-6">Nulla fermentum enim sit amet malesuada efficitur. Nullam blandit ultricies leo, vitae tincidunt tortor aliquet eget. Sed vestibulum dolor euismod neque egestas, eu accumsan sapien fermentum. Suspendisse eget felis vel ex mollis mattis. Nam eget leo nec justo malesuada lobortis. Aenean pulvinar faucibus luctus.</p>
+
+<!-- Network Section -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
+    <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-4">
+            <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-2 md:mb-0">Networks</h2>
+            <a href="{{ url('/network-range') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">See All</a>
+        </div>
+        @if($CountFriends==0)
+        <p class="text-red-600">No people in your network</p>
+        <p>Go to <a href="/my-network"><button class="btn btn-success">Network</button></p>
+        @else
+        <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            @foreach($friends as $friend)
+            <a href="{{ url('/view/profile/'.$friend->id) }}">
+                <div class="bg-gray-200 dark:bg-gray-700 p-4 rounded-md shadow-sm flex flex-col justify-center items-center">
+                    <img src="{{ $friend->profile_picture }}" alt="Friend 1" class="w-16 h-16 rounded-full mb-2">
+                    <p class="text-sm text-gray-700 dark:text-gray-300">{{ $friend->name }}</p>
+                </div>
+            </a>
+            @endforeach
+            @endif
         </div>
     </div>
+</div>
 
-    <!-- Skill Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5 ">
-        <div class="shadow-xl rounded-md bg-gray-100 dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
-            <h2 class="text-3xl font-bold mb-4">Skills</h2>
-            <div class="grid grid-cols-4 gap-6">
-                <div class="bg-gray-200 rounded-full h-6">
-                    <div class="bg-blue-600 rounded-full h-6 w-1/2 text-center text-white">
-                        <p>C/C++</p>
-                    </div>
-                </div>
-                <div class="bg-gray-200 rounded-full h-6">
-                    <div class="bg-green-600 rounded-full h-6 w-3/4 text-center text-white">
-                        <p>JavaScript</p>
-                    </div>
-                </div>
-                <div class="bg-gray-200 rounded-full h-6">
-                    <div class="bg-purple-600 rounded-full h-6 w-1/4 text-center text-white">
-                        <p>React</p>
-                    </div>
-                </div>
-                <div class="bg-gray-200 rounded-full h-6">
-                    <div class="bg-red-600 rounded-full h-6 w-2/3 text-center text-white">
-                        <p>Laravel</p>
-                    </div>
-                </div>
-                <div class="bg-gray-200 rounded-full h-6">
-                    <div class="bg-yellow-600 rounded-full h-6 w-1/3 text-center text-white">
-                        <p>MySQL</p>
-                    </div>
-                </div>
-                <div class="bg-gray-200 rounded-full h-6">
-                    <div class="bg-pink-600 rounded-full h-6 w-1/2 text-center text-white">
-                        <p>NoSQL</p>
-                    </div>
-                </div>
-                <div class="bg-gray-200 rounded-full h-6">
-                    <div class="bg-teal-600 rounded-full h-6 w-3/4 text-center text-white">
-                        <p>PHP</p>
-                    </div>
-                </div>
-                <div class="bg-gray-200 rounded-full h-6">
-                    <div class="bg-indigo-600 rounded-full h-6 w-3/5 text-center text-white">
-                        <p>Python</p>
-                    </div>
-                </div>
+
+<!-- About section -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
+    <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
+        <div class="flex items-center justify-between">
+            <div>
+                <h2 class="text-3xl font-bold mb-4 text-black dark:text-white">About</h2>
             </div>
-            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">See More</button>
+            @if($count != 0)
+            <a href="{{ url('/profile/update-about/'.$loggedInUserData[0]->id) }}" class="text-blue-500 hover:text-blue-600">
+                <i class="fas fa-pen"></i>
+            </a>
+            @else
+            <a href="{{ url('/profile/add-about/'.$loggedInUserData[0]->id) }}" class="text-blue-500 hover:text-blue-600">
+                <i class="fas fa-plus"></i>
+            </a>
+            @endif
         </div>
-    </div>
 
-    <!-- Education section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5 ">
-        <div class="shadow-xl rounded-md bg-gray-100 dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
-            <h2 class="text-3xl font-bold mb-4 text-black dark:text-white">Education</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    @if($user_education == '/');
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">{{ $user_education[0]->institution }}</h3>
-                        <p class="text-gray-800 dark:text-white">{{ $user_education[0]->subject }}</p>
-                        <p class="text-gray-500 dark:text-white">{{ $user_education[0]->start }}</p>
-                    </div>
-                    @else
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">{{ $user_education[0]->institution }}</h3>
-                        <p class="text-gray-800 dark:text-white">{{ $user_education[0]->subject }}</p>
-                        <p class="text-gray-500 dark:text-white">{{ $user_education[0]->start }}</p>
-                    </div>
-                  
-                    @endif
-                </div>
-                <!-- <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Collectorate Public College,Nilphamary</h3>
-                        <p class="text-gray-800 dark:text-white">Group Science</p>
-                        <p class="text-gray-500 dark:text-white">2019</p>
-                    </div>
-                </div> -->
-                <!-- <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white"></h3>
-                        <p class="text-gray-800 dark:text-white">Degree Name</p>
-                        <p class="text-gray-500 dark:text-white">Year Completed</p>
-                    </div>
-                </div> -->
-                <!-- <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 flex-shrink-0 mr-4">
-                        <span class="text-3xl"><i class="fas fa-graduation-cap"></i></span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">Bangladesh Army University of Science and Technology (BAUST), Saidpur</h3>
-                        <p class="text-gray-800 dark:text-white">BSC in CSE</p>
-                        <p class="text-gray-500 dark:text-white">Ongoing</p>
-                    </div>
-                </div> -->
-            </div>
-            <a href="#" class="text-blue-500 hover:underline block mt-6">See More</a>
-        </div>
+        @if($count != 0)
+        <p class="text-black dark:text-white">{{ $user_about[0]->about }}</p>
+        @else
+        <p class="text-black dark:text-white">Hello there! 👋 Welcome to my profile.</p>
+        @endif
     </div>
-
+</div>
 </div>
 @endsection
