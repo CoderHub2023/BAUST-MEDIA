@@ -3,7 +3,6 @@
 @include('layouts.public-nav')
 @section('content')
 
-
 <div class="w-full flex">
   <div class="w-1/6 h-screen bg-gray-800 p-4 text-white hidden md:block">
     <h2 class="text-2xl font-semibold mb-4">Navigation</h2>
@@ -309,4 +308,9 @@
   </div>
 </div>
 </div>
+<script>
+  $(document).ready(function(){
+    alert("Welcome");
+  })
+</script>
 @endsection
