@@ -193,14 +193,15 @@
       <div class="p-4">
         <!-- carousel Start -->
         <div class="carousel w-full">
-
+        @foreach (explode(',', $stack->images) as $image)
           <div id="slide1" class="carousel-item relative w-full">
-            <img src="/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" class="w-full" />
+            <img src="{{ asset(trim($image)) }}" class="w-full" />
             <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
               <a href="#slide4" class="btn btn-circle">❮</a>
               <a href="#slide2" class="btn btn-circle">❯</a>
             </div>
           </div>
+          @endforeach
 
           <div id="slide2" class="carousel-item relative w-full">
             <img src="/images/stock/photo-1609621838510-5ad474b7d25d.jpg" class="w-full" />
