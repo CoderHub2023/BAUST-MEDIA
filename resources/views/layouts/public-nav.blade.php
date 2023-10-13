@@ -19,13 +19,13 @@
       <a href="{{ route('My-Network') }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">
         <span class="fa fa-network-wired mr-1"></span> Network
       </a>
-      <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">
+      <a href="{{ route('jobs') }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">
         <span class="fa fa-suitcase mr-1"></span> Jobs
       </a>
-      <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">
+      <a href="{{ route('notifications') }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">
         <span class="fa fa-bell mr-1"></span> Notifications
       </a>
-      <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">
+      <a href="{{ route('messages') }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white">
         <span class="fa fa-envelope mr-1"></span> Messages
       </a>
     </div>

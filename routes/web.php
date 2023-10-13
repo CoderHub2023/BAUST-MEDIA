@@ -2,15 +2,19 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\JobsController;
+use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\NetworkController;
 use App\Http\Controllers\NewsFeedController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
 
-    // Route::get('/', [ProfileController::class, 'home'])->name('home');
+    Route::get('/',[NewsFeedController::class,'index'])->name('home');
+    
     // profile routes
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
     Route::get('/profile/update', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -76,7 +80,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/loader',[AdminController::class,'loader']);
 
     Route::post('/stack/post',[NewsFeedController::class,'store'])->name('stack_post');
-    Route::get('/',[NewsFeedController::class,'index'])->name('home');
+
+    // Feature commuing soon
+    Route::get('/jobs',[JobsController::class,'jobs'])->name('jobs');
+
+    Route::get('/notifications',[NotificationController::class,'notifications'])->name('notifications');
+
+    Route::get('/messages',[MessagesController::class,'messages'])->name('messages');
+
+
 });
 
 require __DIR__.'/auth.php';
