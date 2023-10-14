@@ -435,7 +435,6 @@ class ProfileController extends Controller
      *  For viewing add skills page
      */
     public function add_skills(){
-        
         return view('profile.add-skills');
     }
 
@@ -449,5 +448,8 @@ class ProfileController extends Controller
         $userId = $request->user()->id;
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         return view('profile.viewResume', compact('loggedInUserData'));
+    }
+    public function comming_soon(){
+        return view('auth.forget-comming-soon');
     }
 }
