@@ -5,147 +5,28 @@
 
 <div class="w-full flex">
   <div class="w-1/6 h-screen bg-gray-800 p-4 text-white hidden md:block">
-    <h2 class="text-2xl font-semibold mb-4">Navigation</h2>
     <ul class="space-y-2 overflow-y-auto" style="max-height: 80vh;">
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 1</a>
-      </li>
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
+      <a href="/profile" class="block hover:text-blue-500">
+        <li class="flex items-center space-x-2 p-2">
+          <div class="avatar">
+            <div class="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src="{{ $loggedInUserData[0]->profile_picture }}" />
+            </div>
+          </div>
+          <p class="text-sm p-2">{{ $loggedInUserData[0]->name }}</p>
+        </li>
+      </a>
 
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
+      <a href="/network-range" class="block hover:text-blue-500">
+        <li class="flex items-center space-x-2 p-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+            <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+          </svg>
+          <p class="text-sm p-2">Friends</p>
+        </li>
+      </a>
 
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-
-      <li class="flex items-center space-x-2 p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-          <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-        </svg>
-        <a href="#" class="block hover:text-blue-500">Item 2</a>
-      </li>
-      <!-- Add more items as needed -->
     </ul>
   </div>
 
@@ -156,7 +37,7 @@
     <form action="{{ url('/stack/post') }}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="bg-white dark:bg-slate-800 p-4 shadow-md rounded-lg">
-        <h2 class="text-xl text-black dark:text-white font-semibold mb-4">Create a Post</h2>
+        <h2 class="text-xl text-black dark:text-white font-semibold mb-4">Create a Stack</h2>
         <textarea placeholder="Write a stack" name="stack" class="w-full p-2 border rounded-lg bg-slate-700"></textarea>
         <div class="flex justify-between items-center mt-4">
           <button class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Post</button>
@@ -170,15 +51,15 @@
   <!-- Post viewing -->
   @foreach ($stacks as $stack)
   <div class="max-w-3/6 mx-auto mt-8 bg-white rounded-lg shadow-md">
-    <div class="max-w-3/6  mx-auto mt-8 bg-white rounded-lg shadow-md">
+    <div class="max-w-3/6  mx-auto mt-8 bg-slate-700 rounded-lg shadow-md">
 
       <!-- Post Header -->
       <div class="flex items-center justify-between p-4 border-b border-gray-300">
         <div class="flex items-center space-x-4">
-          <img src="avatar.jpg" alt="User Avatar" class="w-10 h-10 rounded-full">
+          <img src="{{ $stack_user[0]->profile_picture }}" alt="User Avatar" class="w-10 h-10 rounded-full">
           <div>
-            <p class="text-black dark:text-white text-lg font-semibold">John Doe</p>
-            <p class="text-gray-600">2 hours ago</p>
+            <p class="text-black dark:text-white text-lg font-semibold">{{ $stack_user[0]->name }}</p>
+            <p class="text-black dark:text-white">{{ $formattedStackTime }}</p>
           </div>
         </div>
         <div class="text-gray-400 hover:text-blue-500 cursor-pointer">
@@ -193,7 +74,7 @@
       <div class="p-4">
         <!-- carousel Start -->
         <div class="carousel w-full">
-        @foreach (explode(',', $stack->images) as $image)
+          @foreach (explode(',', $stack->images) as $image)
           <div id="slide1" class="carousel-item relative w-full">
             <img src="{{ asset(trim($image)) }}" class="w-full" />
             <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -229,7 +110,7 @@
 
         </div>
         <!-- carousel end -->
-        <p class="mt-2 text-gray-800">
+        <p class="mt-2 text-black dark:text-white">
           {{ $stack->stack }}
         </p>
       </div>
@@ -261,8 +142,8 @@
       </div>
       <!-- Like and Comment Counts -->
       <div class="p-4 text-gray-500">
-        <p>12 likes</p>
-        <p>5 comments</p>
+        <p class="text-black dark:text-yellow-500">12 likes</p>
+        <p class="text-black dark:text-yellow-500">5 comments</p>
       </div>
       <!-- Comment Form -->
       <div class="p-4 border-t border-gray-300">
@@ -298,60 +179,60 @@
 </div>
 
 
-    <div class="w-1/6 h-screen bg-gray-800 p-4 text-white hidden md:block">
-      <h2 class="text-2xl font-semibold mb-4">Navigation</h2>
-      <ul class="space-y-2 overflow-y-auto" style="max-height: 60vh;"> <!-- Adjust max-height as needed -->
-        <li class="flex items-center space-x-2 p-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-            <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-          </svg>
-          <a href="#" class="block hover:text-blue-500">Item 1</a>
-        </li>
-        <li class="flex items-center space-x-2 p-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-            <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
-          </svg>
-          <a href="#" class="block hover:text-blue-500">Item 2</a>
-        </li>
-        <!-- Add more items as needed -->
-      </ul>
+<div class="w-1/6 h-screen bg-gray-800 p-4 text-white hidden md:block">
+  <h2 class="text-2xl font-semibold mb-4">Navigation</h2>
+  <ul class="space-y-2 overflow-y-auto" style="max-height: 60vh;"> <!-- Adjust max-height as needed -->
+    <li class="flex items-center space-x-2 p-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+        <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+      </svg>
+      <a href="#" class="block hover:text-blue-500">Item 1</a>
+    </li>
+    <li class="flex items-center space-x-2 p-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+        <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
+      </svg>
+      <a href="#" class="block hover:text-blue-500">Item 2</a>
+    </li>
+    <!-- Add more items as needed -->
+  </ul>
 
-      <!-- Active People -->
-      <div class="mt-4">
-        <h3 class="text-lg font-semibold mb-2">Active People</h3>
-        <ul class="space-y-2">
-          <li class="flex items-center space-x-2 p-2">
-            <!-- Green dot to indicate active -->
-            <span class="w-3 h-3 bg-green-500 rounded-full"></span>
-            <!-- Active person's avatar using Tailwind Avatar component -->
-            <div class="avatar">
-              <div class="w-5 h-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src="{{ $loggedInUserData[0]->profile_picture }}" />
-              </div>
-            </div>
-            <span class="block text-sm">Active Person 1</span>
-          </li>
-          <li class="flex items-center space-x-2 p-2">
-            <!-- No green dot (not active) -->
-            <span class="w-3 h-3 bg-gray-400 rounded-full"></span>
-            <!-- Active person's avatar using Tailwind Avatar component -->
-            <div class="avatar">
-              <div class="w-5 h-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src="{{ $loggedInUserData[0]->profile_picture }}" />
-              </div>
-            </div>
-            <span class="block text-sm">Active Person 2</span>
-          </li>
-          <!-- Add more active people as needed -->
-        </ul>
-      </div>
-    </div>
+  <!-- Active People -->
+  <div class="mt-4">
+    <h3 class="text-lg font-semibold mb-2">Active People</h3>
+    <ul class="space-y-2">
+      <li class="flex items-center space-x-2 p-2">
+        <!-- Green dot to indicate active -->
+        <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+        <!-- Active person's avatar using Tailwind Avatar component -->
+        <div class="avatar">
+          <div class="w-5 h-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <img src="{{ $loggedInUserData[0]->profile_picture }}" />
+          </div>
+        </div>
+        <span class="block text-sm">Active Person 1</span>
+      </li>
+      <li class="flex items-center space-x-2 p-2">
+        <!-- No green dot (not active) -->
+        <span class="w-3 h-3 bg-gray-400 rounded-full"></span>
+        <!-- Active person's avatar using Tailwind Avatar component -->
+        <div class="avatar">
+          <div class="w-5 h-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <img src="{{ $loggedInUserData[0]->profile_picture }}" />
+          </div>
+        </div>
+        <span class="block text-sm">Active Person 2</span>
+      </li>
+      <!-- Add more active people as needed -->
+    </ul>
   </div>
-  <script>
-    $(document).ready(function() {
-      alert("Welcome");
-    })
-  </script>
-  @endsection
+</div>
+</div>
+<script>
+  $(document).ready(function() {
+    alert("Welcome");
+  })
+</script>
+@endsection

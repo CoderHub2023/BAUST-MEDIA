@@ -13,7 +13,11 @@ class NewsFeedController extends Controller
         $userId = $request->user()->id;
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         $stacks = Stack::all()->shuffle();
-        return view('welcome',['stacks' => $stacks,'loggedInUserData' => $loggedInUserData]);
+        $stacks = json_decode($stacks);
+        $stack_time = \Carbon\Carbon::parse($stacks[0]->created_at);
+        $formattedStackTime = $stack_time->format('jS F Y');
+        $stack_user = DB::table('users')->select('*')->where('id', '=', $stacks[0]->users_id)->get();
+        return view('welcome',['stacks' => $stacks,'loggedInUserData' => $loggedInUserData,'stack_user' => $stack_user,'formattedStackTime' => $formattedStackTime]);
     }
 
 public function store(Request $request)

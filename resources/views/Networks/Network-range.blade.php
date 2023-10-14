@@ -12,7 +12,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             
             @foreach ( $friends as $friend)
-            <div class="flex items-center space-x-4 bg-white p-4 shadow-md rounded-md">
+            <div class="flex items-center space-x-4 bg-slate-700 p-4 shadow-md rounded-md">
                 <img src="{{ $friend->profile_picture }}" alt="Friend 1" class="w-16 h-16 rounded-full">
                 <div class="flex-grow">
                     <div class="flex justify-between items-center">
