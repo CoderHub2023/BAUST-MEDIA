@@ -51,7 +51,7 @@
   <!-- Post viewing -->
   @foreach ($stacks as $stack)
   <div class="max-w-3/6 mx-auto mt-8 bg-white rounded-lg shadow-md">
-    <div class="max-w-3/6  mx-auto mt-8 bg-slate-700 rounded-lg shadow-md">
+    <div class="max-w-3/6 mx-auto mt-8 bg-slate-700 rounded-lg shadow-md">
 
       <!-- Post Header -->
       <div class="flex items-center justify-between p-4 border-b border-gray-300">
@@ -73,42 +73,26 @@
       <!-- Photo and Caption -->
       <div class="p-4">
         <!-- carousel Start -->
-        <div class="carousel w-full">
-          @foreach (explode(',', $stack->images) as $image)
-          <div id="slide1" class="carousel-item relative w-full">
-            <img src="{{ asset(trim($image)) }}" class="w-full" />
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide4" class="btn btn-circle">❮</a>
-              <a href="#slide2" class="btn btn-circle">❯</a>
-            </div>
-          </div>
-          @endforeach
+        <div class="carousel w-full" id="carousel-{{ $stack->id }}">
+                @foreach (explode(',', $stack->images) as $index => $image)
+                <div id="slide-{{ $stack->id }}-{{ $index + 1 }}" class="carousel-item relative w-full">
+                    <img src="{{ asset(trim($image)) }}" class="w-full" />
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide-{{ $stack->id }}-{{ $index === 0 ? count(explode(',', $stack->images)) : $index }}"
+                            class="btn btn-circle">❮</a>
+                        <a href="#slide-{{ $stack->id }}-{{ $index === count(explode(',', $stack->images)) - 1 ? 1 : $index + 2 }}"
+                            class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                @endforeach
 
-          <div id="slide2" class="carousel-item relative w-full">
-            <img src="/images/stock/photo-1609621838510-5ad474b7d25d.jpg" class="w-full" />
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide1" class="btn btn-circle">❮</a>
-              <a href="#slide3" class="btn btn-circle">❯</a>
+                @if (count(explode(',', $stack->images)) == 1)
+                <!-- If there's only one image, no need for a carousel -->
+                <div id="slide-{{ $stack->id }}-2" class="carousel-item relative w-full">
+                    <img src="{{ asset(trim($stack->images)) }}" class="w-full" />
+                </div>
+                @endif
             </div>
-          </div>
-
-          <div id="slide3" class="carousel-item relative w-full">
-            <img src="/images/stock/photo-1414694762283-acccc27bca85.jpg" class="w-full" />
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide2" class="btn btn-circle">❮</a>
-              <a href="#slide4" class="btn btn-circle">❯</a>
-            </div>
-          </div>
-
-          <div id="slide4" class="carousel-item relative w-full">
-            <img src="/images/stock/photo-1665553365602-b2fb8e5d1707.jpg" class="w-full" />
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide3" class="btn btn-circle">❮</a>
-              <a href="#slide1" class="btn btn-circle">❯</a>
-            </div>
-          </div>
-
-        </div>
         <!-- carousel end -->
         <p class="mt-2 text-black dark:text-white">
           {{ $stack->stack }}
@@ -174,8 +158,8 @@
         <a href="" class="text-blue-500 hover:underline">View All Comments</a>
       </div>
     </div>
-    @endforeach
   </div>
+  @endforeach
 </div>
 
 

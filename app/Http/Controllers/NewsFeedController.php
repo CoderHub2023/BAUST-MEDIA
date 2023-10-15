@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Stack;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Str;
 class NewsFeedController extends Controller
 {
     //
@@ -14,6 +14,10 @@ class NewsFeedController extends Controller
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         $stacks = Stack::all()->shuffle();
         $stacks = json_decode($stacks);
+        foreach ($stacks as $stack) {
+            $imagePaths[] = $stack->images;
+        }
+        // dd($imagePaths);
         $stack_time = \Carbon\Carbon::parse($stacks[0]->created_at);
         $formattedStackTime = $stack_time->format('jS F Y');
         $stack_user = DB::table('users')->select('*')->where('id', '=', $stacks[0]->users_id)->get();
@@ -35,17 +39,17 @@ public function store(Request $request)
     // Check if any images were uploaded
     if ($request->hasFile('images')) {
         $imageLocations = [];
-
+    
         // Upload and associate images with the stack
         foreach ($request->file('images') as $uploadedFile) {
             $extension = $uploadedFile->getClientOriginalExtension();
-            $fileName = 'stack-img_' . time() . '.' . $extension;
+            $uniqueFileName = 'stack-img_' . Str::uuid() . '.' . $extension; // Generate a unique file name
             $location = '/uploads/stack/';
-            $uploadedFile->move(public_path() . $location, $fileName);
-            $imageLocation = $location . $fileName;
+            $uploadedFile->move(public_path() . $location, $uniqueFileName);
+            $imageLocation = $location . $uniqueFileName;
             $imageLocations[] = $imageLocation;
         }
-
+    
         // Store image locations as a comma-separated string
         $stack->images = implode(',', $imageLocations);
     }
