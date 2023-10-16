@@ -89,6 +89,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/messages',[MessagesController::class,'messages'])->name('messages');
     
     Route::get('/forget-password', [ProfileController::class, 'comming-soon'])->name('auth.forget-comming-soon');
+
+    // Stacks routes
+    Route::post('/like-post',[NewsFeedController::class,'likePost'])->name('post.like');;
 });
 
 require __DIR__.'/auth.php';

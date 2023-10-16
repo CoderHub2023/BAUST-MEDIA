@@ -12,6 +12,9 @@ class Stack extends Model
     protected $fillable =[
         'stack',
         'users_id',
+        'likes',
+        'comments',
+        'shares',
         'images',
     ];
 
