@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('users_id');
             $table->longText("stack")->nullable();
+            $table->unsignedBigInteger('likes')->nullable();
+            $table->string("comments")->nullable();
             $table->string("images")->nullable();
+            $table->unsignedBigInteger('shares')->nullable();
             $table->timestamps();
         });
     }
