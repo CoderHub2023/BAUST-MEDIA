@@ -47,9 +47,10 @@
     </form>
   </div>
   <!-- End Post Creation -->
-
-  <!-- Post viewing -->
-  @foreach ($stacks as $stack)
+  <div class="loader"></div>
+  
+    <!-- Post viewing -->
+    @foreach ($stacks as $stack)
   <div class="max-w-3/6 mx-auto mt-8 bg-white rounded-lg shadow-md">
     <div class="max-w-3/6  mx-auto mt-8 bg-slate-700 rounded-lg shadow-md">
 
