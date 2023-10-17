@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stack;
+use Illuminate\Http\Client\ResponseSequence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -73,5 +74,20 @@ class NewsFeedController extends Controller
         $post->save();
 
         return response()->json(['likes' => $post->likes]);
+    }
+
+    public function addComment(Request $request)
+    {
+        $GetPostId = Stack::where('id', $request->input('postId'))->get();
+        if ($GetPostId) {
+            $success = Stack::insert([
+               'comments' => $request->input('comments')
+            ]);
+            
+            return response()->json($success);
+        }
+        else{
+            dd('Failed to add comment');
+        }
     }
 }

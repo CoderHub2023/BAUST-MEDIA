@@ -48,9 +48,9 @@
   </div>
   <!-- End Post Creation -->
   <div class="loader"></div>
-  
-    <!-- Post viewing -->
-    @foreach ($stacks as $stack)
+
+  <!-- Post viewing -->
+  @foreach ($stacks as $stack)
   <div class="max-w-3/6 mx-auto mt-8 bg-white rounded-lg shadow-md">
     <div class="max-w-3/6 mx-auto mt-8 bg-slate-700 rounded-lg shadow-md">
 
@@ -134,11 +134,11 @@
       <div class="p-4 border-t border-gray-300">
         <div class="p-4 border-t border-gray-300">
           <h2 class="text-lg font-semibold text-gray-700 dark:text-white mb-2">Add a Comment</h2>
-          <form action="" method="POST">
+          <form action="{{ route('addComment') }}" method="POST">
             @csrf
             <input type="hidden" name="post_id" value="{{ $stack->id }}">
-            <textarea name="body" class="w-5/6 h-10 p-2 border rounded-md focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Add your comment..." required></textarea>
-            <button type="submit" class="mt-2 btn btn-blue">Submit Comment</button>
+            <textarea name="body" id="comment-body-{{ $stack->id }}" class="w-5/6 h-10 p-2 border rounded-md focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Add your comment..." required></textarea>
+            <button type="button" onclick="addComment({{ $stack->id }})" class="mt-2 btn btn-blue">Submit Comment</button>
           </form>
         </div>
       </div>
@@ -216,19 +216,36 @@
 </div>
 </div>
 <script>
+  // Function for like a Stack
   function likePost(postId) {
-        $.ajax({
-            type: 'POST',
-            url: '/like-post',
-            data: {
-                postId: postId,
-                _token: '{{ csrf_token() }}',
-            },
-            success: function (data) {
-                // Update the like count on success.
-                $('#like-count-' + postId).text(data.likes);
-            },
-        });
-    }
+    $.ajax({
+      type: 'POST',
+      url: '/like-post',
+      data: {
+        postId: postId,
+        _token: '{{ csrf_token() }}',
+      },
+      success: function(data) {
+        // Update the like count on success.
+        $('#like-count-' + postId).text(data.likes);
+      },
+    });
+  }
+  // Function for comments in a Stack
+  function addComment(postId) {
+    var comments = $('#comments').val();
+    $.ajax({
+      type: 'POST',
+      dataType: "json",
+      data: {
+        postId: postId,
+        comments: comments,
+      },
+      url: "/add-comment",
+      success: function(data){
+        console.log("You have been commented");
+      }
+    })
+  }
 </script>
 @endsection

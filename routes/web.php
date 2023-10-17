@@ -91,7 +91,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/forget-password', [ProfileController::class, 'comming-soon'])->name('auth.forget-comming-soon');
 
     // Stacks routes
-    Route::post('/like-post',[NewsFeedController::class,'likePost'])->name('post.like');;
+    Route::post('/like-post',[NewsFeedController::class,'likePost'])->name('post.like');
+    Route::post('/add-comment',[NewsFeedController::class,'addcomment'])->name('addComment');
+
 });
 
 require __DIR__.'/auth.php';
