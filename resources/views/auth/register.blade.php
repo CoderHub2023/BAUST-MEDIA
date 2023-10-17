@@ -3,11 +3,11 @@
 @section('content')
 <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
     @csrf
-    <div class="flex justify-center items-center bg-gray-100 dark:bg-gray-900 min-h-screen">
-        <div class="max-w-screen-sm w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+    <div class="flex justify-center items-center bg-gray-100 dark:bg-gray-900 min-h-screen gradient-box2">
+        <div class="max-w-screen-sm w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden gradient-box">
             <div class="px-4 py-8 sm:px-6 md:px-8">
                 <div class="flex justify-center mb-4">
-                    <img class="h-16" src="/uploads/baust-logo-2015.png" alt="Logo">
+                    <img src="{{ ('/uploads/buastmedialogo.webp') }}" alt="" class="lg:-mt-20 rounded-md">
                 </div>
                 <div class="mb-4">
                     <label for="roll" class="block font-medium text-gray-700 dark:text-gray-200">ID</label>

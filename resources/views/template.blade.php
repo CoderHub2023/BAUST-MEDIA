@@ -24,14 +24,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" src="{{ asset('css/public-nav.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    <style>
+        .gradient-box {
+            width: auto;
+            height: auto;
+            background: linear-gradient(to right, #764BA2, #667EEA);
+        }
+        .gradient-box2 {
+            width: auto;
+            height: auto;
+            background: linear-gradient(to right, #667EEA, #764BA2);
+        }
+    </style>
 
 </head>
 
 <body class="antialiased bg-slate-200 dark:text-white dark:bg-slate-600">
     @yield('content')
     @yield('footer')
-
     
     <script>
         const html = document.documentElement;
