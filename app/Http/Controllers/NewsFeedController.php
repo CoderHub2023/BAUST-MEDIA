@@ -17,15 +17,26 @@ class NewsFeedController extends Controller
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         $stacks = Stack::all()->shuffle();
         $stacks = json_decode($stacks);
+
+        $imagePaths = [];
+        $stack_users = []; // Array to store user data for each stack
+
         foreach ($stacks as $stack) {
             $imagePaths[] = $stack->images;
+            $stack_time = \Carbon\Carbon::parse($stack->created_at);
+            $formattedStackTime = $stack_time->format('jS F Y');
+            $stack_user = DB::table('users')->select('*')->where('id', '=', $stack->users_id)->get();
+            $stack_users[] = $stack_user;
         }
-        // dd($imagePaths);
-        $stack_time = \Carbon\Carbon::parse($stacks[0]->created_at);
-        $formattedStackTime = $stack_time->format('jS F Y');
-        $stack_user = DB::table('users')->select('*')->where('id', '=', $stacks[0]->users_id)->get();
-        return view('welcome', ['stacks' => $stacks, 'loggedInUserData' => $loggedInUserData, 'stack_user' => $stack_user, 'formattedStackTime' => $formattedStackTime]);
+        dd($stack_users);
+        return view('welcome', [
+            'stacks' => $stacks,
+            'loggedInUserData' => $loggedInUserData,
+            'stack_users' => $stack_users, // Pass the array of user data for each stack
+            'formattedStackTime' => $formattedStackTime,
+        ]);
     }
+
 
     public function store(Request $request)
     {
