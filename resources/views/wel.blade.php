@@ -50,16 +50,18 @@
   <div class="loader"></div>
 
   <!-- Post viewing -->
+  @foreach ($stack_users as $stack_users)
+  @foreach ($stack_users as $user)
   <div class="max-w-3/6 mx-auto mt-8 bg-white rounded-lg shadow-md">
     <div class="max-w-3/6 mx-auto mt-8 bg-slate-700 rounded-lg shadow-md">
 
       <!-- Post Header -->
       <div class="flex items-center justify-between p-4 border-b border-gray-300">
         <div class="flex items-center space-x-4">
-          <img src="" alt="User Avatar" class="w-10 h-10 rounded-full">
+          <img src="{{ $user->profile_picture }}" alt="User Avatar" class="w-10 h-10 rounded-full">
           <div>
-            <p class="text-black dark:text-white text-lg font-semibold"></p>
-            <p class="text-black dark:text-white"></p>
+            <p class="text-black dark:text-white text-lg font-semibold">{{ $user->name }}</p>
+            <p class="text-black dark:text-white">{{ $formattedStackTime }}</p>
           </div>
         </div>
         <div class="text-gray-400 hover:text-blue-500 cursor-pointer">
@@ -68,28 +70,34 @@
           </svg>
         </div>
       </div>
+      @endforeach
+      @endforeach
       <!-- End Post Header -->
 
       <!-- Photo and Caption -->
       <div class="p-4">
         <!-- carousel Start -->
-        <div class="carousel w-full" id="carousel-">
-          <div id="" class="carousel-item relative w-full">
-            <img src="" class="w-full" />
+        <div class="carousel w-full" id="carousel-{{ $stack->id }}">
+          @foreach (explode(',', $stack->images) as $index => $image)
+          <div id="slide-{{ $stack->id }}-{{ $index + 1 }}" class="carousel-item relative w-full">
+            <img src="{{ asset(trim($image)) }}" class="w-full" />
             <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="" class="btn btn-circle">❮</a>
-              <a href="" class="btn btn-circle">❯</a>
+              <a href="#slide-{{ $stack->id }}-{{ $index === 0 ? count(explode(',', $stack->images)) : $index }}" class="btn btn-circle">❮</a>
+              <a href="#slide-{{ $stack->id }}-{{ $index === count(explode(',', $stack->images)) - 1 ? 1 : $index + 2 }}" class="btn btn-circle">❯</a>
             </div>
           </div>
+          @endforeach
 
+          @if (count(explode(',', $stack->images)) == 1)
           <!-- If there's only one image, no need for a carousel -->
-          <div id="" class="carousel-item relative w-full">
-            <img src="" class="w-full" />
+          <div id="slide-{{ $stack->id }}-2" class="carousel-item relative w-full">
+            <img src="{{ asset(trim($stack->images)) }}" class="w-full" />
           </div>
+          @endif
         </div>
         <!-- carousel end -->
         <p class="mt-2 text-black dark:text-white">
-          
+          {{ $stack->stack }}
         </p>
       </div>
       <!-- Photo and Caption end-->
@@ -98,7 +106,7 @@
       <div class="flex justify-between p-4 border-t border-gray-300">
         <div class="flex space-x-4">
           <div class="flex items-center space-x-2 cursor-pointer hover:text-blue-500">
-            <a href="javascript:void(0);" onclick="">
+            <a href="javascript:void(0);" onclick="likePost({{ $stack->id }})">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
@@ -122,7 +130,7 @@
       </div>
       <!-- Like and Comment Counts -->
       <div class="p-4 text-gray-500">
-        <p id="like-count-" class="text-black dark:text-yellow-500"> likes</p>
+        <p id="like-count-{{ $stack->id }}" class="text-black dark:text-yellow-500">{{ $stack->likes }} likes</p>
         <p class="text-black dark:text-yellow-500">5 comments</p>
       </div>
       <!-- Comment Form -->
@@ -131,9 +139,9 @@
           <h2 class="text-lg font-semibold text-gray-700 dark:text-white mb-2">Add a Comment</h2>
           <form action="{{ route('addComment') }}" method="POST">
             @csrf
-            <input type="hidden" name="post_id" value="">
-            <textarea name="body" id="" class="w-5/6 h-10 p-2 border rounded-md focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Add your comment..." required></textarea>
-            <button type="button" onclick="" class="mt-2 btn btn-blue">Submit Comment</button>
+            <input type="hidden" name="post_id" value="{{ $stack->id }}">
+            <textarea name="body" id="comment-body-{{ $stack->id }}" class="w-5/6 h-10 p-2 border rounded-md focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Add your comment..." required></textarea>
+            <button type="button" onclick="addComment({{ $stack->id }})" class="mt-2 btn btn-blue">Submit Comment</button>
           </form>
         </div>
       </div>

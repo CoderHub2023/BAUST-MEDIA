@@ -18,24 +18,33 @@ class NewsFeedController extends Controller
         $stacks = Stack::all()->shuffle();
         $stacks = json_decode($stacks);
 
-        $imagePaths = [];
-        $stack_users = []; // Array to store user data for each stack
+        $stack_data = []; // Array to store data for each stack
 
         foreach ($stacks as $stack) {
-            $imagePaths[] = $stack->images;
+            $imagePaths = $stack->images; // Store image paths for the current stack
             $stack_time = \Carbon\Carbon::parse($stack->created_at);
             $formattedStackTime = $stack_time->format('jS F Y');
             $stack_user = DB::table('users')->select('*')->where('id', '=', $stack->users_id)->get();
-            $stack_users[] = $stack_user;
+
+            // Create an array with data for the current stack
+            $stack_data[] = [
+                'stack' => $stack,
+                'stack_user' => $stack_user,
+                'formattedStackTime' => $formattedStackTime,
+                'imagePaths' => $imagePaths, // Add image paths for the current stack
+            ];
         }
-        dd($stack_users);
+        // dd($stack_data[2]['stack']->likes);
+        // dd($stack_data);
+        
         return view('welcome', [
             'stacks' => $stacks,
             'loggedInUserData' => $loggedInUserData,
-            'stack_users' => $stack_users, // Pass the array of user data for each stack
-            'formattedStackTime' => $formattedStackTime,
+            'stack_data' => $stack_data, // Pass the array of data for each stack
         ]);
     }
+
+
 
 
     public function store(Request $request)
