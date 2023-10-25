@@ -17,31 +17,39 @@ class NewsFeedController extends Controller
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         $stacks = Stack::all()->shuffle();
         $stacks = json_decode($stacks);
+        if (!$stacks) {
+            return view('welcome', [
+                'loggedInUserData' => $loggedInUserData,
+                'stacks' => $stacks,
+            ]);
+        } else {
+            $stack_data = []; // Array to store data for each stack
 
-        $stack_data = []; // Array to store data for each stack
+            foreach ($stacks as $stack) {
+                $imagePaths = $stack->images; // Store image paths for the current stack
+                $stack_time = \Carbon\Carbon::parse($stack->created_at);
+                $formattedStackTime = $stack_time->format('jS F Y');
+                $stack_user = DB::table('users')->select('*')->where('id', '=', $stack->users_id)->get();
 
-        foreach ($stacks as $stack) {
-            $imagePaths = $stack->images; // Store image paths for the current stack
-            $stack_time = \Carbon\Carbon::parse($stack->created_at);
-            $formattedStackTime = $stack_time->format('jS F Y');
-            $stack_user = DB::table('users')->select('*')->where('id', '=', $stack->users_id)->get();
+                // Create an array with data for the current stack
+                $stack_data[] = [
+                    'stack' => $stack,
+                    'stack_user' => $stack_user,
+                    'formattedStackTime' => $formattedStackTime,
+                    'imagePaths' => $imagePaths, // Add image paths for the current stack
+                ];
+            }
+            // dd($stack_data[2]['stack']->likes);
+            // dd($stack_data);
 
-            // Create an array with data for the current stack
-            $stack_data[] = [
-                'stack' => $stack,
+            return view('welcome', [
+                'stacks' => $stacks,
+                'loggedInUserData' => $loggedInUserData,
+                'stack_data' => $stack_data,
                 'stack_user' => $stack_user,
-                'formattedStackTime' => $formattedStackTime,
-                'imagePaths' => $imagePaths, // Add image paths for the current stack
-            ];
+                'formattedStackTime' => $formattedStackTime, // Pass the array of data for each stack
+            ]);
         }
-        // dd($stack_data[2]['stack']->likes);
-        // dd($stack_data);
-        
-        return view('welcome', [
-            'stacks' => $stacks,
-            'loggedInUserData' => $loggedInUserData,
-            'stack_data' => $stack_data, // Pass the array of data for each stack
-        ]);
     }
 
 
@@ -101,12 +109,11 @@ class NewsFeedController extends Controller
         $GetPostId = Stack::where('id', $request->input('postId'))->get();
         if ($GetPostId) {
             $success = Stack::insert([
-               'comments' => $request->input('comments')
+                'comments' => $request->input('comments')
             ]);
-            
+
             return response()->json($success);
-        }
-        else{
+        } else {
             dd('Failed to add comment');
         }
     }
