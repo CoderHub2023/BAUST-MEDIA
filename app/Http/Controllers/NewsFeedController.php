@@ -15,7 +15,7 @@ class NewsFeedController extends Controller
     {
         $userId = $request->user()->id;
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
-        $stacks = Stack::all()->shuffle();
+        $stacks = Stack::all();
         $stacks = json_decode($stacks);
         if (!$stacks) {
             return view('welcome', [
@@ -50,8 +50,6 @@ class NewsFeedController extends Controller
                 'formattedStackTime' => $formattedStackTime, // Pass the array of data for each stack
             ]);
         }
-    }
-
 
 
 
