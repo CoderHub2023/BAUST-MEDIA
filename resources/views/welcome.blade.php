@@ -166,8 +166,7 @@
   @endforeach
   @endif
 </div>
-@endforeach
-@endforeach
+
 
 
 <div class="w-1/6 h-screen bg-gray-800 p-4 text-white hidden md:block">

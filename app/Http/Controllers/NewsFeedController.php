@@ -50,9 +50,7 @@ class NewsFeedController extends Controller
                 'formattedStackTime' => $formattedStackTime, // Pass the array of data for each stack
             ]);
         }
-
-
-
+    }
     public function store(Request $request)
     {
         // Validate the request
