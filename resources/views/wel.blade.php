@@ -49,21 +49,18 @@
   <!-- End Post Creation -->
   <div class="loader"></div>
 
-  @if(!$stacks)
-  <p>Stack Unableable</p>
   <!-- Post viewing -->
-  @else
-  @foreach ($stacks as $stack)
-
+  @foreach ($stack_users as $stack_users)
+  @foreach ($stack_users as $user)
   <div class="max-w-3/6 mx-auto mt-8 bg-white rounded-lg shadow-md">
     <div class="max-w-3/6 mx-auto mt-8 bg-slate-700 rounded-lg shadow-md">
 
       <!-- Post Header -->
       <div class="flex items-center justify-between p-4 border-b border-gray-300">
         <div class="flex items-center space-x-4">
-          <img src="{{ $stack_users[0]->profile_picture }}" alt="User Avatar" class="w-10 h-10 rounded-full">
+          <img src="{{ $user->profile_picture }}" alt="User Avatar" class="w-10 h-10 rounded-full">
           <div>
-            <p class="text-black dark:text-white text-lg font-semibold">{{ $stack_users[0]->name }}</p>
+            <p class="text-black dark:text-white text-lg font-semibold">{{ $user->name }}</p>
             <p class="text-black dark:text-white">{{ $formattedStackTime }}</p>
           </div>
         </div>
@@ -73,7 +70,10 @@
           </svg>
         </div>
       </div>
+      @endforeach
+      @endforeach
       <!-- End Post Header -->
+
       <!-- Photo and Caption -->
       <div class="p-4">
         <!-- carousel Start -->
@@ -163,11 +163,7 @@
       </div>
     </div>
   </div>
-  @endforeach
-  @endif
 </div>
-@endforeach
-@endforeach
 
 
 <div class="w-1/6 h-screen bg-gray-800 p-4 text-white hidden md:block">
