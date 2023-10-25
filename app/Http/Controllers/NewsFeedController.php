@@ -15,7 +15,7 @@ class NewsFeedController extends Controller
     {
         $userId = $request->user()->id;
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
-        $stacks = Stack::all()->shuffle();
+        $stacks = Stack::all();
         $stacks = json_decode($stacks);
 
         $imagePaths = [];
@@ -28,7 +28,6 @@ class NewsFeedController extends Controller
             $stack_user = DB::table('users')->select('*')->where('id', '=', $stack->users_id)->get();
             $stack_users[] = $stack_user;
         }
-        dd($stack_users);
         return view('welcome', [
             'stacks' => $stacks,
             'loggedInUserData' => $loggedInUserData,
