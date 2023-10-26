@@ -50,7 +50,9 @@
   <div class="loader"></div>
 
   @if(!$stacks)
-  <p>Stack Unableable</p>
+  <div class="text-red-600 w-full md:w-3/6 lg:w-3/6 container mx-auto mt-8 overflow-y-auto" style="max-height: 80vh;">
+    <p class="text-center">Stack Unableable</p>
+  </div>
   <!-- Post viewing -->
   @else
   @foreach ($stacks as $stack)
@@ -61,9 +63,9 @@
       <!-- Post Header -->
       <div class="flex items-center justify-between p-4 border-b border-gray-300">
         <div class="flex items-center space-x-4">
-          <img src="{{ $stack_users[0]->profile_picture }}" alt="User Avatar" class="w-10 h-10 rounded-full">
+          <img src="{{ $stack_user[0]->profile_picture }}" alt="User Avatar" class="w-10 h-10 rounded-full">
           <div>
-            <p class="text-black dark:text-white text-lg font-semibold">{{ $stack_users[0]->name }}</p>
+            <p class="text-black dark:text-white text-lg font-semibold">{{ $stack_user[0]->name }}</p>
             <p class="text-black dark:text-white">{{ $formattedStackTime }}</p>
           </div>
         </div>
@@ -75,6 +77,7 @@
       </div>
       <!-- End Post Header -->
       <!-- Photo and Caption -->
+      @if($stack->images)
       <div class="p-4">
         <!-- carousel Start -->
         <div class="carousel w-full" id="carousel-{{ $stack->id }}">
@@ -87,7 +90,6 @@
             </div>
           </div>
           @endforeach
-
           @if (count(explode(',', $stack->images)) == 1)
           <!-- If there's only one image, no need for a carousel -->
           <div id="slide-{{ $stack->id }}-2" class="carousel-item relative w-full">
@@ -101,7 +103,13 @@
         </p>
       </div>
       <!-- Photo and Caption end-->
-
+      @else
+      <div class="p-4">
+        <p class="mt-2 text-black dark:text-white">
+          {{ $stack->stack }}
+        </p>
+      </div>
+      @endif
       <!-- Like and Comment Buttons -->
       <div class="flex justify-between p-4 border-t border-gray-300">
         <div class="flex space-x-4">
@@ -247,7 +255,7 @@
         comments: comments,
       },
       url: "/add-comment",
-      success: function(data){
+      success: function(data) {
         console.log("You have been commented");
       }
     })

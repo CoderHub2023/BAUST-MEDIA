@@ -17,13 +17,15 @@ class NewsFeedController extends Controller
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
         $stacks = Stack::all();
         $stacks = json_decode($stacks);
+        $stack_data = []; // Array to store data for each stack
+
         if (!$stacks) {
+            dd($stacks);
             return view('welcome', [
                 'loggedInUserData' => $loggedInUserData,
                 'stacks' => $stacks,
             ]);
         } else {
-            $stack_data = []; // Array to store data for each stack
 
             foreach ($stacks as $stack) {
                 $imagePaths = $stack->images; // Store image paths for the current stack
@@ -41,7 +43,7 @@ class NewsFeedController extends Controller
             }
             // dd($stack_data[2]['stack']->likes);
             // dd($stack_data);
-
+            // dd($stack_user);
             return view('welcome', [
                 'stacks' => $stacks,
                 'loggedInUserData' => $loggedInUserData,
