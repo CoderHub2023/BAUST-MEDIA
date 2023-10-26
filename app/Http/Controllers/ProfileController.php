@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\UserEducation;
 use App\Models\UserWork;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,7 @@ use Termwind\Components\Dd;
 
 use function Pest\Laravel\get;
 use function Pest\Laravel\json;
+use function PHPSTORM_META\type;
 
 class ProfileController extends Controller
 {
@@ -57,6 +59,86 @@ class ProfileController extends Controller
         // dd($friends);
         return view('profile.profile',compact('loggedInUserData','user_education','user_about','count','countUserEducation','users_works_count','users_works','CountFriends','friends'));   
     }
+
+    public function ViewResume(Request $request){
+        $userId = $request->user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
+        $viewResume = DB::table('users_details')->select('resume')->where('users_details.users_id', '=', $userId)->get();
+        // dd($viewResume);
+        return view('profile.viewResume', compact('loggedInUserData','viewResume'));
+    }
+
+    public function update_resume(Request $request){
+        $userId = $request->user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
+        $viewResume = DB::table('users_details')->select('resume')->where('users_details.users_id', '=', $userId)->get();
+        return view('profile.update-resume',compact('loggedInUserData','viewResume'));
+    }
+
+    public function send_update_resume(Request $request) {
+        if ($request->hasFile('resume')) {
+            $request->validate([
+                'resume' => 'required|mimes:pdf|max:2048', // Adjust the max size and allowed file types as needed
+            ]);
+    
+            $file = $request->file('resume');
+            $extension = $file->getClientOriginalExtension();
+    
+            // Customize the file naming and location as needed
+            $fileName = 'my-resume_' . time() . '.' . $extension;
+            $location = '/uploads/resume/';
+    
+            // Move the uploaded file to the specified location
+            $file->move(public_path() . $location, $fileName);
+    
+            // Construct the full resume file path
+            $resumeLocation = $location . $fileName;
+            $userdata = DB::table('users_details')
+            ->where('users_id', $request->user()->id)
+            ->first();
+            if(!$userdata){
+                $resumeSuccess = DB::table('users_details')
+                ->insert([
+                    'users_id' => $request->user()->id,
+                    'resume' => $resumeLocation,
+                ]);
+            }
+            else{
+            // Update the "resume" column in the "users_details" table
+            $resumeSuccess = DB::table('users_details')
+                ->where('users_id', $request->user()->id) // Assuming "user_id" is the user identifier in the table
+                ->update([
+                    'resume' => $resumeLocation
+                ]);}
+    
+            if ($resumeSuccess) {
+                return back()->with('success', "Resume Updated Successfully");
+            } else {
+                return back()->with('failure', "Failed to update Resume");
+            }
+        }
+    
+        // Handle the case where no file was uploaded
+        return back()->with('failure', "No resume file selected for upload");
+    }
+
+    public function deleteResume(Request $request) {
+        $userId = $request->user()->id;
+    
+        $updateSuccess = DB::table('users_details')
+            ->where('users_id', $userId)
+            ->update(['resume' => null]);
+    
+        if ($updateSuccess) {
+            return back()->with('success', 'Resume deleted successfully.');
+        } else {
+            return back()->with('failure', 'Failed to delete the resume.');
+        }
+    }
+    
+
+    
+    
 
     public function add_works(Request $request){
         $user_education = new UserEducation();
@@ -444,11 +526,8 @@ class ProfileController extends Controller
         return view('profile.general', compact('loggedInUserData'));
     }
 
-    public function ViewResume(Request $request){
-        $userId = $request->user()->id;
-        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
-        return view('profile.viewResume', compact('loggedInUserData'));
-    }
+    
+
     public function comming_soon(){
         return view('auth.forget-comming-soon');
     }

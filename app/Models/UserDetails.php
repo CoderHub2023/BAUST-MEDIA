@@ -13,6 +13,7 @@ class UserDetails extends Model
         'cover_images',
         'profile_images',
         'skills',
+        'resume',
         'about',
     ];
 
