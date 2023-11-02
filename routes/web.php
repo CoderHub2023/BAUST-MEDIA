@@ -22,7 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile/update', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/update_profile_photo', [ProfileController::class, 'update_profile_photo'])->name('profile.update_profile_photo');
     Route::get('/profile/update-cover-photo', [ProfileController::class, 'update_cover_photo'])->name('profile.update_cover_photo');
-    
+    // Resume routes
+    Route::get('/update-resume', [ProfileController::class,'update_resume'])->name('profile.update-resume');
+    Route::post('/send-resume', [ProfileController::class,'send_update_resume'])->name('profile.send_update_resume');
+    Route::post('/deleteResume',[ProfileController::class,'deleteResume'])->name('deleteResume');
     Route::post('/profile/update-details/post', [ProfileController::class, 'post_update_details'])->name('profile.post-update-details');
     Route::get('/profile/general', [ProfileController::class, 'general'])->name('profile.general');
     Route::get('/profile/ViewResume', [ProfileController::class, 'ViewResume'])->name('profile.ViewResume');
@@ -94,6 +97,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/like-post',[NewsFeedController::class,'likePost'])->name('post.like');
     Route::post('/add-comment',[NewsFeedController::class,'addcomment'])->name('addComment');
 
+    Route::get('/allcomment/{id}', [NewsFeedController::class, 'viewComments'])->name('all-comments');
+
+    
 });
 
 require __DIR__.'/auth.php';

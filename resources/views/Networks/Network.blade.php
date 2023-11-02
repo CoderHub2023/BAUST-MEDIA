@@ -4,9 +4,6 @@
 @include('layouts.public-nav')
 
 @section('content')
-@if($isLoading)
-<x-skeleton-loader />
-@else
     <div class="xl:w-3/4 2xl:w-4/5 w-full mx-auto">
         <div class="px-4 sm:px-6 md:px-8 lg:px-10 py-4 md:py-7">
             <div class="flex flex-wrap items-center justify-between">
@@ -43,5 +40,4 @@
             </div>
         </div>
     </div>
-@endif
 @endsection
