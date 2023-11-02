@@ -97,6 +97,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/like-post',[NewsFeedController::class,'likePost'])->name('post.like');
     Route::post('/add-comment',[NewsFeedController::class,'addcomment'])->name('addComment');
 
+    Route::get('/allcomment/{id}', [NewsFeedController::class, 'viewComments'])->name('all-comments');
+
+    
 });
 
 require __DIR__.'/auth.php';

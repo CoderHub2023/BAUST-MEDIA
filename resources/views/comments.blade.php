@@ -1,5 +1,5 @@
 @extends('template')
-@section('title','Home')
+@section('title','Comments')
 @include('layouts.public-nav')
 @section('content')
 
@@ -159,15 +159,16 @@
       <div class="p-4 border-t border-gray-300">
         <h2 class="text-lg font-semibold text-gray-700 dark:text-white">Comments</h2>
         <!-- Start Single Comments -->
+        @foreach ($allComments as $allComments)
         <div class="mb-2 flex items-start">
           <img src="" alt=" Avatar" class="w-8 h-8 rounded-full mr-2">
           <div>
             <strong></strong>
-            <p class="text-gray-600"></p>
+            <p class="text-white">{{ $allComments->comments }}</p>
           </div>
         </div>
+        @endforeach
         <!-- End Single Comment -->
-        <a href="{{ url('allcomment/'.$stack->id) }}" class="text-blue-500 hover:underline">View All Comments</a>
       </div>
     </div>
   </div>

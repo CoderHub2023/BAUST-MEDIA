@@ -104,15 +104,63 @@ class NewsFeedController extends Controller
 
     public function addComment(Request $request)
     {
-        $GetPostId = Stack::where('id', $request->input('postId'))->get();
+        $stack = new Stack();
+        $stack->users_id = $request->user()->id;
+        $GetPostId = Stack::where('id', $request->input('post_id'))->get();
         if ($GetPostId) {
-            $success = Stack::insert([
-                'comments' => $request->input('comments')
-            ]);
+            if($GetPostId->count()>1){
 
-            return response()->json($success);
+            }
+            else
+            $success = Stack::where('id', $request->input('post_id'))->update(['comments' => $request->input('comments')]);
+
+            return back();
         } else {
             dd('Failed to add comment');
+        }
+    }
+
+    public function viewComments(Request $request,$id){
+        $userId = $request->user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
+        $stacks =   DB::table('stack')->select('*')->where('stack.id' , '=', $id)->get();
+        $stacks = json_decode($stacks);
+        $stack_data = []; // Array to store data for each stack
+        if (!$stacks) {
+            dd($stacks);
+            return view('welcome', [
+                'loggedInUserData' => $loggedInUserData,
+                'stacks' => $stacks,
+            ]);
+        } else {
+
+            foreach ($stacks as $stack) {
+                $imagePaths = $stack->images; // Store image paths for the current stack
+                $stack_time = \Carbon\Carbon::parse($stack->created_at);
+                $formattedStackTime = $stack_time->format('jS F Y');
+                $stack_user = DB::table('users')->select('*')->where('id', '=', $stack->users_id)->get();
+
+                // Create an array with data for the current stack
+                $stack_data[] = [
+                    'stack' => $stack,
+                    'stack_user' => $stack_user,
+                    'formattedStackTime' => $formattedStackTime,
+                    'imagePaths' => $imagePaths, // Add image paths for the current stack
+                ];
+            }
+            // dd($stack_data[2]['stack']->likes);
+            // dd($stack_data);
+            // dd($stack_user);
+            $allComments = DB::table('stack')->select('comments')->where('stack.id','=',$id)->get();        
+            // dd($allComments);
+            return view('comments', [
+                'stacks' => $stacks,
+                'loggedInUserData' => $loggedInUserData,
+                'stack_data' => $stack_data,
+                'stack_user' => $stack_user,
+                'formattedStackTime' => $formattedStackTime, // Pass the array of data for each stack
+                'allComments' => $allComments,
+            ]);
         }
     }
 }
