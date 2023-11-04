@@ -202,15 +202,15 @@ class ProfileController extends Controller
         $user = new User();
         $userId = $request->user()->id;
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
-        $user_education = DB::table('users_education')->where('users_id',$userId)->get();
+        $user_education = DB::table('users_education')->where('users_id',$userId)->get()->last();
         $user_about = DB::table('users_details')->where('users_id',$userId)->select('about')->get();
         $users_works = DB::table('users_works')->where('users_id',$userId)->get();
         $users_works_count = count($users_works);
         $count = count($user_about);
-        $users_education_count = count($user_education);
-        $user_education = json_decode($user_education); 
+        // $user_education = json_decode($user_education); 
         $user = json_decode($user); 
-        return view('profile.update-works',compact('loggedInUserData','user_education','user_about','count','users_works_count','users_works','users_education_count'));
+        // dd($user_education);
+        return view('profile.update-works',compact('loggedInUserData','user_education','user_about','count','users_works_count','users_works'));
     }
 
     public function update_education(Request $request,$id){

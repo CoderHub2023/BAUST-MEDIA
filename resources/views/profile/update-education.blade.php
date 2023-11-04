@@ -41,9 +41,9 @@
             </div>
             <!-- Right column -->
             <div class="w-2/2 lg:w-1/2 p-8">
-            
-            <!-- Work section -->
-            <div class="flex items-center justify-between">
+
+                <!-- Work section -->
+                <div class="flex items-center justify-between">
                     <div>
                         <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Work at:</h2>
                         @if($users_works_count !=0)
@@ -79,26 +79,28 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studies at:</h2>
-                            <p class="text-lg text-white mb-4"><input type="text" name="institution" id="institution" value="{{ $user_education[0]->institution }}" class="input mb-2 input-bordered input-primary w-full max-w-xs" required/></p>
+                            <p class="text-lg text-white mb-4"><input type="text" name="institution" id="institution" value="{{ $user_education[0]->institution }}" class="bg-slate-300 text-black input mb-2 input-bordered input-primary w-full max-w-xs" required /></p>
                             <p id="institutionErr" class="text-red-600"></p>
-                            <p class="text-lg text-white mb-4"><input type="text" name="subject" id="subject" value="{{ $user_education[0]->subject }}" class="input mb-2 input-bordered input-primary w-full max-w-xs" required /></p>
+                            <p class="text-lg text-white mb-4"><input type="text" name="subject" id="subject" value="{{ $user_education[0]->subject }}" class="bg-slate-300 text-black input mb-2 input-bordered input-primary w-full max-w-xs" required /></p>
                             <p id="subjectErr" class="text-red-600"></p>
-                            <input type="date" name="start" value="{{ $user_education[0]->start }}" class="mr-2 input input-bordered input-sm w-1/2 max-w-sm" />
-                            <input type="date" name="end" value="{{ $user_education[0]->end }}" class="input input-bordered input-sm w-1/2 max-w-sm" />
-                            </div>
+                            <input type="date" name="start" value="{{ $user_education[0]->start }}" class="bg-slate-300 text-black mr-2 input input-bordered input-sm w-1/2 max-w-sm" />
+                            <input type="date" name="end" value="{{ $user_education[0]->end }}" class="bg-slate-300 text-black input input-bordered input-sm w-1/2 max-w-sm" />
                         </div>
-                        <button type="submit" class="btn btn-success mt-4" onclick="EducationValidationChecker()">Save</button>
                     </div>
-                </form>
-
+                    <button type="submit" class="btn btn-success mt-4" onclick="EducationValidationChecker()">Save</button>
             </div>
-            <!-- End Right column -->
-        </div>
+            </form>
 
-        <button class="btn btn-danger w-32"><i class="fa fa-download" aria-hidden="true"></i>
+        </div>
+        <!-- End Right column -->
+    </div>
+
+    <a href="{{ route('profile.ViewResume') }}">
+        <button class="btn btn-danger dark:btn-warning w-32"><i class="fa fa-download" aria-hidden="true"></i>
             <p class="text-sm">Resume</p>
         </button>
-    </div>
+    </a>
+</div>
 
 </div>
 <!-- About section -->

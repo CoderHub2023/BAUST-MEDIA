@@ -35,7 +35,7 @@
         <div class="bg-gray-100 dark:bg-gray-900 lg:flex">
             <!-- Left column -->
             <div class="w-2/2 lg:w-1/2 p-8 mt-2">
-                <h1 class="text-2xl lg:text-2xl font-extrabold  dark:text-white text-gray-400 tracking-tight mb-2 mt-2">{{$loggedInUserData[0]->name}}</h1>
+                <h1 class="text-2xl lg:text-2xl font-extrabold  dark:text-white text-black tracking-tight mb-2 mt-2">{{$loggedInUserData[0]->name}}</h1>
                 <h2 class="text-xs lg:text-xl font-bold dark:text-white text-gray-400 tracking-tight mb-4">{{$loggedInUserData[0]->headlines}}</h2>
                 <p class="text-xs dark:text-white text-gray-500 mb-4">{{$loggedInUserData[0]->address}}</p>
             </div>
@@ -45,14 +45,14 @@
                     @csrf
                     <div class="flex items-center justify-between">
                         <div>
-                            <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Work at:</h2>
-                            <p class="text-lg text-white mb-4"><input type="text" name="work" id="work" placeholder="Company Name" class="input mb-2 input-bordered input-primary w-full max-w-xs" required/></p>
+                            <h2 class="text-lg font-bold dark:text-white text-black tracking-tight mb-4">Work at:</h2>
+                            <p class="text-lg text-white mb-4"><input type="text" name="work" id="work" placeholder="Company Name" class="bg-slate-300 text-black placeholder:text-slate-600 input mb-2 input-bordered input-primary w-full max-w-xs" required/></p>
                             <p id="workErr" class="text-red-600"></p>
-                            <p class="text-white"><input type="text" name="position" id="position"  placeholder="Position" class="input input-bordered input-sm w-full max-w-xs"  required/></p>
+                            <p class="text-white"><input type="text" name="position" id="position"  placeholder="Position" class="bg-slate-300 text-black placeholder:text-slate-600 input input-bordered input-sm w-full max-w-xs"  required/></p>
                             <p id="positionErr" class="text-red-600"></p>
                             <div class="flex w-60 mt-6">
-                                <input type="date" name="start" placeholder="Start" class="mr-2 input input-bordered input-sm w-1/2 max-w-sm" />
-                                <input type="date" name="end" placeholder="End" class="input input-bordered input-sm w-1/2 max-w-sm" />
+                                <input type="date" name="start" placeholder="Start" class="bg-slate-300 text-black placeholder:text-slate-600 mr-2 input input-bordered input-sm w-1/2 max-w-sm" />
+                                <input type="date" name="end" placeholder="End" class="bg-slate-300 text-black placeholder:text-slate-600 input input-bordered input-sm w-1/2 max-w-sm" />
                             </div>
                             <button type="submit" class="btn btn-success mt-4" onclick="WorkValidationChecker()">Save</button>
                         </div>
@@ -62,7 +62,7 @@
                     <div>
                         <h2 class="text-lg font-bold dark:text-white text-gray-500 tracking-tight mb-4">Studies at:</h2>
                         @if($users_education_count !=0)
-                        <p class="text-lg dark:text-white text-gray-400 mb-4">{{ $user_education[0]->institution }} at {{ $user_education[0]->institution }}</p>
+                        <p class="text-lg dark:text-white text-gray-400 mb-4">{{ $user_education[0]->subject }} at {{ $user_education[0]->institution }}</p>
                         <p class="text-sm dark:text-white text-gray-400 mb-4">Started at: {{ $user_education[0]->start }}</p>
                         @endif
                     </div>
@@ -89,9 +89,11 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-danger w-32"><i class="fa fa-download" aria-hidden="true"></i>
+        <a href="{{ route('profile.ViewResume') }}">
+        <button class="btn btn-danger dark:btn-warning w-32">
             <p class="text-sm">Resume</p>
         </button>
+        </a>
     </div>
 
 </div>

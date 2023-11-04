@@ -118,11 +118,11 @@
 
         <!-- Button group -->
         <div class="flex">
+            <a href="{{ route('profile.ViewResume') }}">
             <button class="btn btn-success w-32 flex items-center mr-4">
-                <a href="{{ route('profile.ViewResume') }}">
                     <p class="text-sm">View Resume</p>
-                </a>
-            </button>
+                </button>
+            </a>
 
             <button class="btn btn-success w-32 flex items-center">
                 <a href="{{ route('profile.update-resume') }}">

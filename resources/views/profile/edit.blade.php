@@ -9,24 +9,24 @@
          <!-- Roll/ID field -->
          <div>
             <x-input-label for="roll" :value="__('ID')" />
-            <x-text-input readonly id="roll"  name="roll" type="text" class="h-10 p-2 mt-1 block w-full disabled opacity-50" :value="old('roll', $user->roll)" required autofocus autocomplete="roll"/>
+            <x-text-input readonly id="roll"  name="roll" type="text" class="text-black dark:text-white h-10 p-2 mt-1 block w-full disabled opacity-50" :value="old('roll', $user->roll)" required autofocus autocomplete="roll"/>
         </div>
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full h-10 p-2" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="name" type="text" class="text-black dark:text-white mt-1 block w-full h-10 p-2" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
         <!-- Headlines of the user -->
         <div>
             <x-input-label for="headlines" :value="__('Headline')" />
-            <x-text-input id="headlines" name="headlines" type="text" class="mt-1 block w-full h-10 p-2" :value="old('headlines', $user->headlines)" required autocomplete="headlines" autofocus />
+            <x-text-input id="headlines" name="headlines" type="text" class="text-black dark:text-white mt-1 block w-full h-10 p-2" :value="old('headlines', $user->headlines)" required autocomplete="headlines" autofocus />
             <x-input-error class="mt-2" :messages="$errors->get('headlines')" />
         </div>
         
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full h-10 p-2" :value="old('email', $user->email)" required autocomplete="username" />
+            <x-text-input id="email" name="email" type="email" class="text-black dark:text-white mt-1 block w-full h-10 p-2" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
@@ -52,13 +52,13 @@
         <!-- Mobile field -->
         <div>
             <x-input-label for="mobile" :value="__('Mobile')" />
-            <x-text-input id="mobile" name="mobile" type="text" class="h-10 p-2 mt-1 block w-full" :value="old('mobile', $user->mobile)" required autofocus autocomplete="mobile" />
+            <x-text-input id="mobile" name="mobile" type="text" class="text-black dark:text-white h-10 p-2 mt-1 block w-full" :value="old('mobile', $user->mobile)" required autofocus autocomplete="mobile" />
             <x-input-error class="mt-2" :messages="$errors->get('mobile')" />
         </div>
         <!-- Address -->
         <div>
             <x-input-label for="address" :value="__('Address')" />
-            <x-text-input id="address" name="address" type="text" class="mt-1 block w-full h-10 p-2" :value="old('address', $user->address)" required autocomplete="address" autofocus />
+            <x-text-input id="address" name="address" type="text" class="text-black dark:text-white mt-1 block w-full h-10 p-2" :value="old('address', $user->address)" required autocomplete="address" autofocus />
             <x-input-error class="mt-2" :messages="$errors->get('address')" />
         </div>
 
