@@ -58,7 +58,7 @@
   @foreach ($stacks as $stack)
 
   <div class="max-w-3/6 mx-auto mt-8 bg-white rounded-lg shadow-md">
-    <div class="max-w-3/6 mx-auto mt-8  bg-white dark:bg-slate-700 rounded-lg shadow-md">
+    <div class="max-w-3/6 mx-auto mt-8  bg-white dark:bg-slate-800 rounded-lg shadow-md">
 
       <!-- Post Header -->
       <div class="flex items-center justify-between p-4 border-b border-gray-300">
@@ -78,9 +78,9 @@
       <!-- End Post Header -->
       <!-- Photo and Caption -->
       @if($stack->images)
-      <div class="p-4">
+      <div class="p-4 text-center">
         <!-- carousel Start -->
-        <div class="carousel w-full" id="carousel-{{ $stack->id }}">
+        <div class="carousel w-8/12" id="carousel-{{ $stack->id }}">
           @foreach (explode(',', $stack->images) as $index => $image)
           <div id="slide-{{ $stack->id }}-{{ $index + 1 }}" class="carousel-item relative w-full">
             <img src="{{ asset(trim($image)) }}" class="w-full" />
@@ -113,7 +113,7 @@
       <!-- Like and Comment Buttons -->
       <div class="flex justify-between p-4 border-t border-gray-300">
         <div class="flex space-x-4">
-          <div class="flex items-center space-x-2 cursor-pointer text-black hover:text-blue-500">
+          <div class="flex items-center space-x-2 cursor-pointer dark:text-white text-black hover:text-blue-500">
             <a href="javascript:void(0);" onclick="likePost({{ $stack->id }})">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -121,7 +121,7 @@
               <span>Like</span>
             </a>
           </div>
-          <div class="flex items-center space-x-2 cursor-pointer text-black hover:text-blue-500">
+          <div class="flex items-center space-x-2 cursor-pointer dark:text-white text-black hover:text-blue-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4a4 4 0 100 8 4 4 0 000-8z"></path>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 00-7-7m0 0a7 7 0 00-7 7m7-7v7m0-7a7 7 0 007 7"></path>
@@ -129,7 +129,7 @@
             <span>Comment</span>
           </div>
         </div>
-        <div class="flex items-center space-x-2 cursor-pointer text-black hover:text-blue-500">
+        <div class="flex items-center space-x-2 cursor-pointer dark:text-white text-black hover:text-blue-500">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
           </svg>
@@ -148,8 +148,8 @@
           <form action="{{ route('addComment') }}" method="POST">
             @csrf
             <input type="hidden" name="post_id" value="{{ $stack->id }}">
-            <textarea name="comments" class="w-5/6 h-10 p-2 border rounded-md focus:ring-2 bg-slate-50 focus:ring-blue-500" rows="4" placeholder="Add your comment..." required></textarea>
-            <button type="submit"  class="mt-2 btn btn-blue">Submit Comment</button>
+            <textarea name="comments" class="w-5/6 h-10 p-2 border-secondary rounded-lg  focus:ring-2 bg-slate-200 bordered focus:ring-blue-500 text-black dark:text-white" rows="4" placeholder="Add your comment..." required></textarea>
+            <button type="submit"  class="mt-2 btn btn-neutral">Submit Comment</button>
           </form>
         </div>
       </div>
@@ -157,15 +157,7 @@
 
       <!-- Display Comments -->
       <div class="p-4 border-t border-gray-300">
-        <h2 class="text-lg font-semibold text-gray-700 dark:text-white">Comments</h2>
         <!-- Start Single Comments -->
-        <div class="mb-2 flex items-start">
-          <img src="" alt=" Avatar" class="w-8 h-8 rounded-full mr-2">
-          <div>
-            <strong></strong>
-            <p class="text-gray-600"></p>
-          </div>
-        </div>
         <!-- End Single Comment -->
         <a href="{{ url('allcomment/'.$stack->id) }}" class="text-blue-500 hover:underline">View All Comments</a>
       </div>

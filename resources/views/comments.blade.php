@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="w-full flex">
-  <div class="w-1/6 h-screen bg-gray-800 p-4 text-white hidden md:block">
+  <div class="w-1/6 h-screen shadow-lg p-4 text-white hidden md:block">
     <ul class="space-y-2 overflow-y-auto" style="max-height: 80vh;">
       <a href="/profile" class="block hover:text-blue-500">
         <li class="flex items-center space-x-2 p-2">
@@ -13,7 +13,7 @@
               <img src="{{ $loggedInUserData[0]->profile_picture }}" />
             </div>
           </div>
-          <p class="text-sm p-2">{{ $loggedInUserData[0]->name }}</p>
+          <p class="text-sm p-2 text-black dark:text-white">{{ $loggedInUserData[0]->name }}</p>
         </li>
       </a>
 
@@ -23,7 +23,7 @@
             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
             <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
           </svg>
-          <p class="text-sm p-2">Friends</p>
+          <p class="text-sm p-2 text-black dark:text-white">Friends</p>
         </li>
       </a>
 
@@ -38,7 +38,7 @@
       @csrf
       <div class="bg-white dark:bg-slate-800 p-4 shadow-md rounded-lg">
         <h2 class="text-xl text-black dark:text-white font-semibold mb-4">Create a Stack</h2>
-        <textarea placeholder="Write a stack" name="stack" class="w-full p-2 border rounded-lg bg-slate-700"></textarea>
+        <textarea placeholder="Write a stack" name="stack" class="w-full p-2 border rounded-lg bg-slate-50 text-black dark:bg-slate-700"></textarea>
         <div class="flex justify-between items-center mt-4">
           <button class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Post</button>
           <input type="file" id="images" name="images[]" class="hidden" multiple>
@@ -58,7 +58,7 @@
   @foreach ($stacks as $stack)
 
   <div class="max-w-3/6 mx-auto mt-8 bg-white rounded-lg shadow-md">
-    <div class="max-w-3/6 mx-auto mt-8 bg-slate-700 rounded-lg shadow-md">
+    <div class="max-w-3/6 mx-auto mt-8  bg-white dark:bg-slate-700 rounded-lg shadow-md">
 
       <!-- Post Header -->
       <div class="flex items-center justify-between p-4 border-b border-gray-300">
@@ -113,7 +113,7 @@
       <!-- Like and Comment Buttons -->
       <div class="flex justify-between p-4 border-t border-gray-300">
         <div class="flex space-x-4">
-          <div class="flex items-center space-x-2 cursor-pointer hover:text-blue-500">
+          <div class="flex items-center space-x-2 cursor-pointer text-black hover:text-blue-500">
             <a href="javascript:void(0);" onclick="likePost({{ $stack->id }})">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -121,12 +121,12 @@
               <span>Like</span>
             </a>
           </div>
-          <div class="flex items-center space-x-2 cursor-pointer hover:text-blue-500">
+          <div class="flex items-center space-x-2 cursor-pointer text-black hover:text-blue-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4a4 4 0 100 8 4 4 0 000-8z"></path>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 00-7-7m0 0a7 7 0 00-7 7m7-7v7m0-7a7 7 0 007 7"></path>
             </svg>
-            <span>Comment</span>
+            <span for="comments">Comment</span>
           </div>
         </div>
         <div class="flex items-center space-x-2 cursor-pointer hover:text-blue-500">
@@ -148,7 +148,7 @@
           <form action="{{ route('addComment') }}" method="POST">
             @csrf
             <input type="hidden" name="post_id" value="{{ $stack->id }}">
-            <textarea name="comments" class="w-5/6 h-10 p-2 border rounded-md focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Add your comment..." required></textarea>
+            <textarea name="comments" id="comments" class="w-5/6 h-10 p-2 border bg-slate-200 text-black dark:text-white rounded-md focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Add your comment..." required></textarea>
             <button type="submit"  class="mt-2 btn btn-blue">Submit Comment</button>
           </form>
         </div>
@@ -157,14 +157,14 @@
 
       <!-- Display Comments -->
       <div class="p-4 border-t border-gray-300">
-        <h2 class="text-lg font-semibold text-gray-700 dark:text-white">Comments</h2>
+        <h2 class="text-lg font-semibold  text-black dark:text-white">Comments</h2>
         <!-- Start Single Comments -->
         @foreach ($allComments as $allComments)
         <div class="mb-2 flex items-start">
           <img src="" alt=" Avatar" class="w-8 h-8 rounded-full mr-2">
           <div>
             <strong></strong>
-            <p class="text-white">{{ $allComments->comments }}</p>
+            <p class="text-black dark:text-white">{{ $allComments->comments }}</p>
           </div>
         </div>
         @endforeach

@@ -44,12 +44,15 @@ class NewsFeedController extends Controller
             // dd($stack_data[2]['stack']->likes);
             // dd($stack_data);
             // dd($stack_user);
+            $allComments = DB::table('stack')->select('comments')->get();
+            // dd($allComments);        
             return view('welcome', [
                 'stacks' => $stacks,
                 'loggedInUserData' => $loggedInUserData,
                 'stack_data' => $stack_data,
                 'stack_user' => $stack_user,
-                'formattedStackTime' => $formattedStackTime, // Pass the array of data for each stack
+                'formattedStackTime' => $formattedStackTime,
+                'allComments' => $allComments, // Pass the array of data for each stack
             ]);
         }
     }
