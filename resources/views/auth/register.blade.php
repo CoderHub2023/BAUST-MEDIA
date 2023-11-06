@@ -11,7 +11,7 @@
                 </div>
                 <div class="mb-4">
                     <label for="roll" class="block font-medium text-white dark:text-gray-200">ID</label>
-                    <input id="roll" name="roll" autocomplete="on" :value="old('roll')" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md text-white dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="text">
+                    <input id="roll" name="roll" autocomplete="on" :value="old('roll')" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md text-white dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="number">
                     <x-input-error :messages="$errors->get('roll')" class="mt-2" />
                 </div>
                 <div class="mb-4">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="mb-4">
                     <label for="mobile" class="block font-medium text-white dark:text-gray-200">Mobile</label>
-                    <input id="mobile" name="mobile" autocomplete="on" :value="old('mobile')" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md text-white dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="tel">
+                    <input id="mobile" name="mobile" placeholder="01234567891" autocomplete="on" :value="old('mobile')" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md text-white dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" pattern="[0-9]{11}" type="tel">
                     <x-input-error :messages="$errors->get('mobile')" class="mt-2" />
                 </div>
                 <div class="mb-4">
