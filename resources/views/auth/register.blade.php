@@ -31,8 +31,9 @@
                 </div>
                 <div class="mb-4">
                     <label for="idcardphoto" class="block font-medium text-white dark:text-gray-200">University ID Card</label>
-                    <input id="idcardphoto" name="idcardphoto" class="form-input mt-1 block w-full rounded-md bg-gray-100 dark:bg-gray-700 border-transparent focus:border-gray-500 focus:ring-0" type="file" required>
+                    <input id="idcardphoto" name="idcardphoto" onchange="validateFile()" class="form-input mt-1 block w-full rounded-md bg-gray-100 dark:bg-gray-700 border-transparent focus:border-gray-500 focus:ring-0" type="file" required>
                     <x-input-error :messages="$errors->get('idcardphoto')" class="mt-2" />
+                    <small id="idcardvalidationText" class="text-red-500"></small>
                 </div>
                 <div class="mb-4">
                     <label for="password" class="block font-medium text-white dark:text-gray-200">Password</label>

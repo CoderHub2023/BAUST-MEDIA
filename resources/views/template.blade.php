@@ -21,6 +21,7 @@
     <script src="{{ asset('js/toggle-propic.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/form-validation.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/ajax-csrf.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/registration.js') }}" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" src="{{ asset('css/public-nav.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
