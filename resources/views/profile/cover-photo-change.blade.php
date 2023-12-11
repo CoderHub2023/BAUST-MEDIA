@@ -6,7 +6,14 @@
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
     <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
-        <!-- cover image and profile photo -->
+            @if(session('success'))
+            <p class=" text-green-500">{{ session('success') }}</p>
+            @endif
+
+            @if(session('failure'))
+            <p class="text-red-600">{{ session('failure') }}</p>
+            @endif
+    <!-- cover image -->
         <form  action="{{ route('profile.image-upload') }}" method="post" enctype="multipart/form-data">
             @csrf
             <p class="text-lg text-black dark:text-white m-4">Cover Image</p>
