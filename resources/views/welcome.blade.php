@@ -51,7 +51,7 @@
 
   @if(!$stacks)
   <div class="text-red-600 w-full md:w-3/6 lg:w-3/6 container mx-auto mt-8 overflow-y-auto" style="max-height: 80vh;">
-    <p class="text-center">Stack Unableable</p>
+    <p class="text-center">No stack yet.</p>
   </div>
   <!-- Post viewing -->
   @else
@@ -63,9 +63,10 @@
       <!-- Post Header -->
       <div class="flex items-center justify-between p-4 border-b border-gray-300">
         <div class="flex items-center space-x-4">
-          <img src="{{ $stack_user[0]->profile_picture }}" alt="User Avatar" class="w-10 h-10 rounded-full">
+          <!-- @dd($stack_data); -->
+          <img src="{{ $stack_data->profile_picture }}" alt="User Avatar" class="w-10 h-10 rounded-full">
           <div>
-            <p class="text-black dark:text-white text-lg font-semibold">{{ $stack_user[0]->name }}</p>
+            <p class="text-black dark:text-white text-lg font-semibold">{{ $stack_data->name }}</p>
             <p class="text-black dark:text-white">{{ $formattedStackTime }}</p>
           </div>
         </div>
