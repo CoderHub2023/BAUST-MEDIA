@@ -56,16 +56,16 @@
   <!-- Post viewing -->
   @else
   @foreach ($stacks as $stack)
-
+  
   <div class="max-w-3/6 mx-auto mt-8 bg-white rounded-lg shadow-md">
     <div class="max-w-3/6 mx-auto mt-8  bg-white dark:bg-slate-800 rounded-lg shadow-md">
 
       <!-- Post Header -->
       <div class="flex items-center justify-between p-4 border-b border-gray-300">
         <div class="flex items-center space-x-4">
-          <img src="{{ $stack_user[0]->profile_picture }}" alt="User Avatar" class="w-10 h-10 rounded-full">
+          <img src="{{ $stack->profile_picture }}" alt="User Avatar" class="w-10 h-10 rounded-full">
           <div>
-            <p class="text-black dark:text-white text-lg font-semibold">{{ $stack_user[0]->name }}</p>
+            <p class="text-black dark:text-white text-lg font-semibold">{{ $stack->name }}</p>
             <p class="text-black dark:text-white">{{ $formattedStackTime }}</p>
           </div>
         </div>

@@ -18,7 +18,6 @@ class NewsFeedController extends Controller
         $stacks = Stack::all();
         $stacks = json_decode($stacks);
         $stack_data = []; // Array to store data for each stack
-
         if (!$stacks) {
             dd($stacks);
             return view('welcome', [
@@ -32,18 +31,18 @@ class NewsFeedController extends Controller
                 $stack_time = \Carbon\Carbon::parse($stack->created_at);
                 $formattedStackTime = $stack_time->format('jS F Y');
                 $stack_user = DB::table('users')->select('name','profile_picture')->where('id', '=', $stack->users_id)->get();
-
+                $stack->name = $stack_user->first()->name;
+                $stack->profile_picture = $stack_user->first()->profile_picture;
                 // Create an array with data for the current stack
                 $stack_data[] = [
                     'stack' => $stack,
                     'name' => $stack_user->first()->name,
                     'profile_picture' => $stack_user->first()->profile_picture,
-                    'stack_user' => $stack_user,
                     'formattedStackTime' => $formattedStackTime,
                     'imagePaths' => $imagePaths, // Add image paths for the current stack
                 ];
             }
-            dd($stack_data);
+            // dd($stack_data);
             // dd($stack_user);
             $allComments = DB::table('stack')->select('comments')->get();
             // dd($allComments);        
@@ -51,7 +50,6 @@ class NewsFeedController extends Controller
                 'stacks' => $stacks,
                 'loggedInUserData' => $loggedInUserData,
                 'stack_data' => $stack_data,
-                'stack_user' => $stack_user,
                 'formattedStackTime' => $formattedStackTime,
                 'allComments' => $allComments, // Pass the array of data for each stack
             ]);
