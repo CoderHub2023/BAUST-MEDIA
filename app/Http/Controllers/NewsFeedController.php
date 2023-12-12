@@ -31,11 +31,13 @@ class NewsFeedController extends Controller
                 $imagePaths = $stack->images; // Store image paths for the current stack
                 $stack_time = \Carbon\Carbon::parse($stack->created_at);
                 $formattedStackTime = $stack_time->format('jS F Y');
-                $stack_user = DB::table('users')->select('*')->where('id', '=', $stack->users_id)->get();
+                $stack_user = DB::table('users')->select('name','profile_picture')->where('id', '=', $stack->users_id)->get();
 
                 // Create an array with data for the current stack
                 $stack_data[] = [
                     'stack' => $stack,
+                    'name' => $stack_user->first()->name,
+                    'profile_picture' => $stack_user->first()->profile_picture,
                     'stack_user' => $stack_user,
                     'formattedStackTime' => $formattedStackTime,
                     'imagePaths' => $imagePaths, // Add image paths for the current stack
