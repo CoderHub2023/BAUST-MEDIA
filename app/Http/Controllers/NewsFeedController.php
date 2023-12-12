@@ -43,7 +43,7 @@ class NewsFeedController extends Controller
                     'imagePaths' => $imagePaths, // Add image paths for the current stack
                 ];
             }
-            dd($stack_data);
+            // dd($stack_data);
             // dd($stack_user);
             $allComments = DB::table('stack')->select('comments')->get();
             // dd($allComments);        
