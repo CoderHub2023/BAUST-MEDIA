@@ -89,7 +89,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/notifications',[NotificationController::class,'notifications'])->name('notifications');
 
-    Route::get('/messages',[MessagesController::class,'messages'])->name('messages');
     
     Route::get('/forget-password', [ProfileController::class, 'comming-soon'])->name('auth.forget-comming-soon');
 
