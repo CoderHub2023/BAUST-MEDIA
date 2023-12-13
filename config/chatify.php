@@ -22,7 +22,11 @@ return [
     |-------------------------------------
     */
     'routes' => [
+<<<<<<< HEAD
         'prefix' => env('CHATIFY_ROUTES_PREFIX', 'chatify'),
+=======
+        'prefix' => env('CHATIFY_ROUTES_PREFIX', 'messages'),
+>>>>>>> ebb463cb0fc19bfa27fe8b4e62670879a507655b
         'middleware' => env('CHATIFY_ROUTES_MIDDLEWARE', ['web','auth']),
         'namespace' => env('CHATIFY_ROUTES_NAMESPACE', 'Chatify\Http\Controllers'),
     ],
