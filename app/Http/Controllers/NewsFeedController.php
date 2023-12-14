@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stack;
+use App\Models\User;
 use Illuminate\Http\Client\ResponseSequence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -44,14 +45,19 @@ class NewsFeedController extends Controller
             }
             // dd($stack_data);
             // dd($stack_user);
-            $allComments = DB::table('stack')->select('comments')->get();
-            // dd($allComments);        
-            return view('welcome', [
+        $allComments = DB::table('stack')->select('comments')->get();
+            // dd($allComments);  
+            // Detect online user
+        $Activeusers = DB::table('users')->select('*')->where('id', '!=', $userId)->get();
+        // $Activeusers = User::select("*")->whereNotNull('last_seen')->orderBy('last_seen', 'DESC'); 
+        // dd($Activeusers->name);    
+        return view('welcome', [
                 'stacks' => $stacks,
                 'loggedInUserData' => $loggedInUserData,
                 'stack_data' => $stack_data,
                 'formattedStackTime' => $formattedStackTime,
-                'allComments' => $allComments, // Pass the array of data for each stack
+                'allComments' => $allComments,
+                'Activeusers' => $Activeusers, // Pass the array of data for each stack
             ]);
         }
     }
@@ -165,4 +171,6 @@ class NewsFeedController extends Controller
             ]);
         }
     }
+
+
 }
