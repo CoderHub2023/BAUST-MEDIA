@@ -47,6 +47,7 @@
                     <img src="{{ $user->profile_picture }}" alt="Current profile photo" class="w-full h-16vh mb-2 rounded-md">
                     <p class="font-semibold text-gray-800 text-sm">{{ $user->name }}</p>
                     <p class="text-gray-600 text-xs mb-2">{{ $user->headlines }}</p>
+                    
                     <div class="p-2 border-t border-gray-200">
                         <a href="{{ url('/add-network/'.$user->id) }}" class="btn btn-sm btn-secondary">Send Request</a>
                     </div>
@@ -54,7 +55,6 @@
             </div>
             @endforeach
         </div>
-
 
         <div class="lg:hidden md:hidden 2xl:hidden">
             {{ $usersNotInNetwork->links() }}
