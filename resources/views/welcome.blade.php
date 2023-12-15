@@ -33,7 +33,7 @@
 
 
   <!-- Post Creation -->
-  <div class="w-full md:w-3/6 lg:w-3/6 container mx-auto mt-8 overflow-y-auto" style="max-height: 80vh;">
+  <div class="w-full md:w-3/6 lg:w-3/6 container mx-auto mt-8 overflow-y-auto" style="max-height:90vh;">
     <form action="{{ url('/stack/post') }}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="bg-white dark:bg-slate-800 p-4 shadow-md rounded-lg">
