@@ -15,20 +15,20 @@ class NetworkController extends Controller
      */
     public function my_network(Request $request)
     {
-        $isLoading = true; 
         $loggedInUserId = Auth::user()->id;
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $loggedInUserId)->get();
+
         $usersNotInNetwork = User::leftJoin('users_network', function ($join) use ($loggedInUserId) {
             $join->on('users.id', '=', 'users_network.network_id')
-                 ->where('users_network.users_id', '=', $loggedInUserId);
+            ->where('users_network.users_id', '=', $loggedInUserId);
         })
         ->whereNull('users_network.users_id') // Filters out users already in the network
         ->where('users.id', '<>', $loggedInUserId) // Exclude the logged-in user from the list
-        ->get(['users.*']); // Fetch all columns from the users table
-        usleep(1000000); // 1 second delay
-        $isLoading = false; // Set to false after fetching data
-        return view('Networks.Network', compact('usersNotInNetwork','loggedInUserData','isLoading'));
+        ->paginate(12,['users.*']); // Paginate with 12 users per page (you can adjust this number as needed)
+
+        return view('Networks.Network', compact('usersNotInNetwork', 'loggedInUserData'));
     }
+
 
     /**
      *  For add friend or add new network
