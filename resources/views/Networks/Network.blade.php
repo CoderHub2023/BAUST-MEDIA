@@ -31,11 +31,16 @@
     <div class="xl:w-3/4 2xl:w-4/5 w-full mx-auto">
         <div class="px-4 sm:px-6 md:px-8 lg:px-10 py-4 md:py-7">
             <div class="flex flex-wrap items-center justify-between">
-                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-black  dark:text-white w-full sm:w-auto">Connect With People</p>
+                <div>
+                    <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-black  dark:text-white w-full sm:w-auto">Connect With People</p>
+                </div>
+                <div>
+                    {{ $usersNotInNetwork->links() }}
+                </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 ml-10">
             @foreach($usersNotInNetwork as $user)
             <div class="max-w-xs bg-white shadow-lg rounded-md overflow-hidden">
                 <div class="p-3">
@@ -43,11 +48,16 @@
                     <p class="font-semibold text-gray-800 text-sm">{{ $user->name }}</p>
                     <p class="text-gray-600 text-xs mb-2">{{ $user->headlines }}</p>
                     <div class="p-2 border-t border-gray-200">
-                        <button class="bg-blue-500 text-white px-3 py-1 rounded-full w-full text-xs">Add Friend</button>
+                        <a href="{{ url('/add-network/'.$user->id) }}" class="btn btn-sm btn-secondary">Send Request</a>
                     </div>
                 </div>
             </div>
             @endforeach
+        </div>
+
+
+        <div class="lg:hidden md:hidden 2xl:hidden">
+            {{ $usersNotInNetwork->links() }}
         </div>
 
 
