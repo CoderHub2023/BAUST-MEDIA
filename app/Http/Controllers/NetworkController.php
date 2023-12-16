@@ -51,7 +51,7 @@ class NetworkController extends Controller
         $followers = DB::table('users_network')->select("*")->where('network_id', $AuthUser)->get();
         $ids = $followers->pluck('users_id'); // Use 'users_id' instead of 'id'
         $idsArray = $ids->all();
-        $followersInUserTable = DB::table('users')->select("*")->whereIn('id', $idsArray)->get();
+        // $followersInUserTable = DB::table('users')->select("*")->whereIn('id', $idsArray)->get();
         // $beUnfollow = DB::table('users_network')->select('*')->where('',)->get 
         $following = User::join('users_network', 'users.id', '=', 'users_network.network_id')
         ->where('users_network.users_id', '=', $loggedInUserId) // Match the network_id with logged-in user's id
@@ -59,8 +59,16 @@ class NetworkController extends Controller
         // dd($following[0]->name);
         $following = $following->pluck('id');
         $following = $following->all();
-        $followBack = array_intersect($following,$idsArray);
-        return view('Networks.Followers',compact('loggedInUserData','followersInUserTable','following','idsArray','followBack'));
+        $commonFollow = array_intersect($following,$idsArray);
+        $followBack = array_values(array_diff($idsArray, $commonFollow));
+        $matual = DB::table('users')->select("id", "name", "profile_picture", "headlines")->whereIn('id', $commonFollow)->get();
+        $fans = DB::table('users')->select("id", "name", "profile_picture", "headlines")->whereIn('id', $followBack)->get();
+
+
+        // dd($followers);
+        // dd($commonFollow);
+        // dd($followBack);
+        return view('Networks.Followers',compact('loggedInUserData','matual', 'fans','following','idsArray','followBack', 'commonFollow'));
     }
       
     /**

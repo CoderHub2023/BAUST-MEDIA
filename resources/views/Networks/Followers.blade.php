@@ -41,21 +41,27 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 ml-10">
-            @foreach($followersInUserTable as $user)
+            @foreach($matual as $user)
             <div class="max-w-xs bg-white shadow-lg rounded-md overflow-hidden">
                 <div class="p-3">
                     <img src="{{ $user->profile_picture }}" alt="Current profile photo" class="w-full h-16vh mb-2 rounded-md">
                     <p class="font-semibold text-gray-800 text-sm">{{ $user->name }}</p>
                     <p class="text-gray-600 text-xs mb-2">{{ $user->headlines }}</p>
-                    @if($followBack)
+                    <div class="p-2 border-t border-gray-200">
+                        <a href="{{ url('/remove-network/'.$user->id) }}" class="btn btn-sm btn-secondary">Unfollow</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @foreach($fans as $user)
+            <div class="max-w-xs bg-white shadow-lg rounded-md overflow-hidden">
+                <div class="p-3">
+                    <img src="{{ $user->profile_picture }}" alt="Current profile photo" class="w-full h-16vh mb-2 rounded-md">
+                    <p class="font-semibold text-gray-800 text-sm">{{ $user->name }}</p>
+                    <p class="text-gray-600 text-xs mb-2">{{ $user->headlines }}</p>
                     <div class="p-2 border-t border-gray-200">
                         <a href="{{ url('/add-network/'.$user->id) }}" class="btn btn-sm btn-secondary">Follow Back</a>
                     </div>
-                    @else
-                    <div class="p-2 border-t border-gray-200">
-                        <a href="{{ url('/remove-network/'.$user->id) }}"><button class="bg-red-500 text-white px-3 py-1 rounded-md text-sm md:text-base">Unfollow</button></a>
-                    </div>
-                    @endif
                 </div>
             </div>
             @endforeach
