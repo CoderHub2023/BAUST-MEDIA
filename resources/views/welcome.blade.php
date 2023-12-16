@@ -17,13 +17,13 @@
         </li>
       </a>
 
-      <a href="/network-range" class="block hover:text-blue-500">
+      <a href="/following" class="block hover:text-blue-500">
         <li class="flex items-center space-x-2 p-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
             <path fill-rule="evenodd" d="M10 0a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" />
           </svg>
-          <p class="text-sm p-2 text-black dark:text-white">Friends</p>
+          <p class="text-sm p-2 text-black dark:text-white">Following</p>
         </li>
       </a>
 
@@ -185,7 +185,9 @@
             <img src="{{ $user->profile_picture }}" />
           </div>
         </div>
+        <a href="{{ url('/messages/'.$user->id) }}">
         <span class="block text-sm">{{ $user->name }}</span>
+        </a>
         @endif
       </li>
       <!-- Add more active people as needed -->

@@ -69,10 +69,18 @@
             <!-- End Right column -->
         </div>
         <!-- End name and occupation -->
-        <button class="btn btn-success w-32 flex items-center">
-            <i class="fa fa-download mr-2" aria-hidden="true"></i>
-            <p class="text-sm">Resume</p>
-        </button>
+        <div class="flex">
+            <button class="btn btn-neutral w-32 flex items-center mr-2">
+                <i class="fa fa-download mr-2" aria-hidden="true"></i>
+                <p class="text-sm">Resume</p>
+            </button>
+
+            <div>
+                <a href="{{ url('/messages/'.$PublicProfile[0]->id) }}">
+                    <button class="btn btn-success">Message</button>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 

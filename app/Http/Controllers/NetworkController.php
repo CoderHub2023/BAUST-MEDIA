@@ -25,7 +25,7 @@ class NetworkController extends Controller
         ->whereNull('users_network.users_id') // Filters out users already in the network
         ->where('users.id', '<>', $loggedInUserId) // Exclude the logged-in user from the list
         ->paginate(12,['users.*']); // Paginate with 12 users per page (you can adjust this number as needed)
-
+        sleep(3);
         return view('Networks.Network', compact('usersNotInNetwork', 'loggedInUserData'));
     }
 

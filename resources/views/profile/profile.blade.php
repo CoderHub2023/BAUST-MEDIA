@@ -13,11 +13,6 @@
                     <a href="{{ route('profile.update_cover_photo') }}">
                         <img class="w-full h-80 object-cover" src="{{ $loggedInUserData[0]->cover_picture }}" alt="Cover image">
                     </a>
-                    <button class="absolute top-0 right-0 m-4 bg-gray-800 p-2 rounded-full hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4m-7-7l-3 3v4h4l3-3-4-4z" />
-                        </svg>
-                    </button>
                 </div>
 
                 <!-- Profile photo -->
@@ -139,7 +134,7 @@
     <div class="shadow-2xl rounded-md bg-white dark:bg-gray-900 px-6 py-8 sm:py-10 lg:py-12">
         <div class="flex flex-col md:flex-row justify-between items-center mb-4">
             <h2 class="text-lg font-semibold text-gray-800 dark:text-white mb-2 md:mb-0">Networks</h2>
-            <a href="{{ url('/network-range') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">See All</a>
+            <a href="{{ url('/following') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">See All</a>
         </div>
         @if($CountFriends==0)
         <p class="text-red-600">No people in your network</p>
