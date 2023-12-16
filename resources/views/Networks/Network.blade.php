@@ -33,6 +33,36 @@
             <div class="flex flex-wrap items-center justify-between">
                 <div>
                     <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-black  dark:text-white w-full sm:w-auto">Connect With People</p>
+                    <div class=" lg:hidden xl:hidden 2xl:hidden text-sm breadcrumbs text-black">
+                        <ul>
+                            <li>
+                                <a href="/my-network" class="underline">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                                    </svg>
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/following">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                                    </svg>
+                                    Following
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/followers">
+                                    <span class="inline-flex gap-2 items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                                        </svg>
+                                        Followers
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div>
                     {{ $usersNotInNetwork->links() }}
@@ -47,7 +77,7 @@
                     <img src="{{ $user->profile_picture }}" alt="Current profile photo" class="w-full h-16vh mb-2 rounded-md">
                     <p class="font-semibold text-gray-800 text-sm">{{ $user->name }}</p>
                     <p class="text-gray-600 text-xs mb-2">{{ $user->headlines }}</p>
-                    
+
                     <div class="p-2 border-t border-gray-200">
                         <a href="{{ url('/add-network/'.$user->id) }}" class="btn btn-sm btn-secondary">Follow</a>
                     </div>
