@@ -179,9 +179,6 @@
         <!-- Green dot to indicate active -->
         @if(Cache::has('user-is-online-' . $user->id))
         <span class="w-3 h-3 bg-green-500 rounded-full"></span>
-        @else
-        <span class="w-3 h-3 bg-gray-800 rounded-full"></span>
-        @endif
         <!-- Active person's avatar using Tailwind Avatar component -->
         <div class="avatar">
           <div class="w-5 h-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -189,6 +186,7 @@
           </div>
         </div>
         <span class="block text-sm">{{ $user->name }}</span>
+        @endif
       </li>
       <!-- Add more active people as needed -->
     </ul>
