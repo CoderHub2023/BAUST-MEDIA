@@ -43,20 +43,39 @@ class NetworkController extends Controller
         // Redirect back or perform any other action
         return redirect()->back()->with('success', 'Friend added successfully.');
     }
+
+    public function followers(Request $request){
+        $loggedInUserId = Auth::user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $loggedInUserId)->get();
+        $AuthUser = $request->user()->id;
+        $followers = DB::table('users_network')->select("*")->where('network_id', $AuthUser)->get();
+        $ids = $followers->pluck('users_id'); // Use 'users_id' instead of 'id'
+        $idsArray = $ids->all();
+        $followersInUserTable = DB::table('users')->select("*")->whereIn('id', $idsArray)->get();
+        // $beUnfollow = DB::table('users_network')->select('*')->where('',)->get 
+        $following = User::join('users_network', 'users.id', '=', 'users_network.network_id')
+        ->where('users_network.users_id', '=', $loggedInUserId) // Match the network_id with logged-in user's id
+        ->get(['users.*']);
+        // dd($following[0]->name);
+        $following = $following->pluck('id');
+        $following = $following->all();
+        $followBack = array_intersect($following,$idsArray);
+        return view('Networks.Followers',compact('loggedInUserData','followersInUserTable','following','idsArray','followBack'));
+    }
       
     /**
      *  People who are in your network
      */
-    public function network_range(Request $request){
+    public function following(Request $request){
 
         $loggedInUserId = Auth::user()->id;
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $loggedInUserId)->get();
 
         $loggedInUserId = Auth::user()->id;
-        $friends = User::join('users_network', 'users.id', '=', 'users_network.network_id')
+        $following = User::join('users_network', 'users.id', '=', 'users_network.network_id')
         ->where('users_network.users_id', '=', $loggedInUserId) // Match the network_id with logged-in user's id
         ->get(['users.*']);
-        return view('Networks.Network-range',compact('loggedInUserData','friends'));
+        return view('Networks.Following',compact('loggedInUserData','following'));
     }
     
     public function remove_network(Request $request,$id){
