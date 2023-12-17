@@ -178,7 +178,7 @@
   <div class="mt-4">
     <h3 class="text-lg font-semibold mb-2">Active People</h3>
     @foreach($Activeusers as $user)
-    <ul class="space-y-2">
+    <ul class="">
       <li class="flex items-center space-x-2 p-2">
         <!-- Green dot to indicate active -->
         @if(Cache::has('user-is-online-' . $user->id))

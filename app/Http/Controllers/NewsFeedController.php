@@ -172,5 +172,12 @@ class NewsFeedController extends Controller
         }
     }
 
+    public function ActiveUser(Request $request){
+        $userId = $request->user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
+        $Activeusers = DB::table('users')->select('*')->where('id', '!=', $userId)->paginate(8);
+        return view('Active-peple',compact('loggedInUserData','Activeusers'));
+    }
+
 
 }

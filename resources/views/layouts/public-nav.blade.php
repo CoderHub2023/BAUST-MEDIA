@@ -45,6 +45,7 @@
             </a>
           </li>
           <li><a href="{{ route('profile.general') }}">General</a></li>
+          <li><a href="{{ route('active-user') }}">Active People</a></li>
           <li><a href="{{ route('profile.edit') }}">Settings</a></li>
   
           <form method="POST" action="{{ route('logout') }}">

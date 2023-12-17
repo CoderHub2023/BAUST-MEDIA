@@ -107,6 +107,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/post/{postId}/comment/{commentId}', 'PostCommentController@destroy')->name('post.comment.destroy');
     Route::get('/post/{postId}/comments', [PostCommentController::class, 'showAllComments'])->name('post.comments.show');
 
+    Route::get('/active-user',[NewsFeedController::class, 'ActiveUser'])->name('active-user');
 
     
 });
