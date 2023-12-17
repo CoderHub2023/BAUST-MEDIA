@@ -13,6 +13,12 @@
                 </li>
             </a>
 
+            <a href="/search-network" class="block hover:text-blue-500">
+                <li class="flex items-center space-x-2 p-2">
+                    <p class="text-sm p-2 text-black dark:text-white">Search</p>
+                </li>
+            </a>
+
             <a href="/following" class="block hover:text-blue-500 ">
                 <li class="flex items-center space-x-2 p-2 bg-slate-400 rounded-lg">
                     <p class="text-sm p-2 text-black dark:text-white">Following</p>
@@ -41,6 +47,14 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
                                     </svg>
                                     Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/search-network">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                                    </svg>
+                                    Search
                                 </a>
                             </li>
                             <li>

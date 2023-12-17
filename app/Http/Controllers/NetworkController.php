@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use function PHPSTORM_META\type;
+
 class NetworkController extends Controller
 {
     /**
@@ -95,4 +97,23 @@ class NetworkController extends Controller
         // Redirect back or perform any other action
         return redirect()->back()->with('success', 'Friend removed successfully.');
     }
+
+    public function search_network(Request $request){
+        $loggedInUserId = Auth::user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $loggedInUserId)->get();
+        $users = User::where('id', '<>', $loggedInUserId)->paginate(5);
+        return view('Networks.live-search',compact('loggedInUserData','users'));
+    }
+
+    public function searching(Request $request)
+    {
+        $loggedInUserId = Auth::user()->id;
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $loggedInUserId)->get();
+        $query = $request->input('query');
+        $users = DB::table('users')
+        ->where('name', 'like', '%' . $query . '%')
+        ->paginate(5);
+        return view('Networks.live-search', ['users' => $users,'loggedInUserData' => $loggedInUserData]);
+    }
+
 }

@@ -66,6 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/following',[NetworkController::class,'following'])->name('following');
     Route::get('/remove-network/{id}',[NetworkController::class,'remove_network'])->name('remove-network'); 
     Route::get('/followers',[NetworkController::class,'followers'])->name('followers');
+    Route::get('/search-network',[NetworkController::class,'search_network']);
+    Route::post('/searching', [NetworkController::class, 'searching'])->name('searching');
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');
     
