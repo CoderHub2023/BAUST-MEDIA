@@ -37,6 +37,38 @@
             height: auto;
             background: linear-gradient(to right, #667EEA, #764BA2);
         }
+        /* Style for Comment Container */
+.comment {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/* Style for User's Profile Picture */
+.profile-picture {
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    border-radius: 50%; /* Creates a circular shape */
+    margin-right: 10px;
+}
+
+/* Style for Comment Content */
+.comment-content {
+    flex: 1; /* Takes remaining width */
+    background-color: #f0f0f0; /* Change as needed */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Style for User Name */
+.user-name {
+    font-weight: bold;
+}
+
+/* Style for Comment Text */
+.comment-text {
+    margin-top: 5px;
+}
+
     </style>
 
 </head>

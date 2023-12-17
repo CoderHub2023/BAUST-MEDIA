@@ -135,30 +135,36 @@
       <!-- Like and Comment Counts -->
       <div class="p-4 text-gray-500">
         <p id="like-count-{{ $stack->id }}" class="text-black dark:text-yellow-500">
-          {{ \App\Models\PostLike::where('post_id', $stack->id)->count() }} likes
+          {{ \App\Models\PostLike::where('post_id', $stack->id)->count() }} Likes
         </p>
-        <p class="text-black dark:text-yellow-500">Comments</p>
+        <p class="text-black dark:text-yellow-500">{{ \App\Models\PostComment::where('post_id', $stack->id)->count() }} Comments</p>
       </div>
+      <!-- Display Comments -->
+      <!-- Display Comments with Users' Names -->
+      <p class="p-4 text-black dark:text-yellow-500 font-semibold">All Comments</p>
+@foreach(\App\Models\PostComment::where('post_id', $stack->id)->orderBy('created_at', 'asc')->get() as $comment)
+    <div class="border border-gray-200 p-3 my-3">
+        <p class="text-black dark:text-gray-700 font-semibold">{{ $comment->user->name }}</p>
+        <p class="text-black dark:text-gray-700">{{ $comment->comment }}</p>
+        <!-- Add additional details or formatting as needed -->
+    </div>
+@endforeach
       <!-- Comment Form -->
       <div class="p-4 border-t border-gray-300">
-        <div class="p-4 border-t border-gray-300">
-          <h2 class="text-lg font-semibold text-gray-700 dark:text-white mb-2">Add a Comment</h2>
-          <form action="{{ route('addComment') }}" method="POST">
-            @csrf
-            <input type="hidden" name="post_id" value="{{ $stack->id }}">
-            <textarea name="comments" class="w-5/6 h-10 p-2 border-secondary rounded-lg  focus:ring-2 bg-slate-200 bordered focus:ring-blue-500 text-black dark:text-white" rows="4" placeholder="Add your comment..." required></textarea>
-            <button type="submit" class="mt-2 btn btn-neutral">Submit Comment</button>
-          </form>
-        </div>
+          <div class="p-4 border-t border-gray-300">
+              <h2 class="text-lg font-semibold text-gray-700 dark:text-white mb-2">Add a Comment</h2>
+              <form action="{{ route('post.comment.store', ['postId' => $stack->id]) }}" method="POST">
+                  @csrf
+                  <textarea name="comment" class="w-5/6 h-10 p-2 border-secondary rounded-lg focus:ring-2 bg-slate-200 bordered focus:ring-blue-500 text-black dark:text-white" rows="4" placeholder="Add your comment..." required></textarea>
+                  <button type="submit" class="mt-2 btn btn-neutral">Submit Comment</button>
+              </form>
+          </div>
       </div>
+
       <!-- End Comment Form -->
 
       <!-- Display Comments -->
-      <div class="p-4 border-t border-gray-300">
-        <!-- Start Single Comments -->
-        <!-- End Single Comment -->
-        <a href="{{ url('allcomment/'.$stack->id) }}" class="text-blue-500 hover:underline">View All Comments</a>
-      </div>
+      
     </div>
   </div>
   @endforeach
@@ -211,20 +217,20 @@
     });
   }
   // Function for comments in a Stack
-  function addComment(postId) {
-    var comments = $('#comments').val();
-    $.ajax({
-      type: 'POST',
-      dataType: "json",
-      data: {
-        postId: postId,
-        comments: comments,
-      },
-      url: "/add-comment",
-      success: function(data) {
-        console.log("You have been commented");
-      }
-    })
-  }
+  // function addComment(postId) {
+  //   var comments = $('#comments').val();
+  //   $.ajax({
+  //     type: 'POST',
+  //     dataType: "json",
+  //     data: {
+  //       postId: postId,
+  //       comments: comments,
+  //     },
+  //     url: "/add-comment",
+  //     success: function(data) {
+  //       console.log("You have been commented");
+  //     }
+  //   })
+  // }
 </script>
 @endsection

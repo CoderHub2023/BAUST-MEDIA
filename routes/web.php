@@ -9,6 +9,7 @@ use App\Http\Controllers\NewsFeedController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicProfileController;
+use App\Http\Controllers\PostCommentController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
@@ -95,9 +96,15 @@ Route::middleware('auth')->group(function () {
 
     // Stacks routes
     Route::post('/like-post', 'App\Http\Controllers\PostLikeController@likePost')->name('likePost');
-    Route::post('/add-comment',[NewsFeedController::class,'addcomment'])->name('addComment');
+    // Route::post('/add-comment',[NewsFeedController::class,'addcomment'])->name('addComment');
 
     Route::get('/allcomment/{id}', [NewsFeedController::class, 'viewComments'])->name('all-comments');
+    //stack comments
+    Route::post('/post/{postId}/comment', [PostCommentController::class, 'store'])->name('post.comment.store');
+    Route::put('/post/{postId}/comment/{commentId}', 'PostCommentController@update')->name('post.comment.update');
+    Route::delete('/post/{postId}/comment/{commentId}', 'PostCommentController@destroy')->name('post.comment.destroy');
+    Route::get('/post/{postId}/comments', [PostCommentController::class, 'showAllComments'])->name('post.comments.show');
+
 
     
 });
