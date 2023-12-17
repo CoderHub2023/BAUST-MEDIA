@@ -76,8 +76,17 @@ class PublicProfileController extends Controller
         ->where('users_network.users_id', '=', $loggedInUserId) // Match the network_id with logged-in user's id
         ->get(['users.*']);
         $CountFriends = count($friends);
+        $user_details = DB::table('users_details')->where('users_id',$userId)->select('*')->get();
+        return view('profile.public-profile',compact('loggedInUserData','PublicProfile','user_education','user_about','count','countUserEducation','users_works_count','users_works','CountFriends','friends','user_details'));   
+    }
 
-        return view('profile.public-profile',compact('loggedInUserData','PublicProfile','user_education','user_about','count','countUserEducation','users_works_count','users_works','CountFriends','friends'));   
+    public function showResume(Request $request,$id){
+        $userId = $request->user()->id;
+        $user = new User();
+        $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
+        // dd($loggedInUserData);
+        $public_resume = DB::table('users_details')->where('users_id',$id)->select('resume')->get();
+        return view('profile.viewPublic-resume',compact('loggedInUserData','public_resume'));
     }
 
     /**
