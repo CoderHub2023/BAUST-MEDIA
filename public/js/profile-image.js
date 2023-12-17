@@ -51,6 +51,35 @@ function coverPhotoValidation() {
       // Clear the file input to allow the user to choose another file
       fileInput.value = "";
   }
+  else{
+    previewCoverImage();
+  }
+}
+
+function previewCoverImage(){
+    var fileInput = document.getElementById('coverPhoto');
+    var preview = document.getElementById('preview');
+    preview.innerHTML = ''; // Clear any previous content
+
+    if (fileInput.files && fileInput.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            // Create an image element
+            var img = document.createElement('img');
+            img.src = e.target.result;
+            img.alt = 'Image Preview';
+
+            // Append the image to the preview element
+            preview.appendChild(img);
+            document.getElementById('viewCoverPhoto').hidden = true;
+            preview.hidden = false;
+
+        };
+
+        // Read the image file as a data URL
+        reader.readAsDataURL(fileInput.files[0]);
+    }
 }
 
 $(document).ready(function () {

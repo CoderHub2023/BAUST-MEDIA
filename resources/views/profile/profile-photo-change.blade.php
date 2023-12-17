@@ -19,8 +19,8 @@
         <form action="{{ route('profile.image-upload') }}" method="post" enctype="multipart/form-data" class="text-center">
             @csrf
             <!-- Profile image section -->
-            <p class="text-lg dark:text-while m-4">Profile Image</p>
-            <div class="mb-4">
+            <p class="text-lg text-black dark:text-while m-4">Profile Image</p>
+            <div class="flex">
                 <div class="shrink-0">
                     <img class="h-28 w-28 rounded-full object-cover mx-auto mb-2" id="viewDyPhoto" src="{{ $UserData->profile_picture }}" alt="Current profile photo" />
                     <div id="preview" class="w-28 h-28 mx-auto rounded-full">
