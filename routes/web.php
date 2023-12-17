@@ -93,7 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/forget-password', [ProfileController::class, 'comming-soon'])->name('auth.forget-comming-soon');
 
     // Stacks routes
-    Route::post('/like-post',[NewsFeedController::class,'likePost'])->name('post.like');
+    Route::post('/like-post', 'App\Http\Controllers\PostLikeController@likePost')->name('likePost');
     Route::post('/add-comment',[NewsFeedController::class,'addcomment'])->name('addComment');
 
     Route::get('/allcomment/{id}', [NewsFeedController::class, 'viewComments'])->name('all-comments');
