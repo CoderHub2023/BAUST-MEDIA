@@ -70,10 +70,12 @@
         </div>
         <!-- End name and occupation -->
         <div class="flex">
-            <button class="btn btn-neutral w-32 flex items-center mr-2">
-                <i class="fa fa-download mr-2" aria-hidden="true"></i>
-                <p class="text-sm">Resume</p>
-            </button>
+            <a href="{{ url('/view/resume/'.$PublicProfile[0]->id) }}">
+                <button class="btn btn-neutral w-32 flex items-center mr-2">
+                    <i class="fa fa-eyes mr-2" aria-hidden="true"></i>
+                    <p class="text-sm">View Resume</p>
+                </button>
+            </a>
 
             <div>
                 <a href="{{ url('/messages/'.$PublicProfile[0]->id) }}">
