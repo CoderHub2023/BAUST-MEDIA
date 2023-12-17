@@ -138,9 +138,11 @@
       </div>
       <!-- Like and Comment Counts -->
       <div class="p-4 text-gray-500">
-        <p id="like-count-{{ $stack->id }}" class="text-black dark:text-yellow-500">{{ $stack->likes }} likes</p>
-        <p class="text-black dark:text-yellow-500">5 comments</p>
-      </div>
+    <p id="like-count-{{ $stack->id }}" class="text-black dark:text-yellow-500">
+        {{ \App\Models\PostLike::where('post_id', $stack->id)->count() }} likes
+    </p>
+    <p class="text-black dark:text-yellow-500">Comments</p>
+</div>
       <!-- Comment Form -->
       <div class="p-4 border-t border-gray-300">
         <div class="p-4 border-t border-gray-300">
