@@ -8,6 +8,35 @@ function profilePhotoValidation() {
             "File size exceeds 2 MB. Please choose a smaller file.";
         // Clear the file input to allow the user to choose another file
         fileInput.value = "";
+    } else {
+        // If the file size is within limits, proceed to preview the image
+        previewImage();
+    }
+}
+
+function previewImage() {
+    var fileInput = document.getElementById('profilePhoto');
+    var preview = document.getElementById('preview');
+    preview.innerHTML = ''; // Clear any previous content
+
+    if (fileInput.files && fileInput.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            // Create an image element
+            var img = document.createElement('img');
+            img.src = e.target.result;
+            img.alt = 'Image Preview';
+
+            // Append the image to the preview element
+            preview.appendChild(img);
+            document.getElementById('viewDyPhoto').hidden = true;
+            preview.hidden = false;
+
+        };
+
+        // Read the image file as a data URL
+        reader.readAsDataURL(fileInput.files[0]);
     }
 }
 
