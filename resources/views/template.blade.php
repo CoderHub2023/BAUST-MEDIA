@@ -8,6 +8,7 @@
     <title>@yield('title')</title>
 
     <!-- Fonts -->
+    <script src="https://kit.fontawesome.com/406650d497.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link href="{{ asset('css/things.css') }}" rel="stylesheet" type="text/css">

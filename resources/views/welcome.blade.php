@@ -56,7 +56,7 @@
   <!-- Post viewing -->
   @else
   @foreach ($stacks as $stack)
-  
+
   <div class="max-w-3/6 mx-auto mt-8 bg-white rounded-lg shadow-md">
     <div class="max-w-3/6 mx-auto mt-8  bg-white dark:bg-slate-800 rounded-lg shadow-md">
 
@@ -115,19 +115,15 @@
         <div class="flex space-x-4">
           <div class="flex items-center space-x-2 cursor-pointer dark:text-white text-black hover:text-blue-500">
             <a href="javascript:void(0);" onclick="likePost({{ $stack->id }})">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-              <span>Like</span>
+            <i class="fa-regular fa-thumbs-up"></i>
             </a>
           </div>
+          <a href="{{ url('allcomment/'.$stack->id) }}" class="text-blue-500 hover:underline">
           <div class="flex items-center space-x-2 cursor-pointer dark:text-white text-black hover:text-blue-500">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4a4 4 0 100 8 4 4 0 000-8z"></path>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 00-7-7m0 0a7 7 0 00-7 7m7-7v7m0-7a7 7 0 007 7"></path>
-            </svg>
+            <i class="fa-regular fa-comment"></i>
             <span>Comment</span>
           </div>
+          </a>
         </div>
         <div class="flex items-center space-x-2 cursor-pointer dark:text-white text-black hover:text-blue-500">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -138,11 +134,11 @@
       </div>
       <!-- Like and Comment Counts -->
       <div class="p-4 text-gray-500">
-    <p id="like-count-{{ $stack->id }}" class="text-black dark:text-yellow-500">
-        {{ \App\Models\PostLike::where('post_id', $stack->id)->count() }} likes
-    </p>
-    <p class="text-black dark:text-yellow-500">Comments</p>
-</div>
+        <p id="like-count-{{ $stack->id }}" class="text-black dark:text-yellow-500">
+          {{ \App\Models\PostLike::where('post_id', $stack->id)->count() }} likes
+        </p>
+        <p class="text-black dark:text-yellow-500">Comments</p>
+      </div>
       <!-- Comment Form -->
       <div class="p-4 border-t border-gray-300">
         <div class="p-4 border-t border-gray-300">
@@ -151,7 +147,7 @@
             @csrf
             <input type="hidden" name="post_id" value="{{ $stack->id }}">
             <textarea name="comments" class="w-5/6 h-10 p-2 border-secondary rounded-lg  focus:ring-2 bg-slate-200 bordered focus:ring-blue-500 text-black dark:text-white" rows="4" placeholder="Add your comment..." required></textarea>
-            <button type="submit"  class="mt-2 btn btn-neutral">Submit Comment</button>
+            <button type="submit" class="mt-2 btn btn-neutral">Submit Comment</button>
           </form>
         </div>
       </div>
@@ -171,7 +167,7 @@
 
 
 
-<div class="shadow-lg w-1/6 h-screen p-4 text-black dark:text-white hidden md:block"> 
+<div class="shadow-lg w-1/6 h-screen p-4 text-black dark:text-white hidden md:block">
   <!-- Active People -->
   <div class="mt-4">
     <h3 class="text-lg font-semibold mb-2">Active People</h3>
@@ -188,7 +184,7 @@
           </div>
         </div>
         <a href="{{ url('/messages/'.$user->id) }}">
-        <span class="block text-sm">{{ $user->name }}</span>
+          <span class="block text-sm">{{ $user->name }}</span>
         </a>
         @endif
       </li>

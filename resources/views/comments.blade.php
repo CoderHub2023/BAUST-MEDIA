@@ -34,18 +34,7 @@
 
   <!-- Post Creation -->
   <div class="w-full md:w-3/6 lg:w-3/6 container mx-auto mt-8 overflow-y-auto" style="max-height: 80vh;">
-    <form action="{{ url('/stack/post') }}" method="post" enctype="multipart/form-data">
-      @csrf
-      <div class="bg-white dark:bg-slate-800 p-4 shadow-md rounded-lg">
-        <h2 class="text-xl text-black dark:text-white font-semibold mb-4">Create a Stack</h2>
-        <textarea placeholder="Write a stack" name="stack" class="w-full p-2 border rounded-lg bg-slate-50 text-black dark:bg-slate-700"></textarea>
-        <div class="flex justify-between items-center mt-4">
-          <button class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Post</button>
-          <input type="file" id="images" name="images[]" class="hidden" multiple>
-          <label for="images" class="cursor-pointer text-blue-600 hover:underline">Add Image</label>
-        </div>
-    </form>
-  </div>
+    
   <!-- End Post Creation -->
   <div class="loader"></div>
 
@@ -176,6 +165,7 @@
   @endif
 </div>
 
+</div>
 
 
 
