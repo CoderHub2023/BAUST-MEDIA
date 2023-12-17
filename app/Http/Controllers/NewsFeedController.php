@@ -30,16 +30,17 @@ class NewsFeedController extends Controller
             foreach ($stacks as $stack) {
                 $imagePaths = $stack->images; // Store image paths for the current stack
                 $stack_time = \Carbon\Carbon::parse($stack->created_at);
-                $formattedStackTime = $stack_time->format('jS F Y');
+               
+                // $formattedStackTime = $stack_time->format('jS F Y, h:i A');                 dd($formattedStackTime);
                 $stack_user = DB::table('users')->select('name','profile_picture')->where('id', '=', $stack->users_id)->get();
                 $stack->name = $stack_user->first()->name;
                 $stack->profile_picture = $stack_user->first()->profile_picture;
+                $stack->time = $stack_time->format('jS F Y, h:i A');
                 // Create an array with data for the current stack
                 $stack_data[] = [
                     'stack' => $stack,
                     'name' => $stack_user->first()->name,
                     'profile_picture' => $stack_user->first()->profile_picture,
-                    'formattedStackTime' => $formattedStackTime,
                     'imagePaths' => $imagePaths, // Add image paths for the current stack
                 ];
             }
@@ -55,7 +56,6 @@ class NewsFeedController extends Controller
                 'stacks' => $stacks,
                 'loggedInUserData' => $loggedInUserData,
                 'stack_data' => $stack_data,
-                'formattedStackTime' => $formattedStackTime,
                 'allComments' => $allComments,
                 'Activeusers' => $Activeusers, // Pass the array of data for each stack
             ]);

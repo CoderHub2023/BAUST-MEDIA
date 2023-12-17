@@ -66,7 +66,7 @@
           <img src="{{ $stack->profile_picture }}" alt="User Avatar" class="w-10 h-10 rounded-full">
           <div>
             <p class="text-black dark:text-white text-lg font-semibold">{{ $stack->name }}</p>
-            <p class="text-black dark:text-white">{{ $formattedStackTime }}</p>
+            <p class="text-black dark:text-white">{{ $stack->time }}</p>
           </div>
         </div>
         <div class="text-gray-400 hover:text-blue-500 cursor-pointer">
