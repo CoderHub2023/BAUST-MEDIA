@@ -11,22 +11,22 @@
                 </div>
                 <div class="mb-4">
                     <label for="roll" class="block font-medium dark:text-gray-200">ID</label>
-                    <input id="roll" name="roll" autocomplete="on" :value="old('roll')" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md text-white dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="number">
+                    <input id="roll" name="roll" autocomplete="on" :value="old('roll')" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="number">
                     <x-input-error :messages="$errors->get('roll')" class="mt-2" />
                 </div>
                 <div class="mb-4">
                     <label for="name" class="block font-medium dark:text-gray-200">Name</label>
-                    <input id="name" name="name" autocomplete="on" :value="old('name')" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md text-white dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="text">
+                    <input id="name" name="name" autocomplete="on" :value="old('name')" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md  dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="text">
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
                 <div class="mb-4">
                     <label for="email" class="block font-medium dark:text-gray-200">Email</label>
-                    <input id="email" name="email" autocomplete="on" :value="old('email')" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md text-white dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="email">
+                    <input id="email" name="email" autocomplete="on" :value="old('email')" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md  dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="email">
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
                 <div class="mb-4">
                     <label for="mobile" class="block font-medium dark:text-gray-200">Mobile</label>
-                    <input id="mobile" name="mobile" placeholder="01234567891" autocomplete="on" :value="old('mobile')" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md text-white dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" pattern="[0-9]{11}" type="tel">
+                    <input id="mobile" name="mobile" placeholder="01234567891" autocomplete="on" :value="old('mobile')" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" pattern="[0-9]{11}" type="tel">
                     <x-input-error :messages="$errors->get('mobile')" class="mt-2" />
                 </div>
                 <div class="mb-4">
@@ -37,12 +37,12 @@
                 </div>
                 <div class="mb-4">
                     <label for="password" class="block font-medium dark:text-gray-200">Password</label>
-                    <input id="password" name="password" autocomplete="off" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md text-white dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="password">
+                    <input id="password" name="password" autocomplete="off" required class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md  dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="password">
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
                 <div class="mb-4">
                     <label for="password_confirmation" class="block font-medium dark:text-gray-200">Confirm Password</label>
-                    <input name="password_confirmation" required id="password_confirmation" class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md text-white dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="password">
+                    <input name="password_confirmation" required id="password_confirmation" class="p-3 sm:p-4 form-input mt-1 block w-full rounded-md  dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-transparent font-normal text-sm border-gray-300 border shadow" type="password">
                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
                 <div class="flex justify-center items-center mt-6">
