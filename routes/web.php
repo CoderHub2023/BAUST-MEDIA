@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/send-resume', [ProfileController::class,'send_update_resume'])->name('profile.send_update_resume');
     Route::post('/deleteResume',[ProfileController::class,'deleteResume'])->name('deleteResume');
     Route::post('/profile/update-details/post', [ProfileController::class, 'post_update_details'])->name('profile.post-update-details');
-    Route::get('/profile/general', [ProfileController::class, 'general'])->name('profile.general');
+    Route::get('/profile/settings', [ProfileController::class, 'settings'])->name('profile.settings');
     Route::get('/profile/ViewResume', [ProfileController::class, 'ViewResume'])->name('profile.ViewResume');
     // public profile routes
     Route::get('/test',[PublicProfileController::class,'index']);

@@ -43,9 +43,9 @@
               Profile
             </a>
           </li>
-          <li><a href="{{ route('profile.general') }}">General</a></li>
+          <li><a href="{{ route('profile.settings') }}">Settings</a></li>
           <li><a href="{{ route('active-user') }}">Active People</a></li>
-          <li><a href="{{ route('profile.edit') }}">Settings</a></li>
+          <li><a href="{{ route('profile.edit') }}">General</a></li>
   
           <form method="POST" action="{{ route('logout') }}">
             @csrf

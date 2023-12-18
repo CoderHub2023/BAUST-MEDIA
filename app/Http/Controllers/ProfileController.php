@@ -520,10 +520,10 @@ class ProfileController extends Controller
         return view('profile.add-skills');
     }
 
-    public function general(Request $request){
+    public function settings(Request $request){
         $userId = $request->user()->id;
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
-        return view('profile.general', compact('loggedInUserData'));
+        return view('profile.settings', compact('loggedInUserData'));
     }
 
     
