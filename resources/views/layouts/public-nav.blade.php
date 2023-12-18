@@ -31,7 +31,7 @@
     </div>
     <div>
 
-      <div class="dropdown dropdown-end ml-72">
+      <div class="dropdown dropdown-end ml-72 z-50">
         <label tabindex="0" class="btn btn-info btn-circle avatar">
           <div class="w-10 rounded-full">
             <img src="{{ $loggedInUserData[0]->profile_picture }}" />
@@ -41,7 +41,6 @@
           <li>
             <a class="justify-between" href="{{ route('profile') }}">
               Profile
-              <span class="badge">New</span>
             </a>
           </li>
           <li><a href="{{ route('profile.general') }}">General</a></li>

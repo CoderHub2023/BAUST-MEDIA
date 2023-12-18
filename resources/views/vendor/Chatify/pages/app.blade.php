@@ -5,7 +5,8 @@
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="#"><i class="fa fa-envelope mr-1"></i> <span class="messenger-headTitle">MESSAGES</span> </a>
+                <a href="/"><i class="fa fa-home mr-1"></i> <span class="messenger-headTitle">Home</span> </a>
+
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#"><i class="fas fa-cog settings-btn"></i></a>
