@@ -16,7 +16,7 @@ class NewsFeedController extends Controller
     {
         $userId = $request->user()->id;
         $loggedInUserData = DB::table('users')->select('*')->where('users.id', '=', $userId)->get();
-        $stacks = Stack::all();
+        $stacks = Stack::orderBy('created_at', 'desc')->get();
         $stacks = json_decode($stacks);
         $stack_data = []; // Array to store data for each stack
         if (!$stacks) {
@@ -52,6 +52,7 @@ class NewsFeedController extends Controller
         $Activeusers = DB::table('users')->select('*')->where('id', '!=', $userId)->get();
         // $Activeusers = User::select("*")->whereNotNull('last_seen')->orderBy('last_seen', 'DESC'); 
         // dd($Activeusers->name);    
+
         return view('welcome', [
                 'stacks' => $stacks,
                 'loggedInUserData' => $loggedInUserData,
