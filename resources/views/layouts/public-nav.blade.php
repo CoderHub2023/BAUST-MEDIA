@@ -22,6 +22,9 @@
       <a href="{{ route('jobs') }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">
         <span class="fa fa-suitcase mr-1"></span> Jobs
       </a>
+      <a href="{{ route('publications') }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">
+        <span class="fa-regular fa-file r mr-1"></span> Publications
+      </a> 
       <a href="{{ route('notifications') }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-4">
         <span class="fa fa-bell mr-1"></span> Notifications
       </a>

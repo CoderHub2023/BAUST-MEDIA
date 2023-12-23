@@ -90,6 +90,7 @@ Route::middleware('auth')->group(function () {
 
     // Feature commuing soon
     Route::get('/jobs',[JobsController::class,'jobs'])->name('jobs');
+    Route::get('/publications',[PublicationController::class,'publications'])->name('publications');
 
     Route::get('/notifications',[NotificationController::class,'notifications'])->name('notifications');
 

@@ -153,7 +153,7 @@
       <div class="p-4 border-t border-gray-300">
           <div class="p-4 border-t border-gray-300">
               <h2 class="text-lg font-semibold text-gray-700 dark:text-white mb-2">Add a Comment</h2>
-              <form action="{{ route('post.comment.store', ['postId' => $stack->id]) }}" method="POST">
+              <form action="{{ route('post.comment.store', ['postId' => $stack->id]) }}" method="POST" >
                   @csrf
                   <textarea name="comment"  class="w-5/6 h-10 p-2 border-secondary rounded-lg focus:ring-2 bg-slate-200 bordered focus:ring-blue-500 text-black dark:text-white" rows="4" placeholder="Add your comment..." required></textarea>
                   <button type="submit" class="mt-2 btn btn-accent">Submit Comment</button>
@@ -216,21 +216,6 @@
       },
     });
   }
-  // Function for comments in a Stack
-  // function addComment(postId) {
-  //   var comments = $('#comments').val();
-  //   $.ajax({
-  //     type: 'POST',
-  //     dataType: "json",
-  //     data: {
-  //       postId: postId,
-  //       comments: comments,
-  //     },
-  //     url: "/add-comment",
-  //     success: function(data) {
-  //       console.log("You have been commented");
-  //     }
-  //   })
-  // }
+
 </script>
 @endsection
