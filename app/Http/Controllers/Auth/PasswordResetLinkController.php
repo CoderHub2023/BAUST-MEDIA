@@ -22,6 +22,7 @@ class PasswordResetLinkController extends Controller
         return view('auth.forget-comming-soon');
     }
 
+    
     /**
      * Handle an incoming password reset link request.
      *
