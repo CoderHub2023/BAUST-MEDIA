@@ -94,7 +94,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/notifications',[NotificationController::class,'notifications'])->name('notifications');
 
     
-    Route::get('/forget-password', [ProfileController::class, 'comming-soon'])->name('auth.forget-comming-soon');
 
     // Stacks routes
     Route::post('/like-post', 'App\Http\Controllers\PostLikeController@likePost')->name('likePost');
