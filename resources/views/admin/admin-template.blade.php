@@ -40,6 +40,7 @@
 
 <body>
 
+  
   @yield('content')
   <!-- Vendor JS Files -->
   <script src="{{ asset('admin/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>

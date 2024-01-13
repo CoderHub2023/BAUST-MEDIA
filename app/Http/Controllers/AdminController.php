@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+    public function users_list(){
+        return view('admin.users-list');
+    }
     public function index(Request $request){
         $ExtactUserdata = new User();
         $userId = $request->user()->id;

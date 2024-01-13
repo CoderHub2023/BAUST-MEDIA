@@ -70,7 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/searching', [NetworkController::class, 'searching'])->name('searching');
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');
-    
+    Route::get('/admin/users-list',[AdminController::class,'users_list']);
     // User request acceptance route
     // For getting id and chaning it's usertype 
     Route::get('/admin/getuserid/{id}',[AdminController::class,'accept_request']);
