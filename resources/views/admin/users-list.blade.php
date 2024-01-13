@@ -1,309 +1,80 @@
 @extends('admin.admin-template')
-@section('title','Admin | Home')
+@section('title','Admin | User List')
 @include('admin.sidebar')
 @section('content')
-  <main id="main" class="main">
-<div class="pagetitle">
-  <h1>Alerts</h1>
-  <nav>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-      <li class="breadcrumb-item">Components</li>
-      <li class="breadcrumb-item active">Alerts</li>
-    </ol>
-  </nav>
-</div><!-- End Page Title -->
+<main id="main" class="main">
+<!-- User List -->
+<div class="text-center text-lg">Users List</div>
+  <div class="users-list bg-gray-500">
+    <div class="table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Profile Picture</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">View</th>
+            <th scope="col">Ban</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($UserList as $user)
+          <tr>
+            <th scope="row">
+              <img src="{{ $user->profile_picture }}" alt="" class="rounded-circle" style="width: 50px; height: 50px;">
+            </th>
+            <td>{{ $user->name }}</td>
+            <td>{{ $user->email }}</td>
+            <td><button class="btn btn-primary"><i class="bi bi-eye-fill"></i></button></td>
+            <td>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#confirmationModal{{ $user->id }}">
+                <i class="bi bi-ban"></i>
+              </button>
+            </td>
+          </tr>
 
-<section class="section">
-  <div class="row">
-    <div class="col-lg-6">
-
-      <div class="card">
-        <div class="card-body">
-
-          <h5 class="card-title">Default</h5>
-
-          <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            A simple primary alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <!-- Modal -->
+          <div class="modal fade" id="confirmationModal{{ $user->id }}" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Ban user ? </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  This action will restrict the user from logging in.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" onclick="banUser({{ $user->id }})">Ban</button>
+                </div>
+              </div>
+            </div>
           </div>
+          <!-- End of Modal -->
 
-          <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-            A simple secondary alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-            A simple success alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            A simple danger alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            A simple warning alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-info alert-dismissible fade show" role="alert">
-            A simple info alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-light border-light alert-dismissible fade show" role="alert">
-            A simple light alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-dark alert-dismissible fade show" role="alert">
-            A simple dark alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">With Icon</h5>
-
-          <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <i class="bi bi-star me-1"></i>
-            A simple primary alert with icon—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-            <i class="bi bi-collection me-1"></i>
-            A simple secondary alert with icon—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <i class="bi bi-check-circle me-1"></i>
-            A simple success alert with icon—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="bi bi-exclamation-octagon me-1"></i>
-            A simple danger alert with icon—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <i class="bi bi-exclamation-triangle me-1"></i>
-            A simple warning alert with icon—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-info alert-dismissible fade show" role="alert">
-            <i class="bi bi-info-circle me-1"></i>
-            A simple info alert with icon—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-dark alert-dismissible fade show" role="alert">
-            <i class="bi bi-folder me-1"></i>
-            A simple dark alert with icon—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Outlined</h5>
-
-          <div class="alert border-primary alert-dismissible fade show" role="alert">
-            A simple primary outlined alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert border-secondary alert-dismissible fade show" role="alert">
-            A simple secondary outlined alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert border-success alert-dismissible fade show" role="alert">
-            A simple success outlined alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert border-danger alert-dismissible fade show" role="alert">
-            A simple danger outlined alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert border-warning alert-dismissible fade show" role="alert">
-            A simple warning outlined alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert border-info alert-dismissible fade show" role="alert">
-            A simple info outlined alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert border-light alert-dismissible fade show" role="alert">
-            A simple light outlined alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert border-dark alert-dismissible fade show" role="alert">
-            A simple dark outlined alert—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-lg-6">
-
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Default Solid Color</h5>
-
-          <div class="alert alert-primary bg-primary text-light border-0 alert-dismissible fade show" role="alert">
-            A simple primary alert with solid color—check it out!
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-secondary bg-secondary text-light border-0 alert-dismissible fade show" role="alert">
-            A simple secondary alert with solid color—check it out!
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
-            A simple success alert with solid color—check it out!
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show" role="alert">
-            A simple danger alert with solid color—check it out!
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-warning bg-warning border-0 alert-dismissible fade show" role="alert">
-            A simple warning alert with solid color—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-info bg-info border-0 alert-dismissible fade show" role="alert">
-            A simple info alert with solid color—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-light bg-light border-0 alert-dismissible fade show" role="alert">
-            A simple light alert with solid color—check it out!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-dark bg-dark text-light border-0 alert-dismissible fade show" role="alert">
-            A simple dark alert with solid color—check it out!
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">With Heading &amp Separator</h5>
-
-          <div class="alert alert-primary alert-dismissible fade show" role="alert">
-            <h4 class="alert-heading">Primary Heading</h4>
-            <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
-            <hr>
-            <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-            <h4 class="alert-heading">Secondary Heading</h4>
-            <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
-            <hr>
-            <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <h4 class="alert-heading">Success Heading</h4>
-            <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
-            <hr>
-            <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <h4 class="alert-heading">Danger Heading</h4>
-            <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
-            <hr>
-            <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-warning  alert-dismissible fade show" role="alert">
-            <h4 class="alert-heading">Warning Heading</h4>
-            <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
-            <hr>
-            <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-info  alert-dismissible fade show" role="alert">
-            <h4 class="alert-heading">Info Heading</h4>
-            <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
-            <hr>
-            <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-light border-light alert-dismissible fade show" role="alert">
-            <h4 class="alert-heading">Lignt Heading</h4>
-            <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
-            <hr>
-            <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          <div class="alert alert-dark  alert-dismissible fade show" role="alert">
-            <h4 class="alert-heading">Dark Heading</h4>
-            <p>Et suscipit deserunt earum itaque dignissimos recusandae dolorem qui. Molestiae rerum perferendis laborum. Occaecati illo at laboriosam rem molestiae sint.</p>
-            <hr>
-            <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-        </div>
-      </div>
+          @endforeach
+        </tbody>
+      </table>
     </div>
   </div>
-</section>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      {{ $UserList->links() }}
+    </ul>
+  </nav>
 
-</main><!-- End #main -->
-
-<!-- ======= Footer ======= -->
-<footer id="footer" class="footer">
-<div class="copyright">
-  &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-</div>
-<div class="credits">
-  <!-- All the links in the footer should remain intact. -->
-  <!-- You can delete the links only if you purchased the pro version. -->
-  <!-- Licensing information: https://bootstrapmade.com/license/ -->
-  <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-</div>
-</footer><!-- End Footer -->
-
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
+  <script>
+    function banUser(userId) {
+      axios.post(`/admin/ban-user/${userId}`)
+        .then(response => {
+          console.log('User banned successfully');
+          location.reload();
+        })
+        .catch(error => {
+          console.error('Error banning user', error);
+        });
+    }
+  </script>
+<main>
 @endsection

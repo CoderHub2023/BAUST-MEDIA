@@ -9,8 +9,17 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function users_list(){
-        return view('admin.users-list');
+    public function users_list()
+    {
+        $UserList = User::where('usertype', 0)->paginate(10);
+        return view('admin.users-list', compact('UserList'));
+    }
+
+
+    public function ban_user(Request $request,$id){
+        DB::update('UPDATE users SET usertype = ? WHERE id = ?', [1, $id]);
+        return redirect()->back();
+
     }
     public function index(Request $request){
         $ExtactUserdata = new User();
@@ -70,6 +79,11 @@ class AdminController extends Controller
 
     public function loader(){
         return view('skeleton-loader');
+    }
+
+    public function admin_logout(){
+        Auth::logout();
+        return redirect('/');
     }
 
 }

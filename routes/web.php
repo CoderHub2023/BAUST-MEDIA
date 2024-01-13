@@ -70,7 +70,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/searching', [NetworkController::class, 'searching'])->name('searching');
     // Admin Profile routes
     Route::get('/admin/welcome',[AdminController::class,'index'])->name('admin.welcome');
+    // Showing list of user from admin
     Route::get('/admin/users-list',[AdminController::class,'users_list']);
+    Route::get('/admin/logout',[AdminController::class,'admin_logout'])->name('admin.logout');
+    // Restricted user from admin
+    Route::post('/admin/ban-user/{id}', [AdminController::class, 'ban_user']);
     // User request acceptance route
     // For getting id and chaning it's usertype 
     Route::get('/admin/getuserid/{id}',[AdminController::class,'accept_request']);
