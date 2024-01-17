@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
@@ -12,10 +14,25 @@ use App\Http\Controllers\PublicProfileController;
 use App\Http\Controllers\PostCommentController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/',[NewsFeedController::class,'index'])->name('home');
+    //Email verification notice
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->middleware('auth')->name('verification.notice');
+    //Email verification handler
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
     
+        return redirect('/home');
+    })->middleware(['auth', 'signed'])->name('verification.verify');
+    //resending email verification
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+    
+        return back()->with('message', 'Verification link sent!');
+    })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
     // profile routes
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
     Route::get('/profile/update', [ProfileController::class, 'edit'])->name('profile.edit');
